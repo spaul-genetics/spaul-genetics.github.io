@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1 | Subrata Paul</title>
+    <link>http://localhost:1313/publication-type/1/</link>
+      <atom:link href="http://localhost:1313/publication-type/1/index.xml" rel="self" type="application/rss+xml" />
+    <description>1</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>1</title>
+      <link>http://localhost:1313/publication-type/1/</link>
+    </image>
+    
+    <item>
+      <title>Identification and characterization of common genetic risk factors for chronic pain and psychopathology</title>
+      <link>http://localhost:1313/publication/zorina-2020-identification/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/zorina-2020-identification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Incorporation of heterogeneity through a mixture model to boost power of association tests</title>
+      <link>http://localhost:1313/publication/paul-2018-incorporation/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/paul-2018-incorporation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Real-Time Electricity Price Forecasting for Energy Management in Grid-Tied MTDC Microgrids</title>
+      <link>http://localhost:1313/publication/ullah-2018-real/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/ullah-2018-real/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A Comparison of Genetic Risk Prediction and Subtyping for Generalized Vitiligo</title>
+      <link>http://localhost:1313/publication/santorico-2016-comparison/</link>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/santorico-2016-comparison/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Optimized genetic risk prediction for vitiligo and its use to define disease subtypes</title>
+      <link>http://localhost:1313/publication/santorico-2015-optimized/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/santorico-2015-optimized/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>An example conference paper</title>
+      <link>http://localhost:1313/publication/example/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/example/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://wowchemy.com/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;code, math, and images&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

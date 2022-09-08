@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2 | Subrata Paul</title>
+    <link>http://localhost:1313/publication-type/2/</link>
+      <atom:link href="http://localhost:1313/publication-type/2/index.xml" rel="self" type="application/rss+xml" />
+    <description>2</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 06 Sep 2022 06:25:46 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>2</title>
+      <link>http://localhost:1313/publication-type/2/</link>
+    </image>
+    
+    <item>
+      <title>Effect of aging on immune cells in male HIV-infected and-uninfected healthy individuals</title>
+      <link>http://localhost:1313/publication/raieffect/</link>
+      <pubDate>Tue, 06 Sep 2022 06:25:46 +0000</pubDate>
+      <guid>http://localhost:1313/publication/raieffect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Avalanche preparedness and accident analysis among backcountry skier, sidecountry, and snowmobile fatalities in the United States: 2009 to 2019</title>
+      <link>http://localhost:1313/publication/niemann-2022-avalanche/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/niemann-2022-avalanche/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shared Genetic and Phenotypic Risk Factors in Pain and psychological Conditions</title>
+      <link>http://localhost:1313/publication/zorina-2021-shared/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/zorina-2021-shared/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Incorporation of Heterogeneity in a Case-Control Study Through a Mixture Model</title>
+      <link>http://localhost:1313/publication/paul-2020-incorporation/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/paul-2020-incorporation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Family clustering of autoimmune vitiligo results principally from polygenic inheritance of common risk alleles</title>
+      <link>http://localhost:1313/publication/roberts-2019-family/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/roberts-2019-family/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

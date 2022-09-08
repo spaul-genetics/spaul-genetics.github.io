@@ -1,1 +1,0 @@
-# spaul-genetics.github.io
