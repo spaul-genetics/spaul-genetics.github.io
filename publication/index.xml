@@ -2,101 +2,101 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Publications | Subrata Paul</title>
-    <link>http://localhost:1313/publication/</link>
-      <atom:link href="http://localhost:1313/publication/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://example.com/publication/</link>
+      <atom:link href="https://example.com/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 06 Sep 2022 06:25:46 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <url>https://example.com/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Publications</title>
-      <link>http://localhost:1313/publication/</link>
+      <link>https://example.com/publication/</link>
     </image>
     
     <item>
       <title>Effect of aging on immune cells in male HIV-infected and-uninfected healthy individuals</title>
-      <link>http://localhost:1313/publication/raieffect/</link>
+      <link>https://example.com/publication/raieffect/</link>
       <pubDate>Tue, 06 Sep 2022 06:25:46 +0000</pubDate>
-      <guid>http://localhost:1313/publication/raieffect/</guid>
+      <guid>https://example.com/publication/raieffect/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Avalanche preparedness and accident analysis among backcountry skier, sidecountry, and snowmobile fatalities in the United States: 2009 to 2019</title>
-      <link>http://localhost:1313/publication/niemann-2022-avalanche/</link>
+      <link>https://example.com/publication/niemann-2022-avalanche/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/niemann-2022-avalanche/</guid>
+      <guid>https://example.com/publication/niemann-2022-avalanche/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shared Genetic and Phenotypic Risk Factors in Pain and psychological Conditions</title>
-      <link>http://localhost:1313/publication/zorina-2021-shared/</link>
+      <link>https://example.com/publication/zorina-2021-shared/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/zorina-2021-shared/</guid>
+      <guid>https://example.com/publication/zorina-2021-shared/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Identification and characterization of common genetic risk factors for chronic pain and psychopathology</title>
-      <link>http://localhost:1313/publication/zorina-2020-identification/</link>
+      <link>https://example.com/publication/zorina-2020-identification/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/zorina-2020-identification/</guid>
+      <guid>https://example.com/publication/zorina-2020-identification/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Incorporation of Heterogeneity in a Case-Control Study Through a Mixture Model</title>
-      <link>http://localhost:1313/publication/paul-2020-incorporation/</link>
+      <link>https://example.com/publication/paul-2020-incorporation/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/paul-2020-incorporation/</guid>
+      <guid>https://example.com/publication/paul-2020-incorporation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Family clustering of autoimmune vitiligo results principally from polygenic inheritance of common risk alleles</title>
-      <link>http://localhost:1313/publication/roberts-2019-family/</link>
+      <link>https://example.com/publication/roberts-2019-family/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/roberts-2019-family/</guid>
+      <guid>https://example.com/publication/roberts-2019-family/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Incorporation of heterogeneity through a mixture model to boost power of association tests</title>
-      <link>http://localhost:1313/publication/paul-2018-incorporation/</link>
+      <link>https://example.com/publication/paul-2018-incorporation/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/paul-2018-incorporation/</guid>
+      <guid>https://example.com/publication/paul-2018-incorporation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Real-Time Electricity Price Forecasting for Energy Management in Grid-Tied MTDC Microgrids</title>
-      <link>http://localhost:1313/publication/ullah-2018-real/</link>
+      <link>https://example.com/publication/ullah-2018-real/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/ullah-2018-real/</guid>
+      <guid>https://example.com/publication/ullah-2018-real/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A Comparison of Genetic Risk Prediction and Subtyping for Generalized Vitiligo</title>
-      <link>http://localhost:1313/publication/santorico-2016-comparison/</link>
+      <link>https://example.com/publication/santorico-2016-comparison/</link>
       <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/santorico-2016-comparison/</guid>
+      <guid>https://example.com/publication/santorico-2016-comparison/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Optimized genetic risk prediction for vitiligo and its use to define disease subtypes</title>
-      <link>http://localhost:1313/publication/santorico-2015-optimized/</link>
+      <link>https://example.com/publication/santorico-2015-optimized/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/santorico-2015-optimized/</guid>
+      <guid>https://example.com/publication/santorico-2015-optimized/</guid>
       <description></description>
     </item>
     
     <item>
       <title>An example conference paper</title>
-      <link>http://localhost:1313/publication/example/</link>
+      <link>https://example.com/publication/example/</link>
       <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/example/</guid>
+      <guid>https://example.com/publication/example/</guid>
       <description>&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.

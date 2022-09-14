@@ -1,0 +1,1401 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.6.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Subrata Paul" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Polar Axis For a demonstration of a line plot on a polar axis.
+── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ── ✔ ggplot2 3.3.5 ✔ purrr 0.3.4 ✔ tibble 3.1.6 ✔ dplyr 1." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://example.com/post/try_quarto/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.3495fc6150afdd177f1d04fbba9f5e2c.css" />
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+  
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://example.com/post/try_quarto/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="Subrata Paul" />
+  <meta property="og:url" content="https://example.com/post/try_quarto/" />
+  <meta property="og:title" content="Hello, Quarto | Subrata Paul" />
+  <meta property="og:description" content="Polar Axis For a demonstration of a line plot on a polar axis.
+── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ── ✔ ggplot2 3.3.5 ✔ purrr 0.3.4 ✔ tibble 3.1.6 ✔ dplyr 1." /><meta property="og:image" content="https://example.com/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://example.com/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2012-04-06T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2012-04-06T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://example.com/post/try_quarto/"
+  },
+  "headline": "Hello, Quarto",
+  
+  "datePublished": "2012-04-06T00:00:00Z",
+  "dateModified": "2012-04-06T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Subrata Paul"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Subrata Paul",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://example.com/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Polar Axis For a demonstration of a line plot on a polar axis.\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ── ✔ ggplot2 3.3.5 ✔ purrr 0.3.4 ✔ tibble 3.1.6 ✔ dplyr 1."
+}
+</script>
+
+  
+
+  
+
+  
+
+
+  <title>Hello, Quarto | Subrata Paul</title>
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="3e6137ce74ab7fa2efb22565f7090ab2" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.613040fe4f2c0f007b4dcb64404201cb.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Subrata Paul</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Subrata Paul</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#projects"><span>Projects</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#talks"><span>Talks</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#publications"><span>Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Hello, Quarto</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Apr 6, 2012
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/matplotlib/">Matplotlib</a>, <a href="/category/coordinates/">Coordinates</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <script type="module" src="index_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link  href="index_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet" />
+<script src="index_files/libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="index_files/libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="index_files/libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="index_files/libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="index_files/libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="index_files/libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="index_files/libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="index_files/libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<script type="ojs-define">
+{"contents":[{"name":"plot_data","value":{"x":[-1.1836,-0.2322,-0.4023,2.2921,-0.3399,-0.3599,-0.2229,-0.0122,0.4858,0.0038,0.714,-0.0264,0.7477,0.1078,0.2646,0.326,-1.2499,-1.7737,1.4718,-0.3165,-0.2024,-0.1517,-0.4562,0.7755,-0.9355,1.6977,-0.6867,-0.3539,0.9055,0.4678,0.4639,0.558,0.5297,0.5777,0.359,-0.5805,-0.1763,-1.0679,-1.0076,-0.57,-0.2577,-0.6701,-1.4313,-0.8585,-1.3411,-0.7257,-0.6645,-0.3194,-0.1196,0.0334,-0.3791,0.8297,-0.0509,1.1763,0.536,0.3479,1.7553,-0.6038,1.1895,-0.3795,-0.4879,-0.507,0.0025,-0.1657,-1.3978,0.9472,-1.3878,-0.8983,1.6877,0.6962,-0.3876,1.6504,1.2083,0.5936,-0.8261,0.9004,-0.5593,0.6069,-0.7758,-1.0386,-0.9062,-0.6316,0.6735,0.2955,0.6711,0.104,0.8671,-0.3631,1.3371,0.1361,-0.3688,1.3368,1.2227,-0.052,-1.7732,0.2736,0.8511,-0.8285,-0.7075,-0.3312],"y":[0.2928,0.2767,0.1764,0.042,0.2983,0.3579,0.6832,0.1172,0.4413,0.2199,0.5205,0.705,0.4089,0.5739,0.6769,0.2318,0.0869,0.1322,0.1812,0.1812,0.4688,0.6994,0.6197,0.4901,0.3131,0.0482,0.1925,0.0015,0.0126,0.5048,0.217,0.5189,0.5207,0.4281,0.2797,0.3516,0.1501,0.423,0.2275,0.6475,0.523,0.4804,0.5959,0.3753,0.1763,0.4889,0.1911,0.3106,0.445,0.0817,0.5865,0.6087,0.0403,0.6358,0.2434,0.2418,0.1355,0.7705,0.7724,0.4704,0.8267,0.0475,0.0914,0.1441,0.2593,0.0524,0.3599,0.2027,0.0385,0.1482,0.3436,0.7756,0.7652,0.2637,0.4404,0.5407,0.6528,0.1395,0.2165,0.3598,0.3699,0.1956,0.0518,0.2568,0.0239,0.0644,0.5333,0.1273,0.3486,0.6634,0.2414,0.4355,0.7007,0.2813,0.3035,0.1701,0.3774,0.7188,0.4409,0.1886]}}]}
+</script>
+<h2 id="polar-axis">Polar Axis</h2>
+<p>For a demonstration of a line plot on a polar axis.</p>
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+
+✔ ggplot2 3.3.5     ✔ purrr   0.3.4
+✔ tibble  3.1.6     ✔ dplyr   1.0.7
+✔ tidyr   1.1.4     ✔ stringr 1.4.1
+✔ readr   2.1.1     ✔ forcats 0.5.1
+
+Warning: package 'stringr' was built under R version 4.1.2
+
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+
+
+Attaching package: 'plotly'
+
+The following object is masked from 'package:ggplot2':
+
+    last_plot
+
+The following object is masked from 'package:stats':
+
+    filter
+
+The following object is masked from 'package:graphics':
+
+    layout
+</code></pre>
+<div id="htmlwidget-4590b08261f55b664456" style="width:768px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4590b08261f55b664456">{"x":{"data":[{"x":[-1.18361615212122,-0.232218914280461,-0.402339590635232,2.2920710473178,-0.339923921397327,-0.359905721812753,-0.222852257497856,-0.0122162603470726,0.485849020809125,0.00377951551264999,0.713979472140024,-0.0263962182711995,0.747732177976105,0.107789035628992,0.264609790559162,0.326041806747264,-1.24992813745798,-1.77371198235058,1.47184544722072,-0.316467191787878,-0.202363460508453,-0.151698506917282,-0.456186407081729,0.77549259060779,-0.935456088991725,1.69768913435389,-0.686745792585196,-0.353931093648689,0.905509141197357,0.467779291941687,0.463892274984233,0.558033917183037,0.52971326250318,0.577700400881994,0.358992062175821,-0.580507552706773,-0.176285212359942,-1.06786860666668,-1.00755951049896,-0.569988386250036,-0.257683331169539,-0.670080892320192,-1.43130090951158,-0.858484774212769,-1.34105311158692,-0.72568418420596,-0.664526239247667,-0.319423606214162,-0.119609055173018,0.0334338795694869,-0.379096255253459,0.829741040454232,-0.0509255215596809,1.17630222548561,0.535967443443319,0.347864137069229,1.75532354778407,-0.603810467521376,1.18950349896231,-0.379529398647562,-0.487860815632193,-0.50696861416429,0.00250320531480216,-0.16568270029433,-1.39775448681639,0.947226895838307,-1.38782671606077,-0.898315059108693,1.68770626767755,0.696167126307678,-0.387550868933402,1.65042355386683,1.20829031657278,0.593587091916722,-0.826136688709682,0.900382624876505,-0.559347669691241,0.606884710141776,-0.775810698700823,-1.0385706257032,-0.906219756146787,-0.631567876645689,0.673457673780964,0.295507679826618,0.67105781963544,0.104030068243124,0.867094778629386,-0.363100167771629,1.33705120058313,0.136126950320478,-0.368762412751276,1.33683431173099,1.22265709652282,-0.0519650368442002,-1.77315089598699,0.273648284752328,0.85109047279166,-0.828495825624861,-0.707539985417572,-0.331150911457182],"y":[0.292789998704405,0.276666674750798,0.176380669823107,0.0419817719301503,0.298259416618729,0.357941659307983,0.683224734288774,0.117211571884022,0.441316144997008,0.219922032405502,0.520468794295856,0.705049494909908,0.408888647718702,0.573875584420389,0.676911050632722,0.231775659085811,0.086944388718718,0.132247191026757,0.181229153609032,0.181219288552811,0.468789385228956,0.699370324650432,0.619740690921194,0.490066954951138,0.313056545413682,0.048194518101245,0.192535861540605,0.0014678472112238,0.0126177508353547,0.50481675680896,0.217027260527985,0.518902574737529,0.520741044915658,0.428141484503158,0.279716740554628,0.351560246050354,0.150137161863376,0.423021562318832,0.227493975691989,0.647450599719152,0.523027652213022,0.480449796170689,0.595913694703101,0.375295255765054,0.176286739927843,0.488924764691602,0.191093365012905,0.310614290526149,0.445030775108584,0.0817004175146574,0.586523560964642,0.608740303554171,0.0402768328280705,0.635791451027055,0.243410761309319,0.241808274278288,0.135515916167674,0.77052979041485,0.772448142677148,0.470356646458526,0.826713547746256,0.047514838569804,0.0913711194431946,0.144057481809735,0.259298765064907,0.0523768286174541,0.359943680931181,0.202721370958988,0.0384980497019519,0.148212397371243,0.343647370466485,0.775617394951602,0.765218459181641,0.263742003479546,0.440406158082633,0.540705182059913,0.652794099032667,0.13953772926737,0.21651270758783,0.359804710623287,0.369911300377896,0.195621871009989,0.0517783270810893,0.256768520799543,0.023922201101688,0.0643654245165722,0.533264093562648,0.127275431084135,0.348635032996739,0.663356061114351,0.241362543874629,0.435493089093273,0.700714500033663,0.28130149137195,0.30349555805969,0.170053453949003,0.37743436793603,0.71881983133291,0.440863255197919,0.188631796208746],"text":["x: -1.183616152<br />y: 0.292789999","x: -0.232218914<br />y: 0.276666675","x: -0.402339591<br />y: 0.176380670","x:  2.292071047<br />y: 0.041981772","x: -0.339923921<br />y: 0.298259417","x: -0.359905722<br />y: 0.357941659","x: -0.222852257<br />y: 0.683224734","x: -0.012216260<br />y: 0.117211572","x:  0.485849021<br />y: 0.441316145","x:  0.003779516<br />y: 0.219922032","x:  0.713979472<br />y: 0.520468794","x: -0.026396218<br />y: 0.705049495","x:  0.747732178<br />y: 0.408888648","x:  0.107789036<br />y: 0.573875584","x:  0.264609791<br />y: 0.676911051","x:  0.326041807<br />y: 0.231775659","x: -1.249928137<br />y: 0.086944389","x: -1.773711982<br />y: 0.132247191","x:  1.471845447<br />y: 0.181229154","x: -0.316467192<br />y: 0.181219289","x: -0.202363461<br />y: 0.468789385","x: -0.151698507<br />y: 0.699370325","x: -0.456186407<br />y: 0.619740691","x:  0.775492591<br />y: 0.490066955","x: -0.935456089<br />y: 0.313056545","x:  1.697689134<br />y: 0.048194518","x: -0.686745793<br />y: 0.192535862","x: -0.353931094<br />y: 0.001467847","x:  0.905509141<br />y: 0.012617751","x:  0.467779292<br />y: 0.504816757","x:  0.463892275<br />y: 0.217027261","x:  0.558033917<br />y: 0.518902575","x:  0.529713263<br />y: 0.520741045","x:  0.577700401<br />y: 0.428141485","x:  0.358992062<br />y: 0.279716741","x: -0.580507553<br />y: 0.351560246","x: -0.176285212<br />y: 0.150137162","x: -1.067868607<br />y: 0.423021562","x: -1.007559510<br />y: 0.227493976","x: -0.569988386<br />y: 0.647450600","x: -0.257683331<br />y: 0.523027652","x: -0.670080892<br />y: 0.480449796","x: -1.431300910<br />y: 0.595913695","x: -0.858484774<br />y: 0.375295256","x: -1.341053112<br />y: 0.176286740","x: -0.725684184<br />y: 0.488924765","x: -0.664526239<br />y: 0.191093365","x: -0.319423606<br />y: 0.310614291","x: -0.119609055<br />y: 0.445030775","x:  0.033433880<br />y: 0.081700418","x: -0.379096255<br />y: 0.586523561","x:  0.829741040<br />y: 0.608740304","x: -0.050925522<br />y: 0.040276833","x:  1.176302225<br />y: 0.635791451","x:  0.535967443<br />y: 0.243410761","x:  0.347864137<br />y: 0.241808274","x:  1.755323548<br />y: 0.135515916","x: -0.603810468<br />y: 0.770529790","x:  1.189503499<br />y: 0.772448143","x: -0.379529399<br />y: 0.470356646","x: -0.487860816<br />y: 0.826713548","x: -0.506968614<br />y: 0.047514839","x:  0.002503205<br />y: 0.091371119","x: -0.165682700<br />y: 0.144057482","x: -1.397754487<br />y: 0.259298765","x:  0.947226896<br />y: 0.052376829","x: -1.387826716<br />y: 0.359943681","x: -0.898315059<br />y: 0.202721371","x:  1.687706268<br />y: 0.038498050","x:  0.696167126<br />y: 0.148212397","x: -0.387550869<br />y: 0.343647370","x:  1.650423554<br />y: 0.775617395","x:  1.208290317<br />y: 0.765218459","x:  0.593587092<br />y: 0.263742003","x: -0.826136689<br />y: 0.440406158","x:  0.900382625<br />y: 0.540705182","x: -0.559347670<br />y: 0.652794099","x:  0.606884710<br />y: 0.139537729","x: -0.775810699<br />y: 0.216512708","x: -1.038570626<br />y: 0.359804711","x: -0.906219756<br />y: 0.369911300","x: -0.631567877<br />y: 0.195621871","x:  0.673457674<br />y: 0.051778327","x:  0.295507680<br />y: 0.256768521","x:  0.671057820<br />y: 0.023922201","x:  0.104030068<br />y: 0.064365425","x:  0.867094779<br />y: 0.533264094","x: -0.363100168<br />y: 0.127275431","x:  1.337051201<br />y: 0.348635033","x:  0.136126950<br />y: 0.663356061","x: -0.368762413<br />y: 0.241362544","x:  1.336834312<br />y: 0.435493089","x:  1.222657097<br />y: 0.700714500","x: -0.051965037<br />y: 0.281301491","x: -1.773150896<br />y: 0.303495558","x:  0.273648285<br />y: 0.170053454","x:  0.851090473<br />y: 0.377434368","x: -0.828495826<br />y: 0.718819831","x: -0.707539985<br />y: 0.440863255","x: -0.331150911<br />y: 0.188631796"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.689497716895,"r":7.30593607305936,"b":41.6438356164384,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.977001133834,2.49536019880121],"tickmode":"array","ticktext":["-1","0","1","2"],"tickvals":[-1,0,1,2],"categoryorder":"array","categoryarray":["-1","0","1","2"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"x","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.0397944378155278,0.867975832773008],"tickmode":"array","ticktext":["0.0","0.2","0.4","0.6","0.8"],"tickvals":[0,0.2,0.4,0.6,0.8],"categoryorder":"array","categoryarray":["0.0","0.2","0.4","0.6","0.8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"y","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"7af734ce1aba":{"x":{},"y":{},"type":"scatter"}},"cur_data":"7af734ce1aba","visdat":{"7af734ce1aba":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="ojs-cell-1" data-nodetype="expression">
+</div>
+<script type="ojs-module-contents">
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"Plot.plot({\n    grid: true,\n    inset: 10,\n    style: {\n    background: \"white\",\n    color: \"black\"\n  },\n    marks: [\n        Plot.dot(transpose(plot_data), {x: \"x\", y : \"y\", r: 0.5})\n    ]\n})\n"}]}
+</script>
+<script type="module">
+window._ojs.paths.runtimeToDoc = "../../..";
+window._ojs.paths.runtimeToRoot = "../../../../../..";
+window._ojs.paths.docToRoot = "../../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://example.com/post/try_quarto/&amp;text=Hello,%20Quarto" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://example.com/post/try_quarto/&amp;t=Hello,%20Quarto" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Hello,%20Quarto&amp;body=https://example.com/post/try_quarto/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://example.com/post/try_quarto/&amp;title=Hello,%20Quarto" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Hello,%20Quarto%20https://example.com/post/try_quarto/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://example.com/post/try_quarto/&amp;title=Hello,%20Quarto" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://example.com/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu1f4f3c0f185098b15577e87887f27590_4170620_270x270_fill_q75_lanczos_center.jpg" alt="Subrata Paul"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://example.com/">Subrata Paul</a></h5>
+      <h6 class="card-subtitle">Bioinformatics Scientist</h6>
+      <p class="card-text">My research interests include statistical genetics and genomics.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/spaul4ucd/" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=8uw0pTkAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/gcushen" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/paulsub/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/uploads/resume.pdf" >
+        <i class="ai ai-cv"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+
+
+<script src="/js/vendor-bundle.min.d26509351aa0ff874abbee824e982e9b.js"></script>
+
+
+
+
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script id="search-hit-fuse-template" type="text/x-template">
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+    </div>
+  </script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+
+
+  <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+
+
+
+
+
+
+
+
+  
+  
+
+
+<script src="/en/js/wowchemy.min.54dd6e4d8f2e4b1d098381b57f18dd83.js"></script>
+
+
+
+
+
+
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <pre><code></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

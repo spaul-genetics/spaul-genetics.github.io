@@ -4,64 +4,72 @@
   
   
   <url>
-    <loc>http://localhost:1313/talk/example-talk/</loc><lastmod>2030-06-01T13:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/talk/example-talk/</loc><lastmod>2030-06-01T13:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/event/</loc><lastmod>2030-06-01T13:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/event/</loc><lastmod>2030-06-01T13:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/</loc><lastmod>2030-06-01T13:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/</loc><lastmod>2030-06-01T13:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication-type/2/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/post/</loc><lastmod>2022-09-12T23:14:44-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/raieffect/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/post/building-your-website-with-hugo-and-rmarkdown/</loc><lastmod>2022-09-12T23:14:44-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication_types/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication-type/2/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/raieffect/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/niemann-2022-avalanche/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication_types/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/zorina-2021-shared/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/tag/academic/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/niemann-2022-avalanche/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/categories/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/zorina-2021-shared/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/category/demo/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/tag/academic/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/post/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/categories/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/tags/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/category/demo/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/post/getting-started/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/tags/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/tag/%E5%BC%80%E6%BA%90/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/post/getting-started/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/category/%E6%95%99%E7%A8%8B/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/tag/%E5%BC%80%E6%BA%90/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication-type/1/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/category/%E6%95%99%E7%A8%8B/</loc><lastmod>2020-12-13T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/zorina-2020-identification/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication-type/1/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/paul-2020-incorporation/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/zorina-2020-identification/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/slides/</loc><lastmod>2019-02-05T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/paul-2020-incorporation/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/slides/example/</loc><lastmod>2019-02-05T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/slides/</loc><lastmod>2019-02-05T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/roberts-2019-family/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/slides/example/</loc><lastmod>2019-02-05T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/paul-2018-incorporation/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/roberts-2019-family/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/ullah-2018-real/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/paul-2018-incorporation/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/tag/deep-learning/</loc><lastmod>2016-04-27T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/ullah-2018-real/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/project/example/</loc><lastmod>2016-04-27T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/tag/deep-learning/</loc><lastmod>2016-04-27T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/project/</loc><lastmod>2016-04-27T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/project/example/</loc><lastmod>2016-04-27T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/santorico-2016-comparison/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/project/</loc><lastmod>2016-04-27T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/santorico-2015-optimized/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/santorico-2016-comparison/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>http://localhost:1313/publication/example/</loc><lastmod>2013-07-01T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url></urlset>
+    <loc>https://example.com/publication/santorico-2015-optimized/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/example/</loc><lastmod>2013-07-01T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/category/coordinates/</loc><lastmod>2012-04-06T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/post/try_quarto/</loc><lastmod>2012-04-06T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/category/matplotlib/</loc><lastmod>2012-04-06T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url></urlset>
