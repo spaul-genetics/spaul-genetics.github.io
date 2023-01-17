@@ -33,14 +33,6 @@
     </item>
     
     <item>
-      <title>Some nice title</title>
-      <link>https://example.com/post/building-your-website-with-hugo-and-rmarkdown/</link>
-      <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/building-your-website-with-hugo-and-rmarkdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Effect of aging on immune cells in male HIV-infected and-uninfected healthy individuals</title>
       <link>https://example.com/publication/raieffect/</link>
       <pubDate>Tue, 06 Sep 2022 06:25:46 +0000</pubDate>
@@ -62,84 +54,6 @@
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://example.com/publication/zorina-2021-shared/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Welcome to Wowchemy, the website builder for Hugo</title>
-      <link>https://example.com/post/getting-started/</link>
-      <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/getting-started/</guid>
-      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;The Wowchemy website builder for Hugo, along with its starter templates, is designed for professional creators, educators, and teams/organizations - although it can be used to create any kind of site&lt;/li&gt;
-&lt;li&gt;The template can be modified and customised to suit your needs. It&amp;rsquo;s a good platform for anyone looking to take control of their data and online identity whilst having the convenience to start off with a &lt;strong&gt;no-code solution (write in Markdown and customize with YAML parameters)&lt;/strong&gt; and having &lt;strong&gt;flexibility to later add even deeper personalization with HTML and CSS&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;You can work with all your favourite tools and apps with hundreds of plugins and integrations to speed up your workflows, interact with your readers, and much more&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;a href=&#34;https://wowchemy.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure  &gt;
-  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://raw.githubusercontent.com/wowchemy/wowchemy-hugo-modules/main/starters/academic/preview.png&#34; alt=&#34;The template is mobile first with a responsive design to ensure that your site looks stunning on every device.&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
-  &lt;/div&gt;&lt;/figure&gt;
-&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;get-started&#34;&gt;Get Started&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;👉 &lt;a href=&#34;https://wowchemy.com/templates/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Create a new site&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;📚 &lt;a href=&#34;https://wowchemy.com/docs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Personalize your site&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;💬 &lt;a href=&#34;https://discord.gg/z8wNYzb&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Chat with the &lt;strong&gt;Wowchemy community&lt;/strong&gt;&lt;/a&gt; or &lt;a href=&#34;https://discourse.gohugo.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Hugo community&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;🐦 Twitter: &lt;a href=&#34;https://twitter.com/wowchemy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@wowchemy&lt;/a&gt; &lt;a href=&#34;https://twitter.com/GeorgeCushen&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@GeorgeCushen&lt;/a&gt; &lt;a href=&#34;https://twitter.com/search?q=%23MadeWithWowchemy&amp;amp;src=typed_query&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;#MadeWithWowchemy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;💡 &lt;a href=&#34;https://github.com/wowchemy/wowchemy-hugo-themes/issues&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Request a &lt;strong&gt;feature&lt;/strong&gt; or report a &lt;strong&gt;bug&lt;/strong&gt; for &lt;em&gt;Wowchemy&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;⬆️ &lt;strong&gt;Updating Wowchemy?&lt;/strong&gt; View the &lt;a href=&#34;https://wowchemy.com/docs/hugo-tutorials/update/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Update Tutorial&lt;/a&gt; and &lt;a href=&#34;https://wowchemy.com/updates/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Release Notes&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;crowd-funded-open-source-software&#34;&gt;Crowd-funded open-source software&lt;/h2&gt;
-&lt;p&gt;To help us develop this template and software sustainably under the MIT license, we ask all individuals and businesses that use it to help support its ongoing maintenance and development via sponsorship.&lt;/p&gt;
-&lt;h3 id=&#34;-click-here-to-become-a-sponsor-and-help-support-wowchemys-future-httpswowchemycomsponsor&#34;&gt;&lt;a href=&#34;https://wowchemy.com/sponsor/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;❤️ Click here to become a sponsor and help support Wowchemy&amp;rsquo;s future ❤️&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;As a token of appreciation for sponsoring, you can &lt;strong&gt;unlock &lt;a href=&#34;https://wowchemy.com/sponsor/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;these&lt;/a&gt; awesome rewards and extra features 🦄✨&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;ecosystem&#34;&gt;Ecosystem&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/wowchemy/hugo-academic-cli&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hugo Academic CLI&lt;/a&gt;:&lt;/strong&gt; Automatically import publications from BibTeX&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;inspiration&#34;&gt;Inspiration&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://academic-demo.netlify.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Check out the latest &lt;strong&gt;demo&lt;/strong&gt;&lt;/a&gt; of what you&amp;rsquo;ll get in less than 10 minutes, or &lt;a href=&#34;https://wowchemy.com/user-stories/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;view the &lt;strong&gt;showcase&lt;/strong&gt;&lt;/a&gt; of personal, project, and business sites.&lt;/p&gt;
-&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Page builder&lt;/strong&gt; - Create &lt;em&gt;anything&lt;/em&gt; with &lt;a href=&#34;https://wowchemy.com/docs/page-builder/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;widgets&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&#34;https://wowchemy.com/docs/content/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;elements&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Edit any type of content&lt;/strong&gt; - Blog posts, publications, talks, slides, projects, and more!&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Create content&lt;/strong&gt; in &lt;a href=&#34;https://wowchemy.com/docs/content/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Markdown&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;https://wowchemy.com/docs/import/jupyter/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Jupyter&lt;/strong&gt;&lt;/a&gt;, or &lt;a href=&#34;https://wowchemy.com/docs/install-locally/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;RStudio&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Plugin System&lt;/strong&gt; - Fully customizable &lt;a href=&#34;https://wowchemy.com/docs/customization/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;color&lt;/strong&gt; and &lt;strong&gt;font themes&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Display Code and Math&lt;/strong&gt; - Code highlighting and &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LaTeX math&lt;/a&gt; supported&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Integrations&lt;/strong&gt; - &lt;a href=&#34;https://analytics.google.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Analytics&lt;/a&gt;, &lt;a href=&#34;https://disqus.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Disqus commenting&lt;/a&gt;, Maps, Contact Forms, and more!&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Beautiful Site&lt;/strong&gt; - Simple and refreshing one page design&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Industry-Leading SEO&lt;/strong&gt; - Help get your website found on search engines and social media&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Media Galleries&lt;/strong&gt; - Display your images and videos with captions in a customizable gallery&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Mobile Friendly&lt;/strong&gt; - Look amazing on every screen with a mobile friendly version of your site&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Multi-language&lt;/strong&gt; - 34+ language packs including English, 中文, and Português&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Multi-user&lt;/strong&gt; - Each author gets their own profile page&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Privacy Pack&lt;/strong&gt; - Assists with GDPR&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Stand Out&lt;/strong&gt; - Bring your site to life with animation, parallax backgrounds, and scroll effects&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;One-Click Deployment&lt;/strong&gt; - No servers. No databases. Only files.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;themes&#34;&gt;Themes&lt;/h2&gt;
-&lt;p&gt;Wowchemy and its templates come with &lt;strong&gt;automatic day (light) and night (dark) mode&lt;/strong&gt; built-in. Alternatively, visitors can choose their preferred mode - click the moon icon in the top right of the &lt;a href=&#34;https://academic-demo.netlify.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Demo&lt;/a&gt; to see it in action! Day/night mode can also be disabled by the site admin in &lt;code&gt;params.toml&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://wowchemy.com/docs/customization&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Choose a stunning &lt;strong&gt;theme&lt;/strong&gt; and &lt;strong&gt;font&lt;/strong&gt;&lt;/a&gt; for your site. Themes are fully customizable.&lt;/p&gt;
-&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
-&lt;p&gt;Copyright 2016-present &lt;a href=&#34;https://georgecushen.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;George Cushen&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Released under the &lt;a href=&#34;https://github.com/wowchemy/wowchemy-hugo-themes/blob/master/LICENSE.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
-</description>
     </item>
     
     <item>
@@ -352,71 +266,6 @@ $$&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://wowchemy.com/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;code, math, and images&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hello, Quarto</title>
-      <link>https://example.com/post/try_quarto/</link>
-      <pubDate>Fri, 06 Apr 2012 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/try_quarto/</guid>
-      <description>&lt;script type=&#34;module&#34; src=&#34;index_files/libs/quarto-ojs/quarto-ojs-runtime.js&#34;&gt;&lt;/script&gt;
-&lt;link  href=&#34;index_files/libs/quarto-ojs/quarto-ojs.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;index_files/libs/htmlwidgets-1.5.4/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;index_files/libs/plotly-binding-4.10.0/plotly.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;index_files/libs/typedarray-0.1/typedarray.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;index_files/libs/jquery-3.5.1/jquery.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;index_files/libs/crosstalk-1.2.0/css/crosstalk.min.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;index_files/libs/crosstalk-1.2.0/js/crosstalk.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;index_files/libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;index_files/libs/plotly-main-2.5.1/plotly-latest.min.js&#34;&gt;&lt;/script&gt;
-&lt;script type=&#34;ojs-define&#34;&gt;
-{&#34;contents&#34;:[{&#34;name&#34;:&#34;plot_data&#34;,&#34;value&#34;:{&#34;x&#34;:[-1.1836,-0.2322,-0.4023,2.2921,-0.3399,-0.3599,-0.2229,-0.0122,0.4858,0.0038,0.714,-0.0264,0.7477,0.1078,0.2646,0.326,-1.2499,-1.7737,1.4718,-0.3165,-0.2024,-0.1517,-0.4562,0.7755,-0.9355,1.6977,-0.6867,-0.3539,0.9055,0.4678,0.4639,0.558,0.5297,0.5777,0.359,-0.5805,-0.1763,-1.0679,-1.0076,-0.57,-0.2577,-0.6701,-1.4313,-0.8585,-1.3411,-0.7257,-0.6645,-0.3194,-0.1196,0.0334,-0.3791,0.8297,-0.0509,1.1763,0.536,0.3479,1.7553,-0.6038,1.1895,-0.3795,-0.4879,-0.507,0.0025,-0.1657,-1.3978,0.9472,-1.3878,-0.8983,1.6877,0.6962,-0.3876,1.6504,1.2083,0.5936,-0.8261,0.9004,-0.5593,0.6069,-0.7758,-1.0386,-0.9062,-0.6316,0.6735,0.2955,0.6711,0.104,0.8671,-0.3631,1.3371,0.1361,-0.3688,1.3368,1.2227,-0.052,-1.7732,0.2736,0.8511,-0.8285,-0.7075,-0.3312],&#34;y&#34;:[0.2928,0.2767,0.1764,0.042,0.2983,0.3579,0.6832,0.1172,0.4413,0.2199,0.5205,0.705,0.4089,0.5739,0.6769,0.2318,0.0869,0.1322,0.1812,0.1812,0.4688,0.6994,0.6197,0.4901,0.3131,0.0482,0.1925,0.0015,0.0126,0.5048,0.217,0.5189,0.5207,0.4281,0.2797,0.3516,0.1501,0.423,0.2275,0.6475,0.523,0.4804,0.5959,0.3753,0.1763,0.4889,0.1911,0.3106,0.445,0.0817,0.5865,0.6087,0.0403,0.6358,0.2434,0.2418,0.1355,0.7705,0.7724,0.4704,0.8267,0.0475,0.0914,0.1441,0.2593,0.0524,0.3599,0.2027,0.0385,0.1482,0.3436,0.7756,0.7652,0.2637,0.4404,0.5407,0.6528,0.1395,0.2165,0.3598,0.3699,0.1956,0.0518,0.2568,0.0239,0.0644,0.5333,0.1273,0.3486,0.6634,0.2414,0.4355,0.7007,0.2813,0.3035,0.1701,0.3774,0.7188,0.4409,0.1886]}}]}
-&lt;/script&gt;
-&lt;h2 id=&#34;polar-axis&#34;&gt;Polar Axis&lt;/h2&gt;
-&lt;p&gt;For a demonstration of a line plot on a polar axis.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-
-✔ ggplot2 3.3.5     ✔ purrr   0.3.4
-✔ tibble  3.1.6     ✔ dplyr   1.0.7
-✔ tidyr   1.1.4     ✔ stringr 1.4.1
-✔ readr   2.1.1     ✔ forcats 0.5.1
-
-Warning: package &#39;stringr&#39; was built under R version 4.1.2
-
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-
-
-Attaching package: &#39;plotly&#39;
-
-The following object is masked from &#39;package:ggplot2&#39;:
-
-    last_plot
-
-The following object is masked from &#39;package:stats&#39;:
-
-    filter
-
-The following object is masked from &#39;package:graphics&#39;:
-
-    layout
-&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-4590b08261f55b664456&#34; style=&#34;width:768px;height:480px;&#34; class=&#34;plotly html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-4590b08261f55b664456&#34;&gt;{&#34;x&#34;:{&#34;data&#34;:[{&#34;x&#34;:[-1.18361615212122,-0.232218914280461,-0.402339590635232,2.2920710473178,-0.339923921397327,-0.359905721812753,-0.222852257497856,-0.0122162603470726,0.485849020809125,0.00377951551264999,0.713979472140024,-0.0263962182711995,0.747732177976105,0.107789035628992,0.264609790559162,0.326041806747264,-1.24992813745798,-1.77371198235058,1.47184544722072,-0.316467191787878,-0.202363460508453,-0.151698506917282,-0.456186407081729,0.77549259060779,-0.935456088991725,1.69768913435389,-0.686745792585196,-0.353931093648689,0.905509141197357,0.467779291941687,0.463892274984233,0.558033917183037,0.52971326250318,0.577700400881994,0.358992062175821,-0.580507552706773,-0.176285212359942,-1.06786860666668,-1.00755951049896,-0.569988386250036,-0.257683331169539,-0.670080892320192,-1.43130090951158,-0.858484774212769,-1.34105311158692,-0.72568418420596,-0.664526239247667,-0.319423606214162,-0.119609055173018,0.0334338795694869,-0.379096255253459,0.829741040454232,-0.0509255215596809,1.17630222548561,0.535967443443319,0.347864137069229,1.75532354778407,-0.603810467521376,1.18950349896231,-0.379529398647562,-0.487860815632193,-0.50696861416429,0.00250320531480216,-0.16568270029433,-1.39775448681639,0.947226895838307,-1.38782671606077,-0.898315059108693,1.68770626767755,0.696167126307678,-0.387550868933402,1.65042355386683,1.20829031657278,0.593587091916722,-0.826136688709682,0.900382624876505,-0.559347669691241,0.606884710141776,-0.775810698700823,-1.0385706257032,-0.906219756146787,-0.631567876645689,0.673457673780964,0.295507679826618,0.67105781963544,0.104030068243124,0.867094778629386,-0.363100167771629,1.33705120058313,0.136126950320478,-0.368762412751276,1.33683431173099,1.22265709652282,-0.0519650368442002,-1.77315089598699,0.273648284752328,0.85109047279166,-0.828495825624861,-0.707539985417572,-0.331150911457182],&#34;y&#34;:[0.292789998704405,0.276666674750798,0.176380669823107,0.0419817719301503,0.298259416618729,0.357941659307983,0.683224734288774,0.117211571884022,0.441316144997008,0.219922032405502,0.520468794295856,0.705049494909908,0.408888647718702,0.573875584420389,0.676911050632722,0.231775659085811,0.086944388718718,0.132247191026757,0.181229153609032,0.181219288552811,0.468789385228956,0.699370324650432,0.619740690921194,0.490066954951138,0.313056545413682,0.048194518101245,0.192535861540605,0.0014678472112238,0.0126177508353547,0.50481675680896,0.217027260527985,0.518902574737529,0.520741044915658,0.428141484503158,0.279716740554628,0.351560246050354,0.150137161863376,0.423021562318832,0.227493975691989,0.647450599719152,0.523027652213022,0.480449796170689,0.595913694703101,0.375295255765054,0.176286739927843,0.488924764691602,0.191093365012905,0.310614290526149,0.445030775108584,0.0817004175146574,0.586523560964642,0.608740303554171,0.0402768328280705,0.635791451027055,0.243410761309319,0.241808274278288,0.135515916167674,0.77052979041485,0.772448142677148,0.470356646458526,0.826713547746256,0.047514838569804,0.0913711194431946,0.144057481809735,0.259298765064907,0.0523768286174541,0.359943680931181,0.202721370958988,0.0384980497019519,0.148212397371243,0.343647370466485,0.775617394951602,0.765218459181641,0.263742003479546,0.440406158082633,0.540705182059913,0.652794099032667,0.13953772926737,0.21651270758783,0.359804710623287,0.369911300377896,0.195621871009989,0.0517783270810893,0.256768520799543,0.023922201101688,0.0643654245165722,0.533264093562648,0.127275431084135,0.348635032996739,0.663356061114351,0.241362543874629,0.435493089093273,0.700714500033663,0.28130149137195,0.30349555805969,0.170053453949003,0.37743436793603,0.71881983133291,0.440863255197919,0.188631796208746],&#34;text&#34;:[&#34;x: -1.183616152&lt;br /&gt;y: 0.292789999&#34;,&#34;x: -0.232218914&lt;br /&gt;y: 0.276666675&#34;,&#34;x: -0.402339591&lt;br /&gt;y: 0.176380670&#34;,&#34;x:  2.292071047&lt;br /&gt;y: 0.041981772&#34;,&#34;x: -0.339923921&lt;br /&gt;y: 0.298259417&#34;,&#34;x: -0.359905722&lt;br /&gt;y: 0.357941659&#34;,&#34;x: -0.222852257&lt;br /&gt;y: 0.683224734&#34;,&#34;x: -0.012216260&lt;br /&gt;y: 0.117211572&#34;,&#34;x:  0.485849021&lt;br /&gt;y: 0.441316145&#34;,&#34;x:  0.003779516&lt;br /&gt;y: 0.219922032&#34;,&#34;x:  0.713979472&lt;br /&gt;y: 0.520468794&#34;,&#34;x: -0.026396218&lt;br /&gt;y: 0.705049495&#34;,&#34;x:  0.747732178&lt;br /&gt;y: 0.408888648&#34;,&#34;x:  0.107789036&lt;br /&gt;y: 0.573875584&#34;,&#34;x:  0.264609791&lt;br /&gt;y: 0.676911051&#34;,&#34;x:  0.326041807&lt;br /&gt;y: 0.231775659&#34;,&#34;x: -1.249928137&lt;br /&gt;y: 0.086944389&#34;,&#34;x: -1.773711982&lt;br /&gt;y: 0.132247191&#34;,&#34;x:  1.471845447&lt;br /&gt;y: 0.181229154&#34;,&#34;x: -0.316467192&lt;br /&gt;y: 0.181219289&#34;,&#34;x: -0.202363461&lt;br /&gt;y: 0.468789385&#34;,&#34;x: -0.151698507&lt;br /&gt;y: 0.699370325&#34;,&#34;x: -0.456186407&lt;br /&gt;y: 0.619740691&#34;,&#34;x:  0.775492591&lt;br /&gt;y: 0.490066955&#34;,&#34;x: -0.935456089&lt;br /&gt;y: 0.313056545&#34;,&#34;x:  1.697689134&lt;br /&gt;y: 0.048194518&#34;,&#34;x: -0.686745793&lt;br /&gt;y: 0.192535862&#34;,&#34;x: -0.353931094&lt;br /&gt;y: 0.001467847&#34;,&#34;x:  0.905509141&lt;br /&gt;y: 0.012617751&#34;,&#34;x:  0.467779292&lt;br /&gt;y: 0.504816757&#34;,&#34;x:  0.463892275&lt;br /&gt;y: 0.217027261&#34;,&#34;x:  0.558033917&lt;br /&gt;y: 0.518902575&#34;,&#34;x:  0.529713263&lt;br /&gt;y: 0.520741045&#34;,&#34;x:  0.577700401&lt;br /&gt;y: 0.428141485&#34;,&#34;x:  0.358992062&lt;br /&gt;y: 0.279716741&#34;,&#34;x: -0.580507553&lt;br /&gt;y: 0.351560246&#34;,&#34;x: -0.176285212&lt;br /&gt;y: 0.150137162&#34;,&#34;x: -1.067868607&lt;br /&gt;y: 0.423021562&#34;,&#34;x: -1.007559510&lt;br /&gt;y: 0.227493976&#34;,&#34;x: -0.569988386&lt;br /&gt;y: 0.647450600&#34;,&#34;x: -0.257683331&lt;br /&gt;y: 0.523027652&#34;,&#34;x: -0.670080892&lt;br /&gt;y: 0.480449796&#34;,&#34;x: -1.431300910&lt;br /&gt;y: 0.595913695&#34;,&#34;x: -0.858484774&lt;br /&gt;y: 0.375295256&#34;,&#34;x: -1.341053112&lt;br /&gt;y: 0.176286740&#34;,&#34;x: -0.725684184&lt;br /&gt;y: 0.488924765&#34;,&#34;x: -0.664526239&lt;br /&gt;y: 0.191093365&#34;,&#34;x: -0.319423606&lt;br /&gt;y: 0.310614291&#34;,&#34;x: -0.119609055&lt;br /&gt;y: 0.445030775&#34;,&#34;x:  0.033433880&lt;br /&gt;y: 0.081700418&#34;,&#34;x: -0.379096255&lt;br /&gt;y: 0.586523561&#34;,&#34;x:  0.829741040&lt;br /&gt;y: 0.608740304&#34;,&#34;x: -0.050925522&lt;br /&gt;y: 0.040276833&#34;,&#34;x:  1.176302225&lt;br /&gt;y: 0.635791451&#34;,&#34;x:  0.535967443&lt;br /&gt;y: 0.243410761&#34;,&#34;x:  0.347864137&lt;br /&gt;y: 0.241808274&#34;,&#34;x:  1.755323548&lt;br /&gt;y: 0.135515916&#34;,&#34;x: -0.603810468&lt;br /&gt;y: 0.770529790&#34;,&#34;x:  1.189503499&lt;br /&gt;y: 0.772448143&#34;,&#34;x: -0.379529399&lt;br /&gt;y: 0.470356646&#34;,&#34;x: -0.487860816&lt;br /&gt;y: 0.826713548&#34;,&#34;x: -0.506968614&lt;br /&gt;y: 0.047514839&#34;,&#34;x:  0.002503205&lt;br /&gt;y: 0.091371119&#34;,&#34;x: -0.165682700&lt;br /&gt;y: 0.144057482&#34;,&#34;x: -1.397754487&lt;br /&gt;y: 0.259298765&#34;,&#34;x:  0.947226896&lt;br /&gt;y: 0.052376829&#34;,&#34;x: -1.387826716&lt;br /&gt;y: 0.359943681&#34;,&#34;x: -0.898315059&lt;br /&gt;y: 0.202721371&#34;,&#34;x:  1.687706268&lt;br /&gt;y: 0.038498050&#34;,&#34;x:  0.696167126&lt;br /&gt;y: 0.148212397&#34;,&#34;x: -0.387550869&lt;br /&gt;y: 0.343647370&#34;,&#34;x:  1.650423554&lt;br /&gt;y: 0.775617395&#34;,&#34;x:  1.208290317&lt;br /&gt;y: 0.765218459&#34;,&#34;x:  0.593587092&lt;br /&gt;y: 0.263742003&#34;,&#34;x: -0.826136689&lt;br /&gt;y: 0.440406158&#34;,&#34;x:  0.900382625&lt;br /&gt;y: 0.540705182&#34;,&#34;x: -0.559347670&lt;br /&gt;y: 0.652794099&#34;,&#34;x:  0.606884710&lt;br /&gt;y: 0.139537729&#34;,&#34;x: -0.775810699&lt;br /&gt;y: 0.216512708&#34;,&#34;x: -1.038570626&lt;br /&gt;y: 0.359804711&#34;,&#34;x: -0.906219756&lt;br /&gt;y: 0.369911300&#34;,&#34;x: -0.631567877&lt;br /&gt;y: 0.195621871&#34;,&#34;x:  0.673457674&lt;br /&gt;y: 0.051778327&#34;,&#34;x:  0.295507680&lt;br /&gt;y: 0.256768521&#34;,&#34;x:  0.671057820&lt;br /&gt;y: 0.023922201&#34;,&#34;x:  0.104030068&lt;br /&gt;y: 0.064365425&#34;,&#34;x:  0.867094779&lt;br /&gt;y: 0.533264094&#34;,&#34;x: -0.363100168&lt;br /&gt;y: 0.127275431&#34;,&#34;x:  1.337051201&lt;br /&gt;y: 0.348635033&#34;,&#34;x:  0.136126950&lt;br /&gt;y: 0.663356061&#34;,&#34;x: -0.368762413&lt;br /&gt;y: 0.241362544&#34;,&#34;x:  1.336834312&lt;br /&gt;y: 0.435493089&#34;,&#34;x:  1.222657097&lt;br /&gt;y: 0.700714500&#34;,&#34;x: -0.051965037&lt;br /&gt;y: 0.281301491&#34;,&#34;x: -1.773150896&lt;br /&gt;y: 0.303495558&#34;,&#34;x:  0.273648285&lt;br /&gt;y: 0.170053454&#34;,&#34;x:  0.851090473&lt;br /&gt;y: 0.377434368&#34;,&#34;x: -0.828495826&lt;br /&gt;y: 0.718819831&#34;,&#34;x: -0.707539985&lt;br /&gt;y: 0.440863255&#34;,&#34;x: -0.331150911&lt;br /&gt;y: 0.188631796&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;autocolorscale&#34;:false,&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;opacity&#34;:1,&#34;size&#34;:5.66929133858268,&#34;symbol&#34;:&#34;circle&#34;,&#34;line&#34;:{&#34;width&#34;:1.88976377952756,&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;}},&#34;hoveron&#34;:&#34;points&#34;,&#34;showlegend&#34;:false,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null}],&#34;layout&#34;:{&#34;margin&#34;:{&#34;t&#34;:27.689497716895,&#34;r&#34;:7.30593607305936,&#34;b&#34;:41.6438356164384,&#34;l&#34;:43.1050228310502},&#34;plot_bgcolor&#34;:&#34;rgba(235,235,235,1)&#34;,&#34;paper_bgcolor&#34;:&#34;rgba(255,255,255,1)&#34;,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:14.6118721461187},&#34;xaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;type&#34;:&#34;linear&#34;,&#34;autorange&#34;:false,&#34;range&#34;:[-1.977001133834,2.49536019880121],&#34;tickmode&#34;:&#34;array&#34;,&#34;ticktext&#34;:[&#34;-1&#34;,&#34;0&#34;,&#34;1&#34;,&#34;2&#34;],&#34;tickvals&#34;:[-1,0,1,2],&#34;categoryorder&#34;:&#34;array&#34;,&#34;categoryarray&#34;:[&#34;-1&#34;,&#34;0&#34;,&#34;1&#34;,&#34;2&#34;],&#34;nticks&#34;:null,&#34;ticks&#34;:&#34;outside&#34;,&#34;tickcolor&#34;:&#34;rgba(51,51,51,1)&#34;,&#34;ticklen&#34;:3.65296803652968,&#34;tickwidth&#34;:0.66417600664176,&#34;showticklabels&#34;:true,&#34;tickfont&#34;:{&#34;color&#34;:&#34;rgba(77,77,77,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:11.689497716895},&#34;tickangle&#34;:-0,&#34;showline&#34;:false,&#34;linecolor&#34;:null,&#34;linewidth&#34;:0,&#34;showgrid&#34;:true,&#34;gridcolor&#34;:&#34;rgba(255,255,255,1)&#34;,&#34;gridwidth&#34;:0.66417600664176,&#34;zeroline&#34;:false,&#34;anchor&#34;:&#34;y&#34;,&#34;title&#34;:{&#34;text&#34;:&#34;x&#34;,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:14.6118721461187}},&#34;hoverformat&#34;:&#34;.2f&#34;},&#34;yaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;type&#34;:&#34;linear&#34;,&#34;autorange&#34;:false,&#34;range&#34;:[-0.0397944378155278,0.867975832773008],&#34;tickmode&#34;:&#34;array&#34;,&#34;ticktext&#34;:[&#34;0.0&#34;,&#34;0.2&#34;,&#34;0.4&#34;,&#34;0.6&#34;,&#34;0.8&#34;],&#34;tickvals&#34;:[0,0.2,0.4,0.6,0.8],&#34;categoryorder&#34;:&#34;array&#34;,&#34;categoryarray&#34;:[&#34;0.0&#34;,&#34;0.2&#34;,&#34;0.4&#34;,&#34;0.6&#34;,&#34;0.8&#34;],&#34;nticks&#34;:null,&#34;ticks&#34;:&#34;outside&#34;,&#34;tickcolor&#34;:&#34;rgba(51,51,51,1)&#34;,&#34;ticklen&#34;:3.65296803652968,&#34;tickwidth&#34;:0.66417600664176,&#34;showticklabels&#34;:true,&#34;tickfont&#34;:{&#34;color&#34;:&#34;rgba(77,77,77,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:11.689497716895},&#34;tickangle&#34;:-0,&#34;showline&#34;:false,&#34;linecolor&#34;:null,&#34;linewidth&#34;:0,&#34;showgrid&#34;:true,&#34;gridcolor&#34;:&#34;rgba(255,255,255,1)&#34;,&#34;gridwidth&#34;:0.66417600664176,&#34;zeroline&#34;:false,&#34;anchor&#34;:&#34;x&#34;,&#34;title&#34;:{&#34;text&#34;:&#34;y&#34;,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:14.6118721461187}},&#34;hoverformat&#34;:&#34;.2f&#34;},&#34;shapes&#34;:[{&#34;type&#34;:&#34;rect&#34;,&#34;fillcolor&#34;:null,&#34;line&#34;:{&#34;color&#34;:null,&#34;width&#34;:0,&#34;linetype&#34;:[]},&#34;yref&#34;:&#34;paper&#34;,&#34;xref&#34;:&#34;paper&#34;,&#34;x0&#34;:0,&#34;x1&#34;:1,&#34;y0&#34;:0,&#34;y1&#34;:1}],&#34;showlegend&#34;:false,&#34;legend&#34;:{&#34;bgcolor&#34;:&#34;rgba(255,255,255,1)&#34;,&#34;bordercolor&#34;:&#34;transparent&#34;,&#34;borderwidth&#34;:1.88976377952756,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:11.689497716895}},&#34;hovermode&#34;:&#34;closest&#34;,&#34;barmode&#34;:&#34;relative&#34;},&#34;config&#34;:{&#34;doubleClick&#34;:&#34;reset&#34;,&#34;modeBarButtonsToAdd&#34;:[&#34;hoverclosest&#34;,&#34;hovercompare&#34;],&#34;showSendToCloud&#34;:false},&#34;source&#34;:&#34;A&#34;,&#34;attrs&#34;:{&#34;7af734ce1aba&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;type&#34;:&#34;scatter&#34;}},&#34;cur_data&#34;:&#34;7af734ce1aba&#34;,&#34;visdat&#34;:{&#34;7af734ce1aba&#34;:[&#34;function (y) &#34;,&#34;x&#34;]},&#34;highlight&#34;:{&#34;on&#34;:&#34;plotly_click&#34;,&#34;persistent&#34;:false,&#34;dynamic&#34;:false,&#34;selectize&#34;:false,&#34;opacityDim&#34;:0.2,&#34;selected&#34;:{&#34;opacity&#34;:1},&#34;debounce&#34;:0},&#34;shinyEvents&#34;:[&#34;plotly_hover&#34;,&#34;plotly_click&#34;,&#34;plotly_selected&#34;,&#34;plotly_relayout&#34;,&#34;plotly_brushed&#34;,&#34;plotly_brushing&#34;,&#34;plotly_clickannotation&#34;,&#34;plotly_doubleclick&#34;,&#34;plotly_deselect&#34;,&#34;plotly_afterplot&#34;,&#34;plotly_sunburstclick&#34;],&#34;base_url&#34;:&#34;https://plot.ly&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;div id=&#34;ojs-cell-1&#34; data-nodetype=&#34;expression&#34;&gt;
-&lt;/div&gt;
-&lt;script type=&#34;ojs-module-contents&#34;&gt;
-{&#34;contents&#34;:[{&#34;methodName&#34;:&#34;interpret&#34;,&#34;cellName&#34;:&#34;ojs-cell-1&#34;,&#34;inline&#34;:false,&#34;source&#34;:&#34;Plot.plot({\n    grid: true,\n    inset: 10,\n    style: {\n    background: \&#34;white\&#34;,\n    color: \&#34;black\&#34;\n  },\n    marks: [\n        Plot.dot(transpose(plot_data), {x: \&#34;x\&#34;, y : \&#34;y\&#34;, r: 0.5})\n    ]\n})\n&#34;}]}
-&lt;/script&gt;
-&lt;script type=&#34;module&#34;&gt;
-window._ojs.paths.runtimeToDoc = &#34;../../..&#34;;
-window._ojs.paths.runtimeToRoot = &#34;../../../../../..&#34;;
-window._ojs.paths.docToRoot = &#34;../../..&#34;;
-window._ojs.selfContained = false;
-window._ojs.runtime.interpretFromScriptTags();
-&lt;/script&gt;
 </description>
     </item>
     
