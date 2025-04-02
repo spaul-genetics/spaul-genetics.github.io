@@ -10,33 +10,49 @@
   <url>
     <loc>https://example.com/</loc><lastmod>2030-06-01T13:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication-type/2/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication-type/2/</loc><lastmod>2025-03-31T12:10:47-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication/raieffect/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/raieffect/</loc><lastmod>2025-03-31T12:10:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication_types/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication_types/</loc><lastmod>2025-03-31T12:10:47-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/</loc><lastmod>2025-03-31T12:10:47-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication/niemann-2022-avalanche/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/cintron-2025-associations/</loc><lastmod>2025-03-31T12:10:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication/zorina-2021-shared/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication-type/1/</loc><lastmod>2025-03-31T12:10:47-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication-type/1/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/sarkar-2024-climate/</loc><lastmod>2025-03-31T12:10:47-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication/zorina-2020-identification/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/gutierrez-2024-clonal/</loc><lastmod>2025-03-31T12:10:46-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication/paul-2020-incorporation/</loc><lastmod>2022-09-06T02:25:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/ablooglu-2024-intrinsic/</loc><lastmod>2025-03-31T12:10:47-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/lewandowski-2024-next/</loc><lastmod>2025-03-31T12:10:47-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/patel-2023-bone/</loc><lastmod>2025-03-31T12:10:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/marques-2023-online/</loc><lastmod>2025-03-31T12:10:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/niemann-2022-avalanche/</loc><lastmod>2025-03-31T12:10:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/pu-2022-better/</loc><lastmod>2025-03-31T12:10:46-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/zorina-2021-shared/</loc><lastmod>2025-03-31T12:10:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/zorina-2020-identification/</loc><lastmod>2025-03-31T12:10:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/paul-2020-incorporation/</loc><lastmod>2025-03-31T12:10:45-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://example.com/slides/</loc><lastmod>2019-02-05T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://example.com/slides/example/</loc><lastmod>2019-02-05T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication/roberts-2019-family/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/roberts-2019-family/</loc><lastmod>2025-03-31T12:10:45-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication/paul-2018-incorporation/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/paul-2018-incorporation/</loc><lastmod>2025-03-31T12:10:45-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication/ullah-2018-real/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/ullah-2018-real/</loc><lastmod>2025-03-31T12:10:45-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://example.com/tag/deep-learning/</loc><lastmod>2016-04-27T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
@@ -46,10 +62,8 @@
   <url>
     <loc>https://example.com/tags/</loc><lastmod>2016-04-27T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication/santorico-2016-comparison/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/santorico-2016-comparison/</loc><lastmod>2025-03-31T12:10:45-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication/santorico-2015-optimized/</loc><lastmod>2022-09-06T02:25:45-04:00</lastmod><changefreq>weekly</changefreq></url>
-  <url>
-    <loc>https://example.com/publication/example/</loc><lastmod>2013-07-01T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/santorico-2015-optimized/</loc><lastmod>2025-03-31T12:10:45-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://example.com/categories/</loc><changefreq>weekly</changefreq></url></urlset>

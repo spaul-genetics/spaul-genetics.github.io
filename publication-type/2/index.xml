@@ -5,7 +5,7 @@
     <link>https://example.com/publication-type/2/</link>
       <atom:link href="https://example.com/publication-type/2/index.xml" rel="self" type="application/rss+xml" />
     <description>2</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 06 Sep 2022 06:25:46 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 31 Mar 2025 16:10:46 +0000</lastBuildDate>
     <image>
       <url>https://example.com/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>2</title>
@@ -15,8 +15,56 @@
     <item>
       <title>Effect of aging on immune cells in male HIV-infected and-uninfected healthy individuals</title>
       <link>https://example.com/publication/raieffect/</link>
-      <pubDate>Tue, 06 Sep 2022 06:25:46 +0000</pubDate>
+      <pubDate>Mon, 31 Mar 2025 16:10:46 +0000</pubDate>
       <guid>https://example.com/publication/raieffect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Associations between the neural-hematopoietic-inflammatory axis and DNA methylation of stress-related genes in human leukocytes: Data from the Washington, DC Cardiovascular Health and Needs Assessment</title>
+      <link>https://example.com/publication/cintron-2025-associations/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/cintron-2025-associations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Climate-induced coastal occupational vulnerability and livelihood insecurity: Insights from coastal Bangladesh</title>
+      <link>https://example.com/publication/sarkar-2024-climate/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/sarkar-2024-climate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clonal landscape and clinical outcomes of telomere biology disorders: somatic rescue and cancer mutations</title>
+      <link>https://example.com/publication/gutierrez-2024-clonal/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/gutierrez-2024-clonal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Intrinsic endothelial hyperresponsiveness to inflammatory mediators drives acute episodes in models of Clarkson disease</title>
+      <link>https://example.com/publication/ablooglu-2024-intrinsic/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/ablooglu-2024-intrinsic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bone health is improving over time: data from Framingham cohorts</title>
+      <link>https://example.com/publication/patel-2023-bone/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/patel-2023-bone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Online survey of COVID-19 immunization and infection in patients with systemic juvenile idiopathic arthritis and adult-onset still’s disease.</title>
+      <link>https://example.com/publication/marques-2023-online/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/marques-2023-online/</guid>
       <description></description>
     </item>
     
@@ -25,6 +73,14 @@
       <link>https://example.com/publication/niemann-2022-avalanche/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       <guid>https://example.com/publication/niemann-2022-avalanche/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Better mobility is associated with higher incomes and longer working years among older adults</title>
+      <link>https://example.com/publication/pu-2022-better/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/pu-2022-better/</guid>
       <description></description>
     </item>
     
