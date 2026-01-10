@@ -5,7 +5,7 @@
     <link>https://example.com/publication-type/2/</link>
       <atom:link href="https://example.com/publication-type/2/index.xml" rel="self" type="application/rss+xml" />
     <description>2</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 03 Apr 2025 03:27:55 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://example.com/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>2</title>
@@ -13,18 +13,50 @@
     </image>
     
     <item>
-      <title>Effect of aging on immune cells in male HIV-infected and-uninfected healthy individuals</title>
-      <link>https://example.com/publication/raieffect/</link>
-      <pubDate>Thu, 03 Apr 2025 03:27:55 +0000</pubDate>
-      <guid>https://example.com/publication/raieffect/</guid>
+      <title>Associations between the neural-hematopoietic-inflammatory axis and DNA methylation of stress-related genes in human leukocytes: Data from the Washington, D.C. cardiovascular health and needs assessment</title>
+      <link>https://example.com/publication/cintron-2025-associations/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/cintron-2025-associations/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Associations between the neural-hematopoietic-inflammatory axis and DNA methylation of stress-related genes in human leukocytes: Data from the Washington, DC Cardiovascular Health and Needs Assessment</title>
-      <link>https://example.com/publication/cintron-2025-associations/</link>
+      <title>Danazol treatment for telomere biology disorders: long-term results of a phase I/II study</title>
+      <link>https://example.com/publication/lee-2025-danazol/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/publication/cintron-2025-associations/</guid>
+      <guid>https://example.com/publication/lee-2025-danazol/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Discontinuation versus continuation of maintenance treatment with tumor necrosis factor inhibitors in patients with rheumatoid arthritis with low disease activity or remission: A randomized double-blind placebo-controlled trial</title>
+      <link>https://example.com/publication/ward-2025-discontinuation/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/ward-2025-discontinuation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Next generation sequencing analysis reveals complex genetic architecture of childhood-onset systemic lupus erythematosus</title>
+      <link>https://example.com/publication/lewandowski-2025-next/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/lewandowski-2025-next/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The Missing Revision Burden: Total Hip and Knee Replacement Revision Rates in the United States, 1996 to 2020</title>
+      <link>https://example.com/publication/bhattacharyya-2025-missing/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/bhattacharyya-2025-missing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Better mobility is associated with higher incomes and longer working years among older adults</title>
+      <link>https://example.com/publication/pu-2022-better/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/pu-2022-better/</guid>
       <description></description>
     </item>
     
@@ -69,26 +101,18 @@
     </item>
     
     <item>
+      <title>Effect of aging on immune cells in male HIV-infected and-uninfected healthy individuals</title>
+      <link>https://example.com/publication/raieffect/</link>
+      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/raieffect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Avalanche preparedness and accident analysis among backcountry skier, sidecountry, and snowmobile fatalities in the United States: 2009 to 2019</title>
       <link>https://example.com/publication/niemann-2022-avalanche/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       <guid>https://example.com/publication/niemann-2022-avalanche/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Better mobility is associated with higher incomes and longer working years among older adults</title>
-      <link>https://example.com/publication/pu-2022-better/</link>
-      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>https://example.com/publication/pu-2022-better/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Shared Genetic and Phenotypic Risk Factors in Pain and psychological Conditions</title>
-      <link>https://example.com/publication/zorina-2021-shared/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>https://example.com/publication/zorina-2021-shared/</guid>
       <description></description>
     </item>
     
