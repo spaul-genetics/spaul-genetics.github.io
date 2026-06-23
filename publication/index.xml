@@ -5,12 +5,36 @@
     <link>https://example.com/publication/</link>
       <atom:link href="https://example.com/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jan 2026 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://example.com/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Publications</title>
       <link>https://example.com/publication/</link>
     </image>
+    
+    <item>
+      <title>Clonal Selection and Evolution after Treatment of Severe Aplastic Anemia</title>
+      <link>https://example.com/publication/gutierrez-2026-clonal/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/gutierrez-2026-clonal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GATA2 at 14: genotype-phenotype correlations</title>
+      <link>https://example.com/publication/hsu-2026-gata-2/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/hsu-2026-gata-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A novel frameshift mutation in Phosphoinositide 3-kinase regulatory subunit 1 (PIK3R1) causes immunodeficiency and Amyotrophic Lateral Sclerosis (ALS)</title>
+      <link>https://example.com/publication/calco-2025-novel/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/calco-2025-novel/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Associations between the neural-hematopoietic-inflammatory axis and DNA methylation of stress-related genes in human leukocytes: Data from the Washington, D.C. cardiovascular health and needs assessment</title>
@@ -41,6 +65,14 @@
       <link>https://example.com/publication/lewandowski-2025-next/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
       <guid>https://example.com/publication/lewandowski-2025-next/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PI3Kδ promotes T cell effector differentiation and plasticity during chronic infection</title>
+      <link>https://example.com/publication/pichler-2025-pi-3-kd/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/publication/pichler-2025-pi-3-kd/</guid>
       <description></description>
     </item>
     

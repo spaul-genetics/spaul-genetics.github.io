@@ -10,7 +10,17 @@
   <url>
     <loc>https://example.com/</loc><lastmod>2030-06-01T13:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication-type/2/</loc><lastmod>2025-04-02T23:27:56-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication-type/2/</loc><lastmod>2026-06-23T08:54:54-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/gutierrez-2026-clonal/</loc><lastmod>2026-06-23T08:54:53-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/hsu-2026-gata-2/</loc><lastmod>2026-06-23T08:54:53-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication_types/</loc><lastmod>2026-06-23T08:54:54-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/</loc><lastmod>2026-06-23T08:54:54-04:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://example.com/publication/calco-2025-novel/</loc><lastmod>2026-06-23T08:54:54-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://example.com/publication/cintron-2025-associations/</loc><lastmod>2025-01-01T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
@@ -20,9 +30,7 @@
   <url>
     <loc>https://example.com/publication/lewandowski-2025-next/</loc><lastmod>2025-01-01T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://example.com/publication_types/</loc><lastmod>2025-04-02T23:27:56-04:00</lastmod><changefreq>weekly</changefreq></url>
-  <url>
-    <loc>https://example.com/publication/</loc><lastmod>2025-04-02T23:27:56-04:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://example.com/publication/pichler-2025-pi-3-kd/</loc><lastmod>2026-06-23T08:54:53-04:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://example.com/publication/bhattacharyya-2025-missing/</loc><lastmod>2025-01-01T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
