@@ -41,7 +41,7 @@ experience:
   - title: "Faculty"
     company: "International University of Business Agriculture and Technology, Bangladesh"
     company_url: "https://iubat.edu"
-    company_logo: "IUBAT"
+    company_logo: "iubat"
     location: "Dhaka, Bangladesh"
     date_start: "2010-08-01"
     date_end: "2012-07-21"
