@@ -57,7 +57,7 @@ jobs:
         run: cp CV/cv_all_format.pdf academic-start/static/uploads/resume.pdf
 
       - name: Build Hugo site
-        run: hugo --source academic-start --destination academic-start/public --gc --minify --baseURL "https://spaul-genetics.github.io/"
+        run: cd academic-start && hugo --gc --minify --baseURL "https://spaul-genetics.github.io/"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
