@@ -1,0 +1,72 @@
+name: Build CV and GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - source/**
+      - .github/workflows/build-pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: source
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.97.3"
+          extended: true
+
+      - name: Set up TinyTeX
+        uses: r-lib/actions/setup-tinytex@v2
+
+      - name: Install TeX packages
+        run: tlmgr install latexmk natbib sectsty pgf colortbl float booktabs
+
+      - name: Render shared data
+        run: python3 scripts/render_biography.py
+
+      - name: Build PDF CV
+        run: |
+          cd CV
+          latexmk -pdf -interaction=nonstopmode -halt-on-error cv_all_format.tex
+
+      - name: Copy PDF into Hugo static files
+        run: cp CV/cv_all_format.pdf academic-start/static/uploads/resume.pdf
+
+      - name: Build Hugo site
+        run: hugo --source academic-start --destination academic-start/public --gc --minify --baseURL "https://spaul-genetics.github.io/"
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: source/academic-start/public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
