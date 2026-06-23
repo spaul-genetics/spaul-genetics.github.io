@@ -1,0 +1,231 @@
+{
+  "person": {
+    "name": "Subrata Paul",
+    "role": "Bioinformatics Scientist",
+    "short_bio": "My research interests include statistical genetics and genomics.",
+    "cv_affiliation": "Axle Informatics",
+    "cv_address": [
+      "18318 Streamside Dr., APT 304",
+      "Gaithersburg, MD 20879"
+    ],
+    "web_organization": "Integrated Data Sciences Section, NIAID, NIH",
+    "web_organization_url": "https://www.niaid.nih.gov/",
+    "phone": "+1 (765) 631 5129",
+    "email": "subrata.paul@nih.gov",
+    "linkedin": "https://www.linkedin.com/in/paulsub/",
+    "github": "https://github.com/spaul-genetics",
+    "twitter": "https://twitter.com/spaul4ucd/",
+    "google_scholar": "https://scholar.google.com/citations?user=8uw0pTkAAAAJ&hl=en",
+    "resume_path": "uploads/resume.pdf"
+  },
+  "bio": {
+    "web_paragraphs": [
+      "Subrata Paul is a Bioinformatics Scientist at the Integrated Data Sciences Section (IDSS) within the National Institutes of Health (NIH). With a Ph.D. in Applied Mathematics from the University of Colorado Denver, Dr. Paul bridges the gap between sophisticated mathematical modeling and complex biological data.",
+      "His work focuses on statistical genetics and multi-omics integration, where he applies advanced computational strategies to understand the genetic architecture of human diseases. His research spans a diverse range of critical health areas, including autoimmune disorders (such as SLE and vitiligo), infectious diseases, and telomere biology disorders. Dr. Paul specializes in developing and applying novel statistical methods--including mixture models and survival analysis techniques--to uncover hidden heterogeneity in large-scale genomic and single-cell RNA-sequencing datasets."
+    ]
+  },
+  "interests": [
+    "Genomics",
+    "Proteomics",
+    "Statistical Genetics",
+    "Machine Learning",
+    "Linear and non-linear modeling"
+  ],
+  "education": [
+    {
+      "start": "Aug 2014",
+      "connector": "to",
+      "end": "Dec 2019",
+      "institution": "University of Colorado Denver",
+      "web_institution": "University of Colorado Denver",
+      "degree": "PhD in Applied Mathematics",
+      "web_year": "2019",
+      "cv_description": "Concentration in Statistical Genetics. Through courses, I have learned advanced statistical models, Bayesian analysis, machine learning techniques, and human genetics etc. "
+    },
+    {
+      "start": "Aug 2012",
+      "connector": "to",
+      "end": "May 2014",
+      "institution": "Ball State University, Indiana, USA",
+      "web_institution": "Ball State University",
+      "degree": "MS in Mathematics",
+      "web_year": "2014",
+      "cv_description": "MS thesis:  \\textit{Numerical Multigrid algorithm for solving Integral Equation}. Focused on solving special types of integral equations with less computational complexity using multigrid method and to show its efficiency. "
+    },
+    {
+      "start": "Aug 2008",
+      "connector": "to",
+      "end": "May 2010",
+      "institution": "University of Dhaka",
+      "web_institution": "University of Dhaka",
+      "degree": "MS in Applied Mathematics",
+      "web_year": "2010",
+      "cv_description": "MS thesis on numerical integration.",
+      "show_on_web": false
+    },
+    {
+      "start": "Mar 2003",
+      "connector": "to",
+      "end": "May 2008",
+      "institution": "University of Dhaka",
+      "web_institution": "University of Dhaka, Dhaka, Bangladesh",
+      "degree": "BS in Mathematics with minors in Computer Science, Statistics and Physics",
+      "web_degree": "BSc in Mathematics",
+      "web_year": "2008",
+      "cv_description": "BS project: \\textit{On Binomial Asset Pricing Model with convergence to Black-Scholes model}. Discussed the power of binomial model on asset pricing and proven its strength by showing its convergence to Black-Scholes model."
+    }
+  ],
+  "experience": [
+    {
+      "title": "Bioinformatics Scientist",
+      "cv_start": "Nov 2021",
+      "cv_connector": "",
+      "cv_end": "Ongoing",
+      "cv_company": "Bioinformatics Scientist, Axle Informatics",
+      "cv_description": "I work on multiple projects at the National Institute of Allergy and Infectious Diseases (NIAID), the National Institute of Arthritis and Musculoskeletal and Skin Diseases (NIAMS), and the National Heart, Lung, and Blood Institute (NHLBI). The projects include analyzing whole genome sequencing, bulk RNA-seq, single-cell RNA-seq, proteomics , survival analysis, machine learning, and data mining. Throughout these projects, I am contributing to the study of many diseases such as AIDS, rheumatoid arthritis, capillary syndrome, cryptococcal meningitis, T-cell exhaustion, and viral infections, including COVID-19.",
+      "web_company": "Integrated Data Sciences Section, RTB, NIAID, NIH",
+      "web_company_url": "https://www.niaid.nih.gov/",
+      "web_company_logo": "RTB",
+      "web_location": "Maryland",
+      "web_date_start": "2021-09-01",
+      "web_date_end": "",
+      "web_description": "As a Bioinformatics Scientist, I lead comprehensive data analysis projects involving multi-omics technologies. My expertise encompasses Single Cell RNA-seq, TCR-seq, Bulk RNA-seq, and ATAC-seq, alongside extensive work in proteomics and Next-Generation Sequencing (NGS) analysis. I apply advanced statistical methods to medical informatics, including survival analysis and the evaluation of clinical trial data. Additionally, I utilize large-scale medical databases such as the National Inpatient Sample to derive meaningful biological insights."
+    },
+    {
+      "title": "Bioinformatics Analyst III",
+      "cv_start": "Sep 2021",
+      "cv_connector": "to",
+      "cv_end": "Oct 2021",
+      "cv_company": "Bioinformatics Analyst III, Leidos Biomedical Research Inc.",
+      "cv_description": "My primary responsibility is to provide statistical genetics and bioinformatics support to the projects at the NIAID and the NIAIMS. The projects include the rare variant association of scleroderma and Systemic Capillary Leak Syndrome (SCLS) and the effect of arthritis on a patient's financial and social life.",
+      "show_on_web": false
+    },
+    {
+      "title": "Post-doctoral Associate",
+      "cv_start": "Jan 2020",
+      "cv_connector": "to",
+      "cv_end": "Aug 2021",
+      "cv_company": "Postdoctoral Associate, Institute for Behavioral Genetics, CU Boulder",
+      "cv_description": "In collaboration with multiple labs, I am working on uncovering genetic and phenotypic correlations among different pain conditions using UK Biobank data. In another project, I am investigating the performance of dosage data in estimating heritability compared to the hard-call genotype. I am co-supervising two graduate students in their projects on genetic genetic correlations of behavioral traits using a genetic relationship matrix-based approach and quantifying phenotypic assortment.",
+      "web_company": "IBG, University of Colorado Boulder",
+      "web_company_url": "https://www.colorado.edu/ibg/",
+      "web_company_logo": "ibg",
+      "web_location": "Colorado",
+      "web_date_start": "2020-01-01",
+      "web_date_end": "2020-08-31",
+      "web_description": "- Heritability Estimation\n- Method Development\n- Supervising Graduate Student"
+    },
+    {
+      "title": "Research Assistant",
+      "cv_start": "May 2015",
+      "cv_connector": "to",
+      "cv_end": "Dec 2019",
+      "cv_company": "Research Assistant, Dept. of Mathematical and Statistical Science, CU Denver",
+      "cv_description": "I was involved in genetic risk prediction of generalized vitiligo. My responsibilities were data pre-processing, genome-wide association analysis, modeling polygenic risk scores, comparing multiple risk score models, dissect risk score models using functional annotation. I was also involved in analyzing secondary phenotypes and advanced method development to incorporate phenotypic heterogeneity into the association framework.",
+      "web_company": "University of Colorado Denver",
+      "web_company_url": "https://www.ucdenver.edu",
+      "web_company_logo": "cu",
+      "web_location": "Colorado",
+      "web_date_start": "2015-08-15",
+      "web_date_end": "2019-12-31",
+      "web_description": "Genetic association and polygenic risk score of Vitiligo. Developing statistical model to incorporate phenotypic heterogeneity into genetic association analysis."
+    },
+    {
+      "title": "Electrical Engineering Collaboration",
+      "cv_start": "May 2018",
+      "cv_connector": "to",
+      "cv_end": "Jul 2018",
+      "cv_company": "Collaboration with Department of Electrical Engineering, CU Denver",
+      "cv_description": "The Objective of this project was real-time electricity price forecasting to optimize electricity cost. I applied an artificial neural network on an intuitively designed feature space for forecasting electricity prices in real-time.",
+      "show_on_web": false
+    },
+    {
+      "title": "Research Assistant",
+      "cv_start": "June 2017",
+      "cv_connector": "to",
+      "cv_end": "July 2017",
+      "cv_company": "Research Assistant, Dept. of Mathematical and Statistical Science, CU Denver",
+      "cv_description": "A functional data analysis approach was developed to model spatiotemporal data. In this project, I used sparse matrices, numerical linear algebraic methods, and parallel computing to reduce computational expenses.",
+      "show_on_web": false
+    },
+    {
+      "title": "Faculty",
+      "show_on_cv": false,
+      "web_company": "International University of Business Agriculture and Technology, Bangladesh",
+      "web_company_url": "https://iubat.edu",
+      "web_company_logo": "IUBAT",
+      "web_location": "Dhaka, Bangladesh",
+      "web_date_start": "2010-08-01",
+      "web_date_end": "2012-07-21",
+      "web_description": "Taught undergraduate mathematics courses including calculus, linear algebra, differential equation, and discrete mathematics."
+    }
+  ],
+  "skills": {
+    "cv": {
+      "core": [
+        "Statistical Modeling",
+        "Human Genetics",
+        "scRNA-seq",
+        "ATAC-seq",
+        "Proteomics",
+        "Survival Analysis",
+        "Machine Learning",
+        "Computational Math"
+      ],
+      "programming_languages": [
+        "R (Expert)",
+        "Python (Advanced level)",
+        "SQL, MATLAB,  C++, FORTRAN (Intermediate)"
+      ],
+      "languages": [
+        "English (Proficient)",
+        "Bengali (Native)",
+        "Hindi (Communication)"
+      ],
+      "others": [
+        "Latex, Beamer",
+        "Mathematica",
+        "Data Visualization",
+        "Inkscape"
+      ]
+    },
+    "web": [
+      {
+        "name": "R",
+        "description": "100%",
+        "icon": "r-project",
+        "icon_pack": "fab"
+      },
+      {
+        "name": "Statistics",
+        "description": "100%",
+        "icon": "chart-line",
+        "icon_pack": "fas"
+      },
+      {
+        "name": "Python",
+        "description": "80%",
+        "icon": "python",
+        "icon_pack": "fab"
+      },
+      {
+        "name": "Genetics",
+        "description": "100%",
+        "icon": "dna",
+        "icon_pack": "fas"
+      },
+      {
+        "name": "Photography",
+        "description": "20%",
+        "icon": "camera-retro",
+        "icon_pack": "fas"
+      },
+      {
+        "name": "scRNA-seq",
+        "description": "100%",
+        "icon": "cell",
+        "icon_pack": "emoji"
+      }
+    ]
+  }
+}

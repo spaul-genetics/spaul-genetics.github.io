@@ -1,0 +1,174 @@
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc}
+%\usepackage{accanthis}  % Uncomment this to get fancy font
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{colortbl}
+\usepackage{float}
+\usepackage{bibentry}
+\usepackage{longtable}
+\usepackage{booktabs}
+\makeatletter\let\saved@bibitem\@bibitem\makeatother
+\usepackage{hyperref}
+\makeatletter\let\@bibitem\saved@bibitem\makeatother
+\usepackage{array}
+
+\newcolumntype{L}{>{\raggedleft}p{0.05\textwidth}}
+\newcolumntype{R}{p{0.9\textwidth}}
+\newcommand\VRule{\color{lightgray}\vrule width 0.5pt}
+%----------------------------------------------------------------------------------------
+%	MAIN HEADER COMMAND
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\title}[1]{
+	{\huge{\color{slateblue}\textbf{#1}}}\\ % Header section name and color
+	\rule{\textwidth}{0.5mm}\\ % Rule under the header
+}
+
+
+\setlength\parindent{0pt} % Stop paragraph indentation
+\setcounter{secnumdepth}{0} % Suppress section numbering
+\usepackage{xcolor} % Required for custom colors
+\definecolor{slateblue}{rgb}{0.17,0.22,0.34}
+\definecolor{stablered}{rgb}{0.7,0.1,0.2}
+\definecolor{lightgray}{gray}{0.8}
+
+\usepackage{sectsty} % Allows customization of titles
+
+\sectionfont{\color{stablered}\fontsize{12}{1}\fontfamily{lmss}\selectfont}%\accanthis} % Color section titles
+
+
+% Text width for tabbing environments
+\newlength{\smallertextwidth}
+\setlength{\smallertextwidth}{\textwidth}
+\addtolength{\smallertextwidth}{-2cm}
+
+
+\newcommand{\education}[6]{
+	\begin{table}[H]
+		\begin{tabular}{p{1.8cm}!{\color{green}\vrule}l}
+			\textbf{#1} & #4\\
+			\multicolumn{1}{c!{\color{green}\vrule}}{#2}  & #5\\
+			 \textbf{#3} & 
+				\begin{minipage}[t]{0.83\columnwidth}%
+					#6
+				\end{minipage}
+			\\
+		\end{tabular}
+	\end{table}
+\vspace{-12pt}
+}
+
+
+\newcommand{\edushort}[6]{
+	\begin{table}[H]
+		\begin{tabular}{p{1.8cm}!{\color{green}\vrule}l}
+			\textbf{#1 #2} & #4, #5\\
+			\multicolumn{1}{c!{\color{green}\vrule}}{#3}  & #5\\
+			%\textbf{#3} & 
+			\begin{minipage}[t]{0.83\columnwidth}%
+				#6
+			\end{minipage}
+			\\
+		\end{tabular}
+	\end{table}
+	\vspace{-12pt}
+}
+
+
+%\newcommand{\job}[6]{
+%	\begin{table}[H]
+%		\begin{tabular}{p{1.8cm}!{\color{green}\vrule}l}
+%			\textbf{#1} & #4\\
+%			\multicolumn{1}{c!{\color{green}\vrule}}{ #2 }  & #5\\
+%			\textbf{#3} & 
+%			\begin{minipage}[t]{0.83\columnwidth}%
+%				#6
+%			\end{minipage}
+%			\\
+%		\end{tabular}
+%	\end{table}
+%	\vspace{-12pt}
+%}
+
+
+
+\newcommand{\job}[6]{
+	\begin{table}[H]
+		\begin{tabular}{p{1.8cm}!{\color{green}\vrule}l}
+			\textbf{#1} & 
+			\begin{minipage}[t]{0.83\columnwidth}%
+				#4
+			\end{minipage}
+			\\
+			\multicolumn{1}{c!{\color{green}\vrule}}{ #2 }  & 
+			\begin{minipage}[t]{0.83\columnwidth}%
+				#5
+			\end{minipage}\\
+			\textbf{#3} & 
+			\begin{minipage}[t]{0.83\columnwidth}%
+				#6
+			\end{minipage}
+			\\
+		\end{tabular}
+	\end{table}
+	\vspace{-12pt}
+}
+
+\newcommand{\jobs}[5]{
+
+    \begin{table}[H]
+        \begin{tabular}{p{1.8cm}!{\color{green}\vrule}l}
+            \begin{tabular}{c}
+                   \textbf{#1}\\ #2 \\ \textbf{#3}
+            \end{tabular} &  
+            \begin{tabular}{p{0.83\columnwidth}}
+              \textbf{#4} \\ #5 
+            \end{tabular}
+        \end{tabular}
+    \end{table}
+}
+
+
+\newcommand{\award}[2]{
+	\begin{tabbing}
+		\hspace{2cm} \= \kill 
+		\textbf{#1} \> #2
+	\end{tabbing}
+\vspace{-13pt}
+}
+
+\newcommand{\teach}[3]{
+	\begin{tabbing}
+		\hspace{2.5cm} \= \kill 
+		\textbf{#1} \> #2 at \textit{#3}
+	\end{tabbing}
+\vspace{-13pt}
+}
+
+
+\newcommand{\present}[3]{
+	\begin{tabbing}
+		\hspace{2cm} \= \kill 
+		\textbf{#1} \>\+ #2 \\
+		\begin{minipage}{\smallertextwidth}
+			\textit{#3}
+		\end{minipage}
+	\end{tabbing}
+\vspace{-13pt}
+}
+
+\newcommand{\presentshort}[3]{
+	\begin{tabbing}
+		\hspace{2cm} \= \kill 
+		\textbf{#1} \>\+ #2,\textit{#3} \\
+		
+	\end{tabbing}
+	\vspace{-13pt}
+}
+
+
+
+
+\usepackage{tikz}
