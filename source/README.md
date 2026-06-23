@@ -27,3 +27,12 @@ make all
 ```
 
 That regenerates the source files, builds `CV/cv_all_format.pdf`, copies it to `academic-start/static/uploads/resume.pdf`, and builds the Hugo site in `academic-start/public/`.
+
+Publish from the repository root:
+
+```sh
+cd ~/Documents/spaul-genetics.github.io
+make publish
+```
+
+That builds everything, copies the rendered site to the repository root, commits the changes, and pushes to GitHub.
