@@ -6,6 +6,7 @@ Edit these files:
 
 - `data/profile.json` for biography text, education, experience, skills, links, and contact details.
 - `data/publications.bib` for publications. Use `slug = {...}` to keep a stable website URL. Use `web = {false}` or `cv = {false}` when an entry should be hidden from one output.
+- `academic-start/content/post/<post-name>/index.md` for blog posts and technical notes.
 
 Generated files are overwritten by `scripts/render_biography.py`, including:
 
@@ -27,6 +28,12 @@ make all
 ```
 
 That regenerates the source files, builds `CV/cv_all_format.pdf`, copies it to `academic-start/static/uploads/resume.pdf`, and builds the Hugo site in `academic-start/public/`.
+
+## Add A Blog Post
+
+Create a folder under `academic-start/content/post/` and put an `index.md` file in it. Use the existing proteomics post as a template for the metadata at the top of the file. Markdown content, tables, code blocks, and LaTeX equations are supported.
+
+For a fully designed standalone HTML note, place its `index.html` under `academic-start/static/notes/<note-name>/` and set `external_link: "/notes/<note-name>/"` in the companion Markdown post. The companion post supplies the Blog listing, tags, author, summary, and searchable fallback content.
 
 Publish from the repository root:
 
