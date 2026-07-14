@@ -31,9 +31,24 @@ That regenerates the source files, builds `CV/cv_all_format.pdf`, copies it to `
 
 ## Add A Blog Post
 
-Create a folder under `academic-start/content/post/` and put an `index.md` file in it. Use the existing proteomics post as a template for the metadata at the top of the file. Markdown content, tables, code blocks, and LaTeX equations are supported.
+Create matching folders with the same `<post-name>` slug:
 
-For a fully designed standalone HTML note, place its `index.html` under `academic-start/static/notes/<note-name>/` and set `external_link: "/notes/<note-name>/"` in the companion Markdown post. The companion post supplies the Blog listing, tags, author, summary, and searchable fallback content.
+```text
+academic-start/content/post/<post-name>/index.md
+academic-start/static/notes/<post-name>/index.html
+```
+
+The Markdown file can start with an H1 title and an optional italic subtitle. `scripts/prepare_blog_posts.py` automatically adds standard Hugo metadata when it is missing, connects the Blog entry to the matching HTML report, enables math, and adds a responsive “Biography & Blog” return button to HTML reports that do not already have one. Existing metadata and existing return buttons are preserved, so the script is safe to run repeatedly.
+
+Preview locally with:
+
+```sh
+make preview
+```
+
+The preparation also runs during `make all`, `make publish`, and the GitHub Pages workflow. Markdown content, tables, code blocks, and LaTeX equations are supported.
+
+The companion Markdown post supplies the Blog listing, tags, author, summary, and searchable fallback content. You can edit the automatically added tags and summary before committing.
 
 Publish from the repository root:
 

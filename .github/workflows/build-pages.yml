@@ -49,6 +49,9 @@ jobs:
       - name: Install TeX packages
         run: tlmgr install latexmk natbib sectsty pgf colortbl float booktabs
 
+      - name: Prepare blog posts
+        run: python3 scripts/prepare_blog_posts.py
+
       - name: Render shared data
         run: python3 scripts/render_biography.py
 

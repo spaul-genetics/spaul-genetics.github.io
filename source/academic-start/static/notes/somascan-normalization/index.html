@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SomaScan Normalization: Steps, Equations, and Rationale</title>
+<style>
+  :root{
+    --bg:#faf8f5; --panel:#ffffff; --ink:#1e2124; --sub:#5b6168;
+    --accent:#8a4baf; --accent2:#3c7a8c; --line:#e4ddd3; --eq:#f4f0fb;
+    --warn:#fff4e5; --warnline:#e0a94f;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Georgia','Iowan Old Style',serif; line-height:1.65;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:48px 28px 100px; margin-left:300px;}
+  @media (max-width:1300px){ .wrap{margin-left:auto; margin-right:auto;} #toc-float{display:none;} }
+  header{border-bottom:3px solid var(--accent); padding-bottom:24px; margin-bottom:36px;}
+  h1{font-size:2rem; margin:0 0 8px; letter-spacing:-0.01em;}
+  .subtitle{color:var(--sub); font-size:1.05rem; font-style:italic; margin:0;}
+  .srcnote{
+    margin-top:14px; font-family:Arial,Helvetica,sans-serif; font-size:0.82rem;
+    background:#f2eef9; border-radius:8px; padding:10px 14px; color:#4a3868;
+  }
+  #toc-float{
+    position:fixed; top:40px; left:24px; width:250px; max-height:calc(100vh - 80px);
+    overflow-y:auto; background:var(--panel); border:1px solid var(--line); border-radius:10px;
+    padding:18px 20px; font-family:Arial,Helvetica,sans-serif;
+  }
+  #toc-float p{margin:0 0 8px; font-weight:bold; color:var(--accent); text-transform:uppercase; font-size:0.72rem; letter-spacing:0.06em;}
+  #toc-float ol{margin:0; padding-left:18px; font-size:0.82rem; line-height:1.5;}
+  #toc-float a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--sub);}
+  #toc-float a:hover{color:var(--accent);}
+  #toc-float .site-home{
+    display:inline-flex; align-items:center; margin-bottom:16px; padding:7px 10px;
+    background:var(--bg); border:1px solid var(--line); border-radius:6px;
+    color:var(--accent); font-size:0.78rem; font-weight:bold;
+  }
+  .mobile-site-home{
+    display:none; width:fit-content; margin:0 0 24px; padding:8px 12px;
+    background:var(--panel); border:1px solid var(--line); border-radius:6px;
+    color:var(--accent); font-family:Arial,Helvetica,sans-serif;
+    font-size:0.82rem; font-weight:bold; text-decoration:none;
+  }
+  @media (max-width:1300px){ .mobile-site-home{display:inline-flex;} }
+  section{margin-bottom:52px;}
+  h2{
+    font-family:Arial,Helvetica,sans-serif; font-size:1.3rem; color:var(--accent);
+    border-left:5px solid var(--accent); padding-left:14px; margin:0 0 18px;
+  }
+  h2 .stepnum{
+    display:inline-block; background:var(--accent); color:white; font-size:0.72rem;
+    padding:2px 9px; border-radius:20px; margin-right:10px; vertical-align:middle;
+    font-family:Arial,Helvetica,sans-serif;
+  }
+  h3{font-family:Arial,Helvetica,sans-serif; font-size:1.02rem; color:var(--accent2); margin:24px 0 10px;}
+  h4{font-family:Arial,Helvetica,sans-serif; font-size:0.92rem; color:var(--ink); margin:18px 0 6px;}
+  p{margin:0 0 14px;}
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:24px 26px; box-shadow:0 1px 3px rgba(0,0,0,0.04);
+  }
+  .rationale{
+    background:#f2f7f3; border-left:4px solid #5c9a6a; border-radius:0 8px 8px 0;
+    padding:14px 18px; margin:16px 0; font-size:0.96rem;
+  }
+  .rationale strong{color:#3e7a4c; font-family:Arial,Helvetica,sans-serif; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:4px;}
+  .diffbox{
+    background:#fdf3f0; border-left:4px solid #c4623f; border-radius:0 8px 8px 0;
+    padding:14px 18px; margin:16px 0; font-size:0.96rem;
+  }
+  .diffbox strong{color:#a24726; font-family:Arial,Helvetica,sans-serif; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:4px;}
+  .eqbox{
+    background:var(--eq); border:1px solid #ddd0ee; border-radius:8px;
+    padding:18px 22px; margin:16px 0; overflow-x:auto;
+  }
+  .eqbox .eqlabel{
+    font-family:Arial,Helvetica,sans-serif; font-size:0.75rem; color:var(--accent);
+    text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px; font-weight:bold;
+  }
+  .eq{font-family:'Cambria Math','STIX Two Math',serif; font-size:1.12rem; text-align:center; margin:6px 0;}
+  sub, sup{font-size:0.72em;}
+  .terms{font-size:0.9rem; margin-top:10px;}
+  .terms div{margin-bottom:4px;}
+  .terms code{background:#efe9dd; padding:1px 6px; border-radius:4px; font-family:'Courier New',monospace; font-size:0.85em;}
+  .cite{
+    font-family:Arial,Helvetica,sans-serif; font-size:0.78rem; color:var(--sub);
+    background:#f3f1ec; border-radius:6px; padding:6px 12px; display:inline-block; margin:4px 6px 4px 0;
+  }
+  .citeblock{margin-top:14px; padding-top:10px; border-top:1px dashed var(--line);}
+  .flow{
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center;
+    font-family:Arial,Helvetica,sans-serif; font-size:0.82rem; margin:20px 0 30px;
+  }
+  .flow .node{
+    background:var(--panel); border:2px solid var(--accent); border-radius:8px;
+    padding:10px 12px; text-align:center; min-width:110px;
+  }
+  .flow .node .code{display:block; font-family:'Courier New',monospace; font-size:0.72rem; color:var(--accent2); margin-top:3px;}
+  .flow .arrow{color:var(--accent); font-size:1.3rem;}
+  table{width:100%; border-collapse:collapse; margin:16px 0; font-size:0.92rem;}
+  th,td{border:1px solid var(--line); padding:8px 12px; text-align:left; vertical-align:top;}
+  th{background:#f2eef9; font-family:Arial,Helvetica,sans-serif; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.03em;}
+  .warnbox{
+    background:var(--warn); border:1px solid var(--warnline); border-radius:8px;
+    padding:14px 18px; margin:18px 0; font-size:0.95rem;
+  }
+  .warnbox strong{color:#95661a; font-family:Arial,Helvetica,sans-serif; font-size:0.8rem; text-transform:uppercase; display:block; margin-bottom:4px;}
+  .refs{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:24px 26px;
+    font-family:Arial,Helvetica,sans-serif; font-size:0.88rem;
+  }
+  .refs ol{padding-left:20px;}
+  .refs li{margin-bottom:14px;}
+  .refs a{color:var(--accent2);}
+  footer{text-align:center; color:var(--sub); font-size:0.82rem; margin-top:60px; font-family:Arial,Helvetica,sans-serif;}
+  code.inline{background:#efe9dd; padding:1px 6px; border-radius:4px; font-family:'Courier New',monospace; font-size:0.88em;}
+</style>
+</head>
+<body>
+
+<nav id="toc-float">
+  <a class="site-home" href="/">&larr; Biography &amp; Blog</a>
+  <p>Contents</p>
+  <ol>
+    <li><a href="#overview">Overview of the pipeline</a></li>
+    <li><a href="#step0">Why normalize at all?</a></li>
+    <li><a href="#step1">Step 1 — Hybridization control normalization</a></li>
+    <li><a href="#step2">Step 2 — Median signal normalization on calibrators</a></li>
+    <li><a href="#step3">Step 3 — Plate-scale normalization</a></li>
+    <li><a href="#step4">Step 4 — Inter-plate calibration</a></li>
+    <li><a href="#step34diff">Step 3 vs. Step 4 — what's actually different</a></li>
+    <li><a href="#step5">Step 5 — Median signal normalization on all sample types</a></li>
+    <li><a href="#onebigidea">The one idea behind all five steps</a></li>
+    <li><a href="#anml">SomaLogic's ANML (context)</a></li>
+    <li><a href="#validation">Validation vs. SomaLogic's pipeline</a></li>
+    <li><a href="#scenarios">Applied scenarios</a></li>
+    <li><a href="#refs">References</a></li>
+  </ol>
+</nav>
+
+<div class="wrap">
+
+<a class="mobile-site-home" href="/">&larr; Biography &amp; Blog</a>
+
+<header>
+  <h1>SomaScan Normalization</h1>
+  <p class="subtitle">Steps, equations, and the reasoning behind each stage of the standard pre-processing pipeline</p>
+  <div class="srcnote">This version is rewritten to follow, notation-for-notation, the pipeline and equations described in Candia, J. <em>"SomaScan Bioinformatics: Normalization, Quality Control, and Assessment of Pre-Analytical Variation."</em> bioRxiv 2024.02.09.579724 (2024) — the only source used here that publishes the actual mathematical steps and accompanying R implementation, rather than a narrative description.</div>
+</header>
+
+<section id="overview">
+  <h2>Overview of the pipeline</h2>
+  <p>Candia (2024) formalizes SomaScan normalization as a five-step sequence, each producing a named, versioned RFU matrix. The paper's own naming convention (used internally in the accompanying R code) chains each step's abbreviation onto the last, which is a useful way to keep track of exactly what has and hasn't been corrected at any given point <span class="cite">Candia 2024, Table 2</span>.</p>
+  <div class="flow">
+    <div class="node">Raw<span class="code">raw</span></div>
+    <div class="arrow">&rarr;</div>
+    <div class="node">1. Hybridization<span class="code">hyb</span></div>
+    <div class="arrow">&rarr;</div>
+    <div class="node">2. Median (Cal only)<span class="code">hyb.msnCal</span></div>
+    <div class="arrow">&rarr;</div>
+    <div class="node">3. Plate-scale<span class="code">hyb.msnCal.ps</span></div>
+    <div class="arrow">&rarr;</div>
+    <div class="node">4. Calibration<span class="code">hyb.msnCal.ps.cal</span></div>
+    <div class="arrow">&rarr;</div>
+    <div class="node">5. Median (all types)<span class="code">hyb.msnCal.ps.cal.msnAll</span></div>
+  </div>
+  <table>
+    <tr><th>Step</th><th>Name</th><th>Abbreviation</th><th>Scale factor granularity</th></tr>
+    <tr><td>0</td><td>Raw</td><td><code class="inline">raw</code></td><td>none</td></tr>
+    <tr><td>1</td><td>Hybridization control normalization</td><td><code class="inline">hyb</code></td><td>well-specific</td></tr>
+    <tr><td>2</td><td>Median signal normalization on calibrators</td><td><code class="inline">hyb.msnCal</code></td><td>calibrator- and dilution-specific</td></tr>
+    <tr><td>3</td><td>Plate-scale normalization</td><td><code class="inline">hyb.msnCal.ps</code></td><td>plate-specific (one number per plate)</td></tr>
+    <tr><td>4</td><td>Inter-plate calibration</td><td><code class="inline">hyb.msnCal.ps.cal</code></td><td>plate- <em>and</em> SOMAmer-specific</td></tr>
+    <tr><td>5</td><td>Median signal normalization on all sample types</td><td><code class="inline">hyb.msnCal.ps.cal.msnAll</code></td><td>well-specific (grouped by sample type)</td></tr>
+  </table>
+  <p><span class="cite">Candia 2024, Table 2</span> The last column is the key thing to track through this document: each step generates scale factors at a different level of granularity, and later steps generally operate on finer subdivisions of the data than earlier ones — which is exactly the relationship between Steps 3 and 4 discussed below.</p>
+</section>
+
+<section id="step0">
+  <h2>Why normalize at all?</h2>
+  <p>SomaScan is a highly multiplexed, aptamer-based assay that simultaneously measures thousands of human proteins spanning femto- to micro-molar concentrations, using SOMAmer (Slow Offrate Modified Aptamer) reagents selected via the SELEX process for high affinity, slow off-rate, and high specificity to their protein targets <span class="cite">Candia 2024, "The SomaScan assay"</span>. Samples are organized in 96-well plates alongside buffer, calibrator, and QC wells provided by SomaLogic from pooled healthy donor controls <span class="cite">Candia 2024</span>.</p>
+  <div class="rationale">
+    <strong>Core reasoning</strong>
+    Raw data, as obtained after aggregation from the slide-based hybridization microarrays, exhibits intra-plate nuisance variance due to differences in loading volume, leaks, washing conditions, and similar sources, which is then compounded with batch effects across plates <span class="cite">Candia 2024, "Data Normalization Procedures"</span>. The five-step sequence exists specifically to account for this intra- and inter-plate variability across buffer, calibrator, QC, and experimental samples, while preserving genuine biological differences <span class="cite">Candia 2024</span>.
+  </div>
+</section>
+
+<section id="step1">
+  <h2><span class="stepnum">Step 1</span>Hybridization Control Normalization (hyb)</h2>
+  <div class="card">
+    <p>Hybridization control normalization is designed to adjust for nuisance variance on the basis of individual wells. Each well contains n<sub>HCE</sub> = 12 Hybridization Control Elution (HCE) SOMAmers at different concentrations spanning more than three orders of magnitude <span class="cite">Candia 2024, Step 1</span>.</p>
+
+    <h3>Reasoning</h3>
+    <div class="rationale">
+      <strong>Why this step is first</strong>
+      This is the finest-grained correction in the pipeline, operating at the level of a single well before any comparison across samples or plates is made. Because HCE probes are added at a fixed, known concentration with no biological content, any well-to-well variation in their signal must be purely technical, giving a clean per-well correction factor.
+    </div>
+
+    <h3>Equation</h3>
+    <div class="eqbox">
+      <div class="eqlabel">Scale factor for the i-th well (Eq. 1)</div>
+      <div class="eq">SF<sub>i</sub> = median<sub>&alpha;=1,...,n<sub>HCE</sub></sub> ( RFU<sup>HCE,ref</sup><sub>&alpha;</sub> &divide; RFU<sup>HCE,obs</sup><sub>i&alpha;</sub> )</div>
+      <div class="eqlabel" style="margin-top:14px;">Internal (plate-specific) reference (Eq. 2)</div>
+      <div class="eq">RFU<sup>HCE,ref</sup><sub>&alpha;</sub> &equiv; median<sub>i=1,...,n<sub>s</sub></sub> &#123; RFU<sup>HCE,obs</sup><sub>i&alpha;</sub> &#125;</div>
+      <div class="terms">
+        <div><code>&alpha;</code> &mdash; indexes the n<sub>HCE</sub> = 12 HCE SOMAmers (Greek subscripts denote SOMAmers throughout this paper's notation)</div>
+        <div><code>i</code> &mdash; indexes wells (Latin subscripts denote wells/samples)</div>
+        <div><code>n_s</code> &mdash; number of wells on the plate (96)</div>
+        <div><code>RFU^HCE,ref_&alpha;</code> &mdash; reference RFU for HCE SOMAmer &alpha;, taken here as the median across all wells on the plate (an internal reference), rather than an external fixed value</div>
+      </div>
+    </div>
+    <p>Once SF<sub>i</sub> is determined for well i, every SOMAmer's RFU in that well is multiplied by the same scale factor <span class="cite">Candia 2024, Step 1</span>.</p>
+    <div class="citeblock">Source: <span class="cite">Candia 2024, bioRxiv 2024.02.09.579724, Eqs. 1&ndash;2</span></div>
+  </div>
+</section>
+
+<section id="step2">
+  <h2><span class="stepnum">Step 2</span>Median Signal Normalization on Calibrators (hyb.msnCal)</h2>
+  <div class="card">
+    <p>Median signal normalization is an intra-plate procedure performed within wells of the same sample class (buffer, QC, calibrator, or experimental) and within SOMAmers of the same dilution group. It is intended to remove sample-to-sample differences in total RFU brightness arising from differences in overall protein concentration, pipetting variation, reagent concentration variation, assay timing, and similar sources within a group of otherwise comparable samples <span class="cite">Candia 2024, Step 2</span>.</p>
+
+    <h3>Reasoning</h3>
+    <div class="rationale">
+      <strong>Why restrict this step to calibrators only, at this stage</strong>
+      Performing median signal normalization on experimental samples <em>before</em> inter-plate calibration risks enhancing plate-to-plate differences, as discussed in the author's earlier work <span class="cite">Candia 2024, citing Candia et al. 2017</span>. So at this point in the pipeline, the step is deliberately restricted to calibrator wells only — experimental samples get their own median normalization later, in Step 5, after plate-level effects have been removed.
+    </div>
+
+    <h3>Equation</h3>
+    <div class="eqbox">
+      <div class="eqlabel">Ratio for sample i, SOMAmer &alpha; (Eq. 3)</div>
+      <div class="eq">r<sup>gd</sup><sub>i&alpha;</sub> = RFU<sub>i&alpha;</sub> &divide; median<sub>j=1,...,n<sup>g</sup><sub>s</sub></sub> &#123; RFU<sub>j&alpha;</sub> &#125;</div>
+      <div class="eqlabel" style="margin-top:14px;">Scale factor for sample i (Eq. 4)</div>
+      <div class="eq">SF<sup>gd</sup><sub>i</sub> = 1 &divide; median<sub>&alpha;=1,...,n<sup>d</sup><sub>SOMAmer</sub></sub> &#123; r<sup>gd</sup><sub>i&alpha;</sub> &#125;</div>
+      <div class="terms">
+        <div><code>g</code> &mdash; sample type grouping (here, calibrator)</div>
+        <div><code>d</code> &mdash; SOMAmer dilution grouping</div>
+        <div><code>n^g_s</code> &mdash; number of samples of type g</div>
+        <div><code>n^d_SOMAmer</code> &mdash; number of SOMAmers in dilution group d</div>
+      </div>
+    </div>
+    <p>To median-normalize sample i, all its SOMAmer RFUs within the same dilution group are multiplied by SF<sup>gd</sup><sub>i</sub> <span class="cite">Candia 2024, Step 2</span>.</p>
+    <div class="citeblock">Source: <span class="cite">Candia 2024, Eqs. 3&ndash;4</span></div>
+  </div>
+</section>
+
+<section id="step3">
+  <h2><span class="stepnum">Step 3</span>Plate-Scale Normalization (hyb.msnCal.ps)</h2>
+  <div class="card">
+    <p>Plate-scale normalization aims to control for variance in total signal intensity from plate to plate. No protein spikes are added to the calibrator for this purpose — the procedure relies solely on the endogenous levels of each protein within the set of calibrator replicates already present on the plate <span class="cite">Candia 2024, Step 3</span>.</p>
+
+    <h3>Reasoning</h3>
+    <div class="rationale">
+      <strong>Why the whole plate is corrected by one number</strong>
+      At this stage, the goal is specifically to correct the overall brightness level of an entire plate — a single multiplicative drift affecting the whole run (for example, from reagent lot or day-to-day instrument variation). Collapsing many per-SOMAmer estimates down to one plate-wide median scale factor is what makes this a genuinely plate-level (rather than SOMAmer-level) correction.
+    </div>
+
+    <h3>Equation</h3>
+    <div class="eqbox">
+      <div class="eqlabel">SOMAmer-and-plate-specific ratio, for SOMAmer &alpha; on plate p (Eq. 5)</div>
+      <div class="eq">SF<sup>p</sup><sub>&alpha;</sub> = RFU<sup>Cal,ref</sup><sub>&alpha;</sub> &divide; median<sub>i=1,...,n<sub>Cal</sub></sub> &#123; RFU<sup>Cal,obs</sup><sub>i&alpha;</sub> &#125;<sup>p</sup></div>
+      <div class="eqlabel" style="margin-top:14px;">Internal interplate reference (Eq. 6)</div>
+      <div class="eq">RFU<sup>Cal,ref</sup><sub>&alpha;</sub> &equiv; median<sub>p=1,...,n<sub>p</sub>; i=1,...,n<sub>Cal</sub></sub> &#123; RFU<sup>Cal,obs</sup><sub>i&alpha;</sub> &#125;</div>
+      <div class="eqlabel" style="margin-top:14px;">Plate-scale factor — collapsed across all SOMAmers (Eq. 7)</div>
+      <div class="eq">SF<sup>p</sup> = median<sub>&alpha;=1,...,n<sub>SOMAmer</sub></sub> &#123; SF<sup>p</sup><sub>&alpha;</sub> &#125;</div>
+      <div class="terms">
+        <div><code>n_Cal</code> &mdash; number of calibrator replicates per plate</div>
+        <div><code>n_p</code> &mdash; total number of plates in the study</div>
+        <div><code>RFU^Cal,ref_&alpha;</code> &mdash; the interplate reference for SOMAmer &alpha;, i.e. the median across <em>all</em> calibrators on <em>all</em> plates</div>
+        <div><code>SF^p</code> &mdash; the single number applied to every SOMAmer, in every well, on plate p</div>
+      </div>
+    </div>
+    <p>For all wells on plate p and all SOMAmers, RFUs are multiplied by this single plate-scale factor SF<sup>p</sup> <span class="cite">Candia 2024, Step 3</span>.</p>
+    <div class="citeblock">Source: <span class="cite">Candia 2024, Eqs. 5&ndash;7</span></div>
+  </div>
+</section>
+
+<section id="step4">
+  <h2><span class="stepnum">Step 4</span>Inter-Plate Calibration (hyb.msnCal.ps.cal)</h2>
+  <div class="card">
+    <p>The paper states this step directly: <em>"Following plate-scale normalization, we recalculate SOMAmer- and plate-specific scale factors via Eqs. (5)-(6). Separately for each SOMAmer and plate, all wells on the plate are corrected by the recalculated SF<sup>p</sup><sub>&alpha;</sub>."</em> <span class="cite">Candia 2024, Step 4</span></p>
+
+    <h3>Equation</h3>
+    <div class="eqbox">
+      <div class="eqlabel">Recalculated SOMAmer-and-plate-specific ratio (re-applying Eq. 5, on already plate-scaled data)</div>
+      <div class="eq">SF<sup>p</sup><sub>&alpha;</sub> = RFU<sup>Cal,ref</sup><sub>&alpha;</sub> &divide; median<sub>i=1,...,n<sub>Cal</sub></sub> &#123; RFU<sup>Cal,obs</sup><sub>i&alpha;</sub> &#125;<sup>p</sup></div>
+      <div class="eqlabel" style="margin-top:14px;">Recalculated internal reference (re-applying Eq. 6, on already plate-scaled data)</div>
+      <div class="eq">RFU<sup>Cal,ref</sup><sub>&alpha;</sub> &equiv; median<sub>p=1,...,n<sub>p</sub>; i=1,...,n<sub>Cal</sub></sub> &#123; RFU<sup>Cal,obs</sup><sub>i&alpha;</sub> &#125;</div>
+      <div class="eqlabel" style="margin-top:14px;">Applied correction &mdash; note this is NOT collapsed by median across SOMAmers</div>
+      <div class="eq">RFU<sub>i&alpha;</sub><sup>(4)</sup> = RFU<sub>i&alpha;</sub><sup>(3)</sup> &times; SF<sup>p</sup><sub>&alpha;</sub> &nbsp;&nbsp;(applied per SOMAmer &alpha;, per plate p)</div>
+    </div>
+    <div class="citeblock">Source: <span class="cite">Candia 2024, "Inter-plate calibration" section, re-using Eqs. 5&ndash;6</span></div>
+  </div>
+</section>
+
+<section id="step34diff">
+  <h2>Step 3 vs. Step 4 — What's Actually Different, and Why Both Are Needed</h2>
+  <div class="card">
+    <p>Steps 3 and 4 use the <em>identical</em> ratio equation (Eq. 5) and the identical reference definition (Eq. 6). The entire difference between them is <strong>what happens after that ratio is computed</strong>, and <strong>what data it's computed on</strong>.</p>
+
+    <table>
+      <tr><th></th><th>Step 3 (Plate-scale)</th><th>Step 4 (Calibration)</th></tr>
+      <tr>
+        <td><strong>Input data</strong></td>
+        <td>Data after Steps 1&ndash;2 only (hyb.msnCal)</td>
+        <td>Data <em>after</em> plate-scaling has already been applied (hyb.msnCal.ps)</td>
+      </tr>
+      <tr>
+        <td><strong>SF<sup>p</sup><sub>&alpha;</sub> computed?</strong></td>
+        <td>Yes &mdash; per SOMAmer, per plate (Eq. 5)</td>
+        <td>Yes &mdash; <em>recalculated</em> per SOMAmer, per plate, on the new plate-scaled values</td>
+      </tr>
+      <tr>
+        <td><strong>Final collapsing step</strong></td>
+        <td>Collapsed: <code class="inline">SF^p = median_&alpha;(SF^p_&alpha;)</code> &mdash; one number per plate (Eq. 7)</td>
+        <td><strong>Not collapsed.</strong> Every SOMAmer keeps its own scale factor per plate</td>
+      </tr>
+      <tr>
+        <td><strong>What gets corrected</strong></td>
+        <td>Overall plate brightness &mdash; a single multiplicative shift applied uniformly to every SOMAmer on the plate</td>
+        <td>Each SOMAmer's individual residual plate-to-plate drift, independent of every other SOMAmer</td>
+      </tr>
+      <tr>
+        <td><strong>Granularity</strong></td>
+        <td>Plate-specific</td>
+        <td>Plate- <em>and</em> SOMAmer-specific</td>
+      </tr>
+    </table>
+
+    <div class="diffbox">
+      <strong>Why Step 4 is still needed after Step 3</strong>
+      Step 3's median-across-SOMAmers collapse (Eq. 7) is a deliberate simplification: it assumes that once you strip out the single dominant, plate-wide brightness shift, everything else is noise around zero — i.e., that all SOMAmers on a plate drifted by the same overall multiplicative amount. That assumption is good enough to fix the biggest source of inter-plate variance, but it is not exact. Individual SOMAmer reagents can still carry their own residual, SOMAmer-specific plate-to-plate drift after the shared drift has been removed — for instance, from reagent-lot-specific binding efficiency differences that don't affect every SOMAmer equally.
+      <br><br>
+      Step 4 targets exactly this leftover, individual variation. Because it reuses Eqs. 5&ndash;6 on the plate-scaled data <em>without</em> collapsing to a single median value, it recovers a distinct scale factor for every SOMAmer on every plate, correcting the SOMAmer-specific residual that survived the coarser, plate-wide Step 3 correction. In short: <strong>Step 3 removes the shared (plate-level) component of inter-plate variance; Step 4 removes what's left over at the level of each individual SOMAmer.</strong> Running Step 4 without Step 3 first would conflate these two different sources of drift; running Step 3 alone would leave SOMAmer-specific drift uncorrected.
+    </div>
+    <div class="citeblock">Source: <span class="cite">Candia 2024, "Inter-plate calibration" section — "Following plate-scale normalization, we recalculate SOMAmer- and plate-specific scale factors..."</span></div>
+  </div>
+</section>
+
+<section id="step5">
+  <h2><span class="stepnum">Step 5</span>Median Signal Normalization on All Sample Types (hyb.msnCal.ps.cal.msnAll)</h2>
+  <div class="card">
+    <p>At this stage, after correcting plate-to-plate variability to the fullest extent possible, median signal normalization (the same procedure as Step 2, Eqs. 3&ndash;4) is performed separately on each sample type — QC, experimental samples, buffer, and calibrator — rather than being restricted to calibrators only. This yields the final, fully normalized dataset <span class="cite">Candia 2024, Step 5</span>.</p>
+
+    <h3>Reasoning</h3>
+    <div class="rationale">
+      <strong>Why experimental samples wait until now</strong>
+      This mirrors the logic given for restricting Step 2 to calibrators: applying median normalization to experimental samples earlier, before plate-level effects (Steps 3&ndash;4) were removed, risked amplifying plate-to-plate differences rather than correcting for genuine sample-to-sample brightness variation. Once the plate has been fully calibrated, it's safe to apply the same median-normalization logic to every sample type.
+    </div>
+    <div class="citeblock">Source: <span class="cite">Candia 2024, Step 5, reusing Eqs. 3&ndash;4</span></div>
+  </div>
+</section>
+
+<section id="onebigidea">
+  <h2>The One Idea Behind All Five Steps</h2>
+  <div class="card">
+    <p>Every step in this pipeline is doing the same basic thing: <strong>matching something to a standard.</strong> What changes from step to step is which unit gets matched, and which reference is used as the standard to match it against.</p>
+    <table>
+      <tr><th>Step</th><th>What gets matched</th><th>The standard it's matched to</th></tr>
+      <tr>
+        <td><strong>1. Hybridization</strong></td>
+        <td>Each <em>well</em></td>
+        <td>That well's own hybridization control signal</td>
+      </tr>
+      <tr>
+        <td><strong>2. Median signal (calibrators)</strong></td>
+        <td>Each <em>calibrator sample</em></td>
+        <td>The median signal of all calibrators on the plate</td>
+      </tr>
+      <tr>
+        <td><strong>3. Plate-scale</strong></td>
+        <td>Each <em>plate</em>, as a whole</td>
+        <td>The median calibrator level across all plates &mdash; one shared correction applied to everything on the plate</td>
+      </tr>
+      <tr>
+        <td><strong>4. Calibration</strong></td>
+        <td>Each <em>SOMAmer</em>, individually</td>
+        <td>That same SOMAmer's own median level across all plates &mdash; a separate correction for every SOMAmer</td>
+      </tr>
+      <tr>
+        <td><strong>5. Median signal (all samples)</strong></td>
+        <td>Each <em>sample</em>, of any type</td>
+        <td>The median signal across all samples of that same type</td>
+      </tr>
+    </table>
+    <p>So the pipeline isn't five different ideas &mdash; it's one idea, "match to a standard," repeated at five different levels of granularity: well, calibrator sample, plate, SOMAmer, and finally every sample. Each step simply picks a different unit to correct and a different reference to correct it against.</p>
+  </div>
+</section>
+
+<section id="anml">
+  <h2>SomaLogic's ANML (Context — Not Part of This Paper's Own Pipeline)</h2>
+  <div class="card">
+    <p>It's worth being precise about scope here: Candia (2024)'s five-step pipeline above is an <strong>independent, internal-reference-only reconstruction</strong> of SomaScan normalization, built specifically so that users aren't dependent on SomaLogic's proprietary external references. SomaLogic's own delivered <code class="inline">adat</code> files instead follow a related but not identical sequence that uses external references and adds an additional adaptive normalization by maximum likelihood (ANML) step, delivered in files with a suffix such as <code class="inline">hybNorm.medNormInt.plateScale.calibrate.anmlQC.qcCheck.anmlSMP</code> <span class="cite">Candia 2024, "Summary and Conclusions"</span>.</p>
+    <div class="warnbox">
+      <strong>Why this distinction matters</strong>
+      SomaLogic's pipeline has historically operated as a largely undocumented process, described to users only at a narrative level, and has changed over time — switching from internal to external references, reordering median normalization, and splitting inter-plate calibration into the plate-scale-then-calibration structure described above — without shared version control, which makes it hard to compare studies run years apart or on different assay versions <span class="cite">Candia 2024, "Summary and Conclusions"</span>.
+    </div>
+  </div>
+</section>
+
+<section id="validation">
+  <h2>Validation: Does the Internal-Reference Pipeline Match SomaLogic's Own Output?</h2>
+  <div class="card">
+    <p>Using nearly 1,800 experimental samples from the Baltimore Longitudinal Study on Aging (BLSA), the author compared, for each of the 7,289 human protein SOMAmers in the 7K plasma assay, the Spearman correlation between SomaLogic's own fully normalized external-reference output and the fully normalized internal-reference pipeline described above <span class="cite">Candia 2024, "Summary and Conclusions"</span>. The distribution of per-SOMAmer correlations across all 7,289 SOMAmers had a median of r = 0.996, indicating the two approaches are highly concordant despite using entirely different reference schemes <span class="cite">Candia 2024, Fig. 6</span>.</p>
+    <p>Because this is a Spearman correlation, which is invariant to any monotonic transformation of the data (including a log transform), this concordance holds regardless of what scale the RFU values are subsequently analyzed on <span class="cite">Candia 2024, "Summary and Conclusions"</span>.</p>
+    <div class="citeblock">Source: <span class="cite">Candia 2024, Fig. 6 and accompanying text</span></div>
+  </div>
+</section>
+
+<section id="scenarios">
+  <h2>Applied Scenarios: Normalization in Practice</h2>
+  <p style="font-family:Arial,Helvetica,sans-serif; font-size:0.85rem; color:var(--sub); margin-top:-8px;">This section collects real-world normalization scenarios and the reasoning behind how to handle them, as a practical companion to the formal steps above.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Scenario 1 — Combining Batches with Unbalanced Groups and a Partially Shared Bridging Control</h3>
+
+    <h4>The situation</h4>
+    <p>A common scenario arises when a study combines two separately-run SomaScan batches: one batch containing the disease/case group of interest but few or no healthy controls, and a second, independently run batch (possibly from a different lab) contributing the bulk of the healthy control samples. Both batches share a common bridging control material run on every plate, intended to allow cross-batch comparison. In practice, this bridging material may not always be composed of the exact same aliquots in both batches — sometimes it is literally the same physical aliquots reused across batches, and sometimes it is a similarly-prepared but distinct pool. This distinction matters enormously for what can and cannot be concluded from it.</p>
+
+    <h4>Why this is a hard case</h4>
+    <div class="diffbox">
+      <strong>The core problem</strong>
+      When the case group exists almost entirely in one batch and the control group exists almost entirely in the other, the biological contrast of interest (case vs. control) becomes confounded with the technical contrast (batch A vs. batch B). No normalization procedure, standard or custom, can fully separate a real disease effect from a batch effect when there is no data point that varies in group while holding batch constant, or vice versa. This is a design-level limitation that downstream statistics cannot fully resolve — it can only be characterized and partially mitigated.
+    </div>
+    <p>A visual PCA check across batch and sample type is a useful first diagnostic here: if the shared bridging control clusters distinctly by batch rather than overlapping, that is direct evidence of residual, uncorrected batch structure. If the case group also shows very high internal spread compared to a tight control cluster, that asymmetry is worth noting but is not by itself diagnostic of batch effect, since it could equally reflect genuine biological heterogeneity in disease.</p>
+
+    <h4>What the bridging control can and cannot tell you</h4>
+    <table>
+      <tr><th></th><th>Same physical aliquots reused across batches</th><th>Similarly-prepared but distinct pools</th></tr>
+      <tr>
+        <td><strong>What a measured difference means</strong></td>
+        <td>Purely technical batch effect — no compositional confound</td>
+        <td>Conflates true batch effect with pool composition differences; cannot be cleanly separated</td>
+      </tr>
+      <tr>
+        <td><strong>Usable as a correction anchor?</strong></td>
+        <td>Yes, with appropriate caution for small replicate counts</td>
+        <td>Weak at best; better used only as a rough diagnostic bound on batch effect, not a correction target</td>
+      </tr>
+    </table>
+
+    <h4>Strategy when the bridging control is the same material across batches</h4>
+    <p>If a small number of truly paired bridging replicates exist (the same aliquots measured once in each batch), they provide a clean, if statistically thin, estimate of the per-analyte batch shift. A workable strategy:</p>
+    <ol style="font-size:0.96rem;">
+      <li>Estimate, per analyte, the batch shift using only the paired bridging replicates — not the full sample set — specifically to avoid the group/batch confound described above contaminating the batch estimate.</li>
+      <li>Because the number of paired replicates is typically very small (e.g., 3 per batch), treat the raw per-analyte shift estimates as unstable, and apply empirical Bayes shrinkage across all analytes toward a common batch-level shift — the same underlying logic used by ComBat, a well-established batch-correction method originally developed for microarray data and since adapted to other omics, including proteomics. This borrows statistical strength across analytes to stabilize what would otherwise be very noisy single-analyte estimates.</li>
+      <li>Apply the resulting shrunk, per-analyte correction to every sample in the affected batch — not just the bridging control — under the explicit assumption that the batch shift measured in the bridging material transfers to the biological samples of interest.</li>
+      <li>Prefer a mean-only correction (shifting the average level per analyte) over also correcting variance/scale differences between batches, since a handful of paired replicates cannot support a reliable variance estimate.</li>
+      <li>Validate the correction by checking whether it reduces the paired bridging-control difference relative to its pre-correction value. If it does not, the correction lacks empirical support and should not be trusted for adjusting the biological samples.</li>
+    </ol>
+
+    <div class="rationale">
+      <strong>Why standard ComBat isn't used directly here</strong>
+      Standard ComBat implementations estimate batch effect parameters from the full distribution of samples within each batch. When batch and biological group are highly confounded, as in this scenario, that default estimation would conflate the two — potentially removing genuine biological signal along with batch noise. Restricting the parameter estimation step to only the shared bridging replicates, while still applying the resulting correction to all samples, preserves the core empirical Bayes shrinkage logic of ComBat while avoiding this specific failure mode.
+    </div>
+
+    <h4>What this strategy does not resolve</h4>
+    <div class="warnbox">
+      <strong>Residual limitations to disclose</strong>
+      Even a well-executed bridging correction of this kind cannot fully validate that the batch shift observed in the bridging material is identical to the batch shift experienced by the actual case and control samples — there is no independent way to check this without additional shared material. Analytes near the assay's limit of detection are particularly vulnerable, since missing or censored values in the small bridging replicate set can make the batch shift estimate unreliable or impossible for those specific analytes. Any analysis using this approach should explicitly disclose that batch and biological group are structurally confounded by design, and that statistical correction mitigates but does not eliminate this limitation.
+    </div>
+  </div>
+</section>
+
+<section id="refs">
+  <h2>References</h2>
+  <div class="refs">
+    <ol>
+      <li>Candia, J. <em>SomaScan Bioinformatics: Normalization, Quality Control, and Assessment of Pre-Analytical Variation.</em> bioRxiv 2024.02.09.579724 (2024). <a href="https://www.biorxiv.org/content/10.1101/2024.02.09.579724v1" target="_blank">biorxiv.org/content/10.1101/2024.02.09.579724v1</a> &mdash; primary source for all equations, step definitions, and R code referenced throughout this document.</li>
+      <li>Candia, J. et al. <em>Assessment of variability in the somascan assay.</em> Scientific Reports 7, 14248 (2017). Cited within Candia 2024 as the earlier work establishing the risk of amplifying plate effects if median normalization on experimental samples precedes inter-plate calibration.</li>
+      <li>Candia, J., Daya, G., Tanaka, T., Ferrucci, L. &amp; Walker, K. <em>Assessment of variability in the plasma 7k somascan proteomics assay.</em> Scientific Reports 12, 17147 (2022). Source of the BLSA technical-replicate framework used for the validation and PAV-SST assessments in Candia 2024.</li>
+      <li>Lopez-Silva, C. et al. <em>Comparison of aptamer-based and antibody-based assays for protein quantification in chronic kidney disease.</em> CJASN 17, 350&ndash;360 (2022). Cited within Candia 2024 regarding potential attenuation of clinical associations by SomaLogic's external-reference normalization.</li>
+      <li>Pietzner, M. et al. <em>Synergistic insights into human health from aptamer- and antibody-based proteomic profiling.</em> Nature Communications 12, 6822 (2021). Cited within Candia 2024 regarding correlation with Olink when normalization is or isn't applied.</li>
+      <li>Johnson, W.E., Li, C. &amp; Rabinovic, A. <em>Adjusting batch effects in microarray expression data using empirical Bayes methods.</em> Biostatistics 8, 118&ndash;127 (2007). Original ComBat method, referenced in the applied scenarios section as the basis for empirical Bayes shrinkage in bridging-control batch correction.</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  All equations, step orderings, and figure/equation numbers in the normalization-steps sections above are reproduced (in the paper's own notation) from Candia (2024), bioRxiv 2024.02.09.579724, which is distributed under a CC0 license as a US Government work.
+</footer>
+
+</div>
+</body>
+</html>
