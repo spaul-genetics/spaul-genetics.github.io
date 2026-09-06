@@ -14,6 +14,7 @@ categories:
 date: "2026-07-13"
 lastmod: "2026-07-13"
 featured: false
+weight: 20
 draft: false
 toc: true
 math: true

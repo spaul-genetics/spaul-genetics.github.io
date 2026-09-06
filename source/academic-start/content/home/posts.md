@@ -17,7 +17,8 @@ content:
     exclude_past: false
   count: 5
   offset: 0
-  order: desc
+  sort_by: Weight
+  order: asc
 
 design:
   view: compact
