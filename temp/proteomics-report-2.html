@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A technical reference on next-generation proteomics, mass spectrometry, computational analysis, and statistical modeling.">
+<title>Next-Generation Proteomics and Mass Spectrometry (v8)</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --ink-muted: #6b6b6b;
+    --paper: #fdfcfa;
+    --panel: #f4f2ee;
+    --line: #ddd8d0;
+    --accent: #7f5af0;
+    --accent-ink: #3c3489;
+    --accent-bg: #eeedfe;
+    --teal: #0f6e56;
+    --teal-bg: #e1f5ee;
+    --coral: #993c1d;
+    --coral-bg: #faece7;
+    --amber: #854f0b;
+    --amber-bg: #faeeda;
+    --code-bg: #2b2a28;
+    --code-ink: #eae6df;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--panel);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto 0 300px;
+    background: var(--paper);
+    padding: 3rem 3.5rem 5rem;
+    box-shadow: 0 0 40px rgba(0,0,0,0.06);
+  }
+  @media (max-width: 1100px) {
+    .wrap { margin: 0 auto; }
+  }
+  @media (max-width: 700px) {
+    .wrap { padding: 2rem 1.25rem 3rem; }
+  }
+
+  #side-toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--panel);
+    border-right: 1px solid var(--line);
+    padding: 2rem 1.5rem;
+    font-family: -apple-system, sans-serif;
+    box-sizing: border-box;
+  }
+  @media (max-width: 1100px) {
+    #side-toc { display: none; }
+  }
+  #side-toc .side-title {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  #side-toc .site-home {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--paper);
+    color: var(--accent-ink);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  #side-toc ol {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 13px;
+    list-style-position: outside;
+  }
+  #side-toc ol ol {
+    padding-left: 1rem;
+    margin-top: 0.35rem;
+    margin-bottom: 0.6rem;
+    font-size: 12px;
+  }
+  #side-toc li { margin-bottom: 0.55rem; line-height: 1.4; }
+  #side-toc a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  #side-toc a:hover { color: var(--accent-ink); text-decoration: underline; }
+  #side-toc a.active { color: var(--accent-ink); font-weight: 700; }
+
+  .masthead {
+    text-align: center;
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 3px double var(--ink);
+  }
+  .mobile-site-home {
+    display: none;
+    width: fit-content;
+    margin: 0 0 1.5rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--accent-ink);
+    font-family: -apple-system, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  @media (max-width: 1100px) {
+    .mobile-site-home { display: inline-flex; }
+  }
+  .masthead .kicker {
+    font-family: -apple-system, sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+  }
+  .masthead h1 {
+    font-size: 2.1rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.25;
+  }
+  .masthead .sub {
+    font-family: -apple-system, sans-serif;
+    font-size: 14px;
+    color: var(--ink-muted);
+  }
+
+  section { margin-bottom: 3.5rem; }
+  h2 {
+    font-size: 1.55rem;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 0.5rem;
+    margin: 0 0 1.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  h2 .num {
+    font-family: -apple-system, sans-serif;
+    font-size: 13px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3px 9px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  h3 {
+    font-size: 1.2rem;
+    margin: 2rem 0 0.9rem;
+    color: var(--ink);
+  }
+  h4 {
+    font-size: 1.02rem;
+    margin: 1.5rem 0 0.6rem;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  p { margin: 0 0 1.1rem; text-align: justify; hyphens: auto; }
+  strong { font-weight: 700; }
+
+  .lede {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    border-left: 3px solid var(--accent);
+    padding-left: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .callout {
+    font-family: -apple-system, sans-serif;
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    border: 1px solid var(--line);
+  }
+  .callout.note { background: var(--accent-bg); border-color: #cecbf6; }
+  .callout.note .label { color: var(--accent-ink); }
+  .callout.example { background: var(--teal-bg); border-color: #9fe1cb; }
+  .callout.example .label { color: var(--teal); }
+  .callout.caution { background: var(--coral-bg); border-color: #f5c4b3; }
+  .callout.caution .label { color: var(--coral); }
+  .callout .label {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout p { text-align: left; }
+
+  .eqn-block {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.3rem 1.5rem;
+    margin: 1.2rem 0;
+    overflow-x: auto;
+    text-align: center;
+  }
+  .eqn {
+    font-family: 'Cambria Math', Cambria, Georgia, serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    white-space: nowrap;
+    display: inline-block;
+    margin: 0.3rem 0.8rem;
+  }
+  .eqn .rm { font-style: normal; }
+  .frac {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0 0.25em;
+  }
+  .frac .num, .frac .den {
+    display: block;
+    padding: 0 0.2em;
+  }
+  .frac .num { border-bottom: 1.3px solid var(--ink); padding-bottom: 1px; }
+  .frac .den { padding-top: 1px; }
+  sub, sup { font-size: 0.68em; }
+  .eqn sub, .eqn sup { font-style: italic; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.4rem 0;
+    font-family: -apple-system, sans-serif;
+    font-size: 13.5px;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  tr:nth-child(even) td { background: var(--panel); }
+  td.num-cell { font-family: 'Courier New', monospace; text-align: right; }
+
+  .table-scroll { overflow-x: auto; margin: 1.4rem 0; }
+  .table-scroll table { margin: 0; min-width: 900px; }
+
+  ul, ol { margin: 0 0 1.1rem; padding-left: 1.5rem; }
+  li { margin-bottom: 0.5rem; }
+
+  .ascii-diagram {
+    background: var(--code-bg);
+    color: var(--code-ink);
+    font-family: 'Courier New', monospace;
+    font-size: 12.5px;
+    line-height: 1.5;
+    padding: 1.25rem 1.5rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 1.4rem 0;
+    white-space: pre;
+  }
+
+  .code-block {
+    background: var(--code-bg);
+    color: var(--code-ink);
+    font-family: 'Courier New', monospace;
+    font-size: 12.5px;
+    line-height: 1.6;
+    padding: 1.25rem 1.5rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    white-space: pre;
+  }
+  .code-block .kw { color: #7fb3ff; }
+  .code-block .str { color: #c9e07a; }
+  .code-block .cm { color: #8a8778; font-style: italic; }
+
+  .term-list dt {
+    font-weight: 700;
+    margin-top: 1rem;
+  }
+  .term-list dd {
+    margin: 0.3rem 0 0;
+    color: var(--ink-soft);
+  }
+
+  .fig-caption {
+    font-family: -apple-system, sans-serif;
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    text-align: center;
+    margin-top: -0.6rem;
+    margin-bottom: 1.4rem;
+    font-style: italic;
+  }
+
+  .divider {
+    text-align: center;
+    color: var(--ink-muted);
+    letter-spacing: 0.5em;
+    margin: 2.5rem 0;
+    font-size: 12px;
+  }
+
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+    font-family: -apple-system, sans-serif;
+  }
+  .platform-card {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1rem 1.1rem;
+    background: var(--panel);
+  }
+  .platform-card .name { font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--ink); }
+  .platform-card .desc { font-size: 12.5px; color: var(--ink-soft); }
+
+  .footer-note {
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  a.back-to-top {
+    font-family: -apple-system, sans-serif;
+    font-size: 11px;
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+<nav id="side-toc">
+  <a class="site-home" href="/">&larr; Biography &amp; Blog</a>
+  <div class="side-title">Contents</div>
+  <ol>
+    <li><a href="#sec1">1. Biophysical differences</a>
+      <ol>
+        <li><a href="#sec1-1">1.1 Translation amplification</a></li>
+        <li><a href="#sec1-2">1.2 Stochastic bursting</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec2">2. Trypsin &amp; connectivity crisis</a>
+      <ol>
+        <li><a href="#sec2-1">2.1 Proteoform combinatorics</a></li>
+        <li><a href="#sec2-2">2.2 Trypsin backbone severing</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec3">3. Mass spec instrumentation</a>
+      <ol>
+        <li><a href="#sec3-1">3.1 Quadrupole mass filter</a></li>
+        <li><a href="#sec3-2">3.2 Orbitrap analyzer</a></li>
+        <li><a href="#sec3-3">3.3 C-trap and HCD</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec4">4. Acquisition strategies</a>
+      <ol>
+        <li><a href="#sec4-1">4.1 Bottom-up vs. top-down</a></li>
+        <li><a href="#sec4-2">4.2 DDA vs. DIA</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec5">5. Computational analysis</a>
+      <ol>
+        <li><a href="#sec5-1">5.1 Software comparison matrix</a></li>
+        <li><a href="#sec5-2">5.2 Proteome Discoverer deep-dive</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec6">6. Statistical modeling</a>
+      <ol>
+        <li><a href="#sec6-1">6.1 MSstats mixed-effects</a></li>
+        <li><a href="#sec6-2">6.2 proDA dropout modeling</a></li>
+        <li><a href="#sec6-3">6.3 DEqMS variance moderation</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec7">7. Spatial &amp; single-cell</a></li>
+    <li><a href="#sec8">8. Affinity platforms</a></li>
+  </ol>
+</nav>
+<div class="wrap">
+
+  <a class="mobile-site-home" href="/">&larr; Biography &amp; Blog</a>
+
+  <header class="masthead">
+    <div class="kicker">Technical reference &middot; v8</div>
+    <h1>Next-Generation Proteomics<br>and Mass Spectrometry</h1>
+    <div class="sub">Written for quantitative scientists in mathematics, statistics, and transcriptomics transitioning into proteomics</div>
+  </header>
+
+  <section id="sec1">
+    <h2><span class="num">1</span>Biophysical differences: transcripts vs. proteins</h2>
+    <p class="lede">In classical transcriptomics, a gene locus is often treated as a direct proxy for functional cellular output. However, the cellular reality is characterized by extreme biophysical and biochemical decoupling.</p>
+
+    <h3 id="sec1-1">1.1 The steady-state translation amplification factor</h3>
+    <p>Because proteins cannot be amplified exponentially, unlike DNA and RNA via PCR, researchers must measure the absolute quantities of molecules physically present. In single cells, gene expression can be extremely low, often with a population average of less than 1 mRNA transcript per cell. Yet the corresponding functional protein is frequently found in stable quantities of 30 to 100+ copies.</p>
+
+    <p>To model this deterministic birth-death kinetic system, let <em>M(t)</em> be the concentration of mRNA and <em>P(t)</em> the concentration of the corresponding protein. Define:</p>
+    <ul>
+      <li><em>k<sub>m</sub></em> &mdash; the transcription rate of mRNA</li>
+      <li><em>d<sub>m</sub></em> &mdash; the degradation rate constant of mRNA, half-life <em>t<sub>1/2,m</sub></em> = ln(2)/<em>d<sub>m</sub></em></li>
+      <li><em>k<sub>p</sub></em> &mdash; the translation rate constant (proteins synthesized per mRNA per unit time)</li>
+      <li><em>d<sub>p</sub></em> &mdash; the degradation rate constant of the protein, <em>t<sub>1/2,p</sub></em> = ln(2)/<em>d<sub>p</sub></em></li>
+    </ul>
+
+    <p>The governing ordinary differential equations (ODEs) are:</p>
+    <div class="eqn-block">
+      <div class="eqn">dM/dt = k<sub>m</sub> &minus; d<sub>m</sub>M</div><br>
+      <div class="eqn">dP/dt = k<sub>p</sub>M &minus; d<sub>p</sub>P</div>
+    </div>
+
+    <p>At steady state:</p>
+    <div class="eqn-block">
+      <div class="eqn">M<sub>ss</sub> = <span class="frac"><span class="num">k<sub>m</sub></span><span class="den">d<sub>m</sub></span></span></div><br>
+      <div class="eqn">P<sub>ss</sub> = <span class="frac"><span class="num">k<sub>p</sub>M<sub>ss</sub></span><span class="den">d<sub>p</sub></span></span> = <span class="rm">(</span><span class="frac"><span class="num">k<sub>p</sub></span><span class="den">d<sub>p</sub></span></span><span class="rm">)</span>M<sub>ss</sub></div>
+    </div>
+
+    <p>The ratio of steady-state protein abundance to mRNA abundance defines the <strong>translation amplification factor</strong>, &beta;:</p>
+    <div class="eqn-block">
+      <div class="eqn">&beta; = <span class="frac"><span class="num">P<sub>ss</sub></span><span class="den">M<sub>ss</sub></span></span> = <span class="frac"><span class="num">k<sub>p</sub></span><span class="den">d<sub>p</sub></span></span></div>
+    </div>
+
+    <p>In mammalian cells, the biophysical constants differ by orders of magnitude:</p>
+
+    <table>
+      <tr><th>Property</th><th>Typical range</th><th>Consequence</th></tr>
+      <tr><td>Differential stability</td><td class="num-cell">t<sub>1/2,m</sub>: 2&ndash;9 h &nbsp;|&nbsp; t<sub>1/2,p</sub>: 20&ndash;46 h</td><td>d<sub>p</sub> &laquo; d<sub>m</sub> &mdash; proteins vastly outlast their mRNA templates</td></tr>
+      <tr><td>Template reuse</td><td class="num-cell">k<sub>p</sub> &asymp; 40 h<sup>&minus;1</sup></td><td>Ribosomes scan a single mRNA repeatedly, translating continuously</td></tr>
+    </table>
+
+    <div class="callout example">
+      <span class="label">Worked example</span>
+      <p>A gene has a low steady-state transcript expectation of <em>M<sub>ss</sub></em> = 0.1 copies per cell. With <em>k<sub>p</sub></em> = 40 h<sup>&minus;1</sup> and <em>d<sub>p</sub></em> &asymp; 0.023 h<sup>&minus;1</sup> (half-life of ~30 hours):</p>
+      <p style="text-align:center; font-family: 'Courier New', monospace; margin: 0.8rem 0;">P<sub>ss</sub> = (40 / 0.023) &times; 0.1 &asymp; 1739 &times; 0.1 &asymp; 174 protein copies per cell</p>
+    </div>
+
+    <table>
+      <tr><th>Protein half-life (h)</th><th>Translation rate k<sub>p</sub> (per h)</th><th>d<sub>p</sub></th><th>&beta;</th><th>P<sub>ss</sub></th></tr>
+      <tr><td class="num-cell">20</td><td class="num-cell">40</td><td class="num-cell">0.035</td><td class="num-cell">1,155</td><td class="num-cell">116</td></tr>
+      <tr><td class="num-cell">30</td><td class="num-cell">40</td><td class="num-cell">0.023</td><td class="num-cell">1,739</td><td class="num-cell">174</td></tr>
+      <tr><td class="num-cell">46</td><td class="num-cell">40</td><td class="num-cell">0.015</td><td class="num-cell">2,667</td><td class="num-cell">267</td></tr>
+      <tr><td class="num-cell">30</td><td class="num-cell">80</td><td class="num-cell">0.023</td><td class="num-cell">3,478</td><td class="num-cell">348</td></tr>
+    </table>
+
+    <h3 id="sec1-2">1.2 Stochastic bursting and low-pass filtering</h3>
+    <p>In single cells, transcription is not continuous; it occurs in stochastic, highly localized "bursts." Let the mRNA copy number <em>M</em> at any instant in a single cell be a Poisson random variable with parameter &lambda; = 0.1 (population average of 0.1 copies per cell):</p>
+
+    <div class="eqn-block">
+      <div class="eqn">P(M = k) = <span class="frac"><span class="num">&lambda;<sup>k</sup>e<sup>&minus;&lambda;</sup></span><span class="den">k!</span></span></div>
+    </div>
+
+    <table>
+      <tr><th>Transcript count (M)</th><th>Probability</th><th>Interpretation</th></tr>
+      <tr><td class="num-cell">M = 0</td><td class="num-cell">90.5%</td><td>Cells with zero copies of the transcript</td></tr>
+      <tr><td class="num-cell">M = 1</td><td class="num-cell">9.0%</td><td>Cells with exactly one copy</td></tr>
+    </table>
+
+    <p>When a transcript is made, ribosomes translate it rapidly, generating hundreds of protein copies before the mRNA decays. Because the protein is highly stable (<em>d<sub>p</sub></em> &laquo; <em>d<sub>m</sub></em>), the protein pool acts as a <strong>mathematical low-pass filter (integrator)</strong>, smoothing out the rapid, volatile on/off stochastic bursts of mRNA.</p>
+
+    <svg viewBox="0 0 680 320" style="width:100%; height:auto; margin:1.4rem 0;" role="img" aria-label="Two stacked line charts: the top shows mRNA abundance as sharp, isolated spikes representing stochastic transcriptional bursts, and the bottom shows the resulting protein abundance as a smoothed, slowly decaying curve, illustrating how the stable protein pool low-pass filters the noisy mRNA signal">
+      <text x="40" y="24" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#5f5e5a">mRNA abundance (stochastic bursting)</text>
+      <line x1="60" y1="110" x2="620" y2="110" stroke="#b4b2a9" stroke-width="1"/>
+      <line x1="60" y1="30" x2="60" y2="110" stroke="#b4b2a9" stroke-width="1"/>
+      <line x1="150" y1="110" x2="150" y2="55" stroke="#378add" stroke-width="2.5"/>
+      <line x1="320" y1="110" x2="320" y2="80" stroke="#378add" stroke-width="2.5"/>
+      <line x1="440" y1="110" x2="440" y2="65" stroke="#378add" stroke-width="2.5"/>
+      <text x="30" y="35" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" fill="#5f5e5a">high</text>
+      <text x="30" y="114" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" fill="#5f5e5a">0</text>
+
+      <text x="40" y="164" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#5f5e5a">Protein abundance (low-pass filtered)</text>
+      <line x1="60" y1="290" x2="620" y2="290" stroke="#b4b2a9" stroke-width="1"/>
+      <line x1="60" y1="180" x2="60" y2="290" stroke="#b4b2a9" stroke-width="1"/>
+      <path d="M60 285 C 100 285, 130 200, 150 190 C 170 182, 200 210, 250 235 C 290 255, 300 258, 320 250 C 340 244, 360 205, 400 195 C 430 190, 450 210, 500 250 C 550 275, 580 282, 620 284"
+            fill="none" stroke="#712b13" stroke-width="2.5"/>
+      <text x="30" y="195" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" fill="#5f5e5a">150</text>
+      <text x="30" y="294" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" fill="#5f5e5a">0</text>
+      <text x="620" y="308" text-anchor="end" font-family="-apple-system, sans-serif" font-size="11" fill="#5f5e5a">time</text>
+    </svg>
+    <div class="fig-caption">Figure 1. mRNA arrives as sharp, isolated bursts; the far more stable protein pool integrates them into a smooth, persistent signal.</div>
+
+    <p>Consequently, single-cell co-assays frequently capture cells with exactly 0 transcripts but 100 active proteins.</p>
+  </section>
+
+  <div class="divider">&sect; &sect; &sect;</div>
+
+  <section id="sec2">
+    <h2><span class="num">2</span>The trypsin slicing problem &amp; the connectivity crisis</h2>
+    <p class="lede">While a single gene generally maps to a discrete transcript sequence, a single gene can yield millions of distinct chemical structures in the active proteome. These variants are called <strong>proteoforms</strong>, defined by the complete combination of alternative splicing, genetic variants, and post-translational modifications (PTMs).</p>
+
+    <svg viewBox="0 0 680 460" style="width:100%; height:auto; margin:1.4rem 0;" role="img" aria-label="Diagram showing an intact modified proteoform, the biological reality, being digested by trypsin into severed peptides that have lost their physical link, with phosphorylation on peptide A and acetylation on peptide B">
+      <defs>
+        <marker id="cc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="#993c1d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+      <text x="340" y="26" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" letter-spacing="0.04em" fill="#5f5e5a">STAGE 1</text>
+      <rect x="70" y="38" width="540" height="92" rx="10" fill="#eeedfe" stroke="#534ab7" stroke-width="0.75"/>
+      <text x="340" y="66" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="15" font-weight="600" fill="#26215c">Intact modified proteoform</text>
+      <text x="340" y="84" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#3c3489">(biological reality)</text>
+      <text x="340" y="104" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#3c3489">Phosphorylation (Ser45) and acetylation (Lys120) on one molecule</text>
+      <circle cx="180" cy="118" r="5" fill="#7f5af0"/>
+      <circle cx="500" cy="118" r="5" fill="#7f5af0"/>
+      <line x1="180" y1="118" x2="500" y2="118" stroke="#7f77dd" stroke-width="1.5" stroke-dasharray="3 4"/>
+
+      <line x1="340" y1="130" x2="340" y2="185" stroke="#993c1d" stroke-width="1.5" marker-end="url(#cc-arrow)"/>
+      <text x="358" y="162" font-family="-apple-system, sans-serif" font-size="12" fill="#712b13">Enzymatic digestion (trypsin)</text>
+
+      <text x="340" y="212" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" letter-spacing="0.04em" fill="#5f5e5a">STAGE 2</text>
+      <rect x="70" y="224" width="540" height="26" rx="6" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+      <text x="340" y="241" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="13" font-weight="600" fill="#4a1b0c">Severed peptides (loss of physical link)</text>
+
+      <rect x="70" y="266" width="240" height="70" rx="10" fill="#faece7" stroke="#993c1d" stroke-width="0.75"/>
+      <text x="190" y="294" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#4a1b0c">Peptide A</text>
+      <text x="190" y="314" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#712b13">w/ phosphorylation</text>
+      <circle cx="190" cy="328" r="4" fill="#d85a30"/>
+
+      <rect x="370" y="266" width="240" height="70" rx="10" fill="#faece7" stroke="#993c1d" stroke-width="0.75"/>
+      <text x="490" y="294" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#4a1b0c">Peptide B</text>
+      <text x="490" y="314" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#712b13">w/ acetylation</text>
+      <circle cx="490" cy="328" r="4" fill="#d85a30"/>
+
+      <line x1="310" y1="301" x2="370" y2="301" stroke="#b4b2a9" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <text x="340" y="295" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="16" fill="#888780">&#10008;</text>
+      <text x="340" y="316" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#888780">link lost</text>
+
+      <rect x="70" y="366" width="540" height="80" rx="10" fill="#f1efe8" stroke="#b4b2a9" stroke-width="0.75"/>
+      <text x="340" y="392" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="13" font-weight="600" fill="#2c2c2a">The search engine reports each modification independently</text>
+      <text x="340" y="412" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#5f5e5a">It cannot mathematically prove both modifications came from the same molecule</text>
+      <text x="340" y="430" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#5f5e5a">versus two separate molecules</text>
+    </svg>
+    <div class="fig-caption">Figure 2. Digestion breaks the physical link between co-occurring modifications.</div>
+
+    <h3 id="sec2-1">2.1 The combinatorial space of proteoforms</h3>
+    <p>For any single gene G, the number of possible physical proteoforms is combinatorially explosive:</p>
+
+    <div class="eqn-block">
+      <div class="eqn">P<sub>total</sub> = V &times; S &times; &prod;<sub>i=1</sub><sup>N</sup> (1 + C<sub>i</sub>)</div>
+    </div>
+
+    <table>
+      <tr><th>Symbol</th><th>Meaning</th></tr>
+      <tr><td>V</td><td>Number of genetic sequence variants (SAAVs)</td></tr>
+      <tr><td>S</td><td>Number of alternatively spliced isoforms</td></tr>
+      <tr><td>N</td><td>Number of distinct modification sites</td></tr>
+      <tr><td>C<sub>i</sub></td><td>Number of modified states at site i</td></tr>
+    </table>
+
+    <h3 id="sec2-2">2.2 The trypsin digestion backbone severing</h3>
+    <p>In the standard <strong>bottom-up proteomics</strong> workflow, proteins are extracted and digested into short peptides (7 to 35 amino acids) using an enzyme like <strong>trypsin</strong>, which cleaves C-terminal to lysine and arginine, unless followed by proline.</p>
+
+    <p>This digestion physically severs the primary protein backbone. When trypsin cleaves between Ser45 (phosphorylated) and Lys120 (acetylated), the physical link, or connectivity, is permanently broken.</p>
+
+    <div class="callout caution">
+      <span class="label">The core problem</span>
+      <p>The downstream mass spectrometer measures Peptide A and Peptide B as completely independent objects. While the database search engine identifies both modifications, it cannot mathematically prove whether they co-existed on the same physical protein molecule or occurred on separate molecules.</p>
+    </div>
+  </section>
+
+  <div class="divider">&sect; &sect; &sect;</div>
+
+  <section id="sec3">
+    <h2><span class="num">3</span>Mass spectrometry instrumentation: physics of mass analyzers</h2>
+    <p class="lede">Mass spectrometry (MS) measures the mass-to-charge ratio (m/z) of gas-phase ions. The instrument consists of an ion source, one or more mass analyzers, and a detector.</p>
+
+    <svg viewBox="0 0 700 260" style="width:100%; height:auto; margin:1.4rem 0;" role="img" aria-label="Flow diagram of a Thermo Fisher Orbitrap instrument pipeline: ESI source feeds a heated capillary, then an S-lens guide, then a bent flatapole, into a quadrupole mass filter, then the C-trap, which connects to both the HCD collision cell and the Orbitrap detector">
+      <defs>
+        <marker id="pipe-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="#5f5e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+      <rect x="10" y="30" width="110" height="50" rx="8" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.75"/>
+      <text x="65" y="50" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#042c53">ESI source</text>
+      <text x="65" y="66" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" fill="#185fa5">Taylor cone</text>
+
+      <line x1="120" y1="55" x2="146" y2="55" stroke="#5f5e5a" stroke-width="1.3" marker-end="url(#pipe-arrow)"/>
+
+      <rect x="148" y="30" width="120" height="50" rx="8" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.75"/>
+      <text x="208" y="50" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#042c53">Heated capillary</text>
+      <text x="208" y="66" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" fill="#185fa5">desolvation</text>
+
+      <line x1="268" y1="55" x2="294" y2="55" stroke="#5f5e5a" stroke-width="1.3" marker-end="url(#pipe-arrow)"/>
+
+      <rect x="296" y="30" width="110" height="50" rx="8" fill="#eeedfe" stroke="#534ab7" stroke-width="0.75"/>
+      <text x="351" y="50" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#26215c">S-lens guide</text>
+      <text x="351" y="66" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" fill="#3c3489">radial focusing</text>
+
+      <line x1="406" y1="55" x2="432" y2="55" stroke="#5f5e5a" stroke-width="1.3" marker-end="url(#pipe-arrow)"/>
+
+      <rect x="434" y="30" width="130" height="50" rx="8" fill="#eeedfe" stroke="#534ab7" stroke-width="0.75"/>
+      <text x="499" y="50" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#26215c">Bent flatapole</text>
+      <text x="499" y="66" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" fill="#3c3489">neutral rejection</text>
+
+      <line x1="499" y1="80" x2="499" y2="106" stroke="#5f5e5a" stroke-width="1.3"/>
+      <line x1="499" y1="106" x2="360" y2="106" stroke="#5f5e5a" stroke-width="1.3" marker-end="url(#pipe-arrow)"/>
+
+      <rect x="245" y="112" width="150" height="50" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.75"/>
+      <text x="320" y="132" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#4a1b0c">Quadrupole (Q)</text>
+      <text x="320" y="148" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" fill="#712b13">precursor selection</text>
+
+      <line x1="245" y1="137" x2="215" y2="137" stroke="#5f5e5a" stroke-width="1.3" marker-end="url(#pipe-arrow)"/>
+
+      <rect x="70" y="112" width="150" height="50" rx="8" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.75"/>
+      <text x="145" y="132" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#04342c">C-trap</text>
+      <text x="145" y="148" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" fill="#085041">cooling &amp; injection</text>
+
+      <line x1="145" y1="162" x2="145" y2="188" stroke="#5f5e5a" stroke-width="1.3" marker-end="url(#pipe-arrow)"/>
+      <line x1="220" y1="137" x2="320" y2="192" stroke="#5f5e5a" stroke-width="1.3" marker-end="url(#pipe-arrow)"/>
+
+      <rect x="70" y="192" width="150" height="46" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.75"/>
+      <text x="145" y="212" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#4a1b0c">HCD cell</text>
+      <text x="145" y="228" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" fill="#712b13">fragmentation</text>
+
+      <rect x="245" y="192" width="150" height="46" rx="8" fill="#eeedfe" stroke="#534ab7" stroke-width="0.75"/>
+      <text x="320" y="212" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#26215c">Orbitrap</text>
+      <text x="320" y="228" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" fill="#3c3489">detector, FT readout</text>
+
+      <line x1="220" y1="215" x2="245" y2="215" stroke="#5f5e5a" stroke-width="1.3" stroke-dasharray="3 3"/>
+    </svg>
+    <div class="fig-caption">Figure 3. The full Thermo Fisher instrument pipeline: ions travel from the ESI source through optics and the quadrupole into the C-trap, which shuttles them to either the HCD cell for fragmentation or directly to the Orbitrap for detection.</div>
+
+    <h3 id="sec3-1">3.1 The quadrupole mass filter (Q)</h3>
+    <p>A quadrupole consists of four parallel metal rods. Opposite pairs are supplied with a potential containing direct current (U) and radio frequency (Vcos(&Omega;t)):</p>
+
+    <div class="eqn-block">
+      <div class="eqn">&Phi;(t) = &plusmn;[U + Vcos(&Omega;t)]</div>
+    </div>
+
+    <svg viewBox="0 0 680 320" style="width:100%; height:auto; margin:1.4rem 0;" role="img" aria-label="Cross-section diagram of a quadrupole mass filter showing four parallel rods arranged around a central axis, with opposite polarity voltages on adjacent rod pairs">
+      <text x="340" y="24" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#6b6b6b">Cross-section, viewed end-on down the central axis</text>
+
+      <circle cx="240" cy="160" r="26" fill="none" stroke="#042c53" stroke-width="3"/>
+      <text x="240" y="130" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#042c53">+U + Vcos(&Omega;t)</text>
+
+      <circle cx="440" cy="160" r="26" fill="none" stroke="#042c53" stroke-width="3"/>
+      <text x="440" y="130" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#042c53">+U + Vcos(&Omega;t)</text>
+
+      <circle cx="340" cy="80" r="26" fill="none" stroke="#993c1d" stroke-width="3"/>
+      <text x="340" y="50" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#712b13">&minus;U &minus; Vcos(&Omega;t)</text>
+
+      <circle cx="340" cy="240" r="26" fill="none" stroke="#993c1d" stroke-width="3"/>
+      <text x="340" y="278" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#712b13">&minus;U &minus; Vcos(&Omega;t)</text>
+
+      <circle cx="340" cy="160" r="4" fill="#5f5e5a"/>
+      <text x="340" y="180" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#5f5e5a">z-axis</text>
+
+      <path d="M340 160 Q 350 140 340 160 Q 330 180 340 160" fill="none" stroke="#185fa5" stroke-width="1"/>
+      <text x="500" y="160" font-family="-apple-system, sans-serif" font-size="11" fill="#5f5e5a">Ion trajectory oscillates</text>
+      <text x="500" y="176" font-family="-apple-system, sans-serif" font-size="11" fill="#5f5e5a">between the four rods</text>
+    </svg>
+    <div class="fig-caption">Figure 4. End-on cross-section of a quadrupole. Adjacent rod pairs carry opposite-polarity combined DC/RF voltages.</div>
+
+    <p>The equations of motion for an ion traveling along the quadrupole axis (x, y) are modeled by the <strong>Mathieu equations</strong>:</p>
+
+    <div class="eqn-block">
+      <div class="eqn">d<sup>2</sup>x/d&xi;<sup>2</sup> + (a<sub>x</sub> &minus; 2q<sub>x</sub>cos 2&xi;)x = 0</div><br>
+      <div class="eqn">d<sup>2</sup>y/d&xi;<sup>2</sup> &minus; (a<sub>y</sub> &minus; 2q<sub>y</sub>cos 2&xi;)y = 0</div>
+    </div>
+
+    <p>Where &xi; = &Omega;t / 2, and the dimensionless stability parameters a and q are:</p>
+
+    <div class="eqn-block">
+      <div class="eqn">a<sub>u</sub> = a<sub>x</sub> = &minus;a<sub>y</sub> = <span class="frac"><span class="num">8eU</span><span class="den">m&Omega;<sup>2</sup>r<sub>0</sub><sup>2</sup></span></span>,&nbsp;&nbsp; q<sub>u</sub> = q<sub>x</sub> = &minus;q<sub>y</sub> = <span class="frac"><span class="num">4eV</span><span class="den">m&Omega;<sup>2</sup>r<sub>0</sub><sup>2</sup></span></span></div>
+    </div>
+
+    <p>By adjusting the ratio U/V along the boundaries of the Mathieu stability diagram, the quadrupole acts as a precise mass filter, allowing only ions within a narrow window, e.g., 1.4 Th, to pass through.</p>
+
+    <h3 id="sec3-2">3.2 The Orbitrap analyzer</h3>
+    <p>The Orbitrap consists of a central spindle-like electrode and an outer barrel-like electrode. The electrostatic potential U(r, z) is mathematically engineered to be quadratic in z:</p>
+
+    <svg viewBox="0 0 680 340" style="width:100%; height:auto; margin:1.4rem 0;" role="img" aria-label="Cutaway diagram of an Orbitrap mass analyzer showing the spindle-shaped central electrode surrounded by the split outer barrel electrode, with ions orbiting the spindle while also oscillating back and forth along its axis">
+      <defs>
+        <linearGradient id="orb-field" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#eeedfe" stop-opacity="0.3"/>
+          <stop offset="50%" stop-color="#7f77dd" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#eeedfe" stop-opacity="0.3"/>
+        </linearGradient>
+      </defs>
+      <ellipse cx="340" cy="170" rx="280" ry="110" fill="url(#orb-field)" stroke="#534ab7" stroke-width="1"/>
+      <text x="340" y="46" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#3c3489">Outer barrel electrode (ground, 0V; split into two halves)</text>
+
+      <line x1="60" y1="170" x2="620" y2="170" stroke="#5f5e5a" stroke-width="1"/>
+      <path d="M180 170 Q340 150 500 170 Q340 190 180 170 Z" fill="#cecbf6" stroke="#3c3489" stroke-width="1"/>
+      <text x="340" y="175" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#26215c">Spindle (&minus;V_dc electrostatic)</text>
+
+      <ellipse cx="300" cy="150" rx="10" ry="4" fill="none" stroke="#993c1d" stroke-width="1.5"/>
+      <circle cx="290" cy="150" r="3.5" fill="#993c1d"/>
+      <ellipse cx="380" cy="192" rx="14" ry="5" fill="none" stroke="#0f6e56" stroke-width="1.5"/>
+      <circle cx="366" cy="192" r="3.5" fill="#0f6e56"/>
+      <ellipse cx="250" cy="195" rx="12" ry="4.5" fill="none" stroke="#993c1d" stroke-width="1.5"/>
+      <circle cx="238" cy="195" r="3.5" fill="#993c1d"/>
+
+      <text x="130" y="280" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#712b13">Ions orbit the spindle</text>
+      <text x="130" y="296" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#712b13">radially (fast)</text>
+
+      <text x="550" y="280" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#085041">...while also oscillating</text>
+      <text x="550" y="296" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#085041">axially along z (slower)</text>
+
+      <line x1="200" y1="260" x2="260" y2="200" stroke="#993c1d" stroke-width="0.75" stroke-dasharray="2 3"/>
+      <line x1="500" y1="260" x2="400" y2="195" stroke="#0f6e56" stroke-width="0.75" stroke-dasharray="2 3"/>
+
+      <text x="340" y="320" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#5f5e5a">Only the axial oscillation frequency is measured &mdash; it depends solely on m/z</text>
+    </svg>
+    <div class="fig-caption">Figure 5. Cutaway of the Orbitrap analyzer. Ions spiral around the spindle while oscillating along its axis; the axial frequency encodes m/z.</div>
+
+    <div class="eqn-block">
+      <div class="eqn">U(r, z) = <span class="frac"><span class="num">k</span><span class="den">2</span></span><span class="rm">(</span>z<sup>2</sup> &minus; <span class="frac"><span class="num">r<sup>2</sup></span><span class="den">2</span></span><span class="rm">)</span> + <span class="frac"><span class="num">k</span><span class="den">2</span></span>R<sub>m</sub><sup>2</sup>ln<span class="rm">(</span><span class="frac"><span class="num">r</span><span class="den">R<sub>m</sub></span></span><span class="rm">)</span> + C</div>
+    </div>
+
+    <p>This field forces injected ions into stable orbits around the central electrode while executing harmonic axial oscillations along the z-axis:</p>
+
+    <div class="eqn-block">
+      <div class="eqn">m&#776;z + qkz = 0</div>
+    </div>
+
+    <p>The axial oscillation frequency (&omega;) is:</p>
+
+    <div class="eqn-block">
+      <div class="eqn">&omega; = &radic;<span style="text-decoration:overline; padding:0 2px;"><span class="frac"><span class="num">q</span><span class="den">m</span></span>&sdot;k</span> &nbsp;&nbsp;&rArr;&nbsp;&nbsp; f = <span class="frac"><span class="num">1</span><span class="den">2&pi;</span></span>&radic;<span style="text-decoration:overline; padding:0 2px;"><span class="frac"><span class="num">e&sdot;z</span><span class="den">m</span></span>&sdot;k</span></div>
+    </div>
+
+    <div class="callout note">
+      <span class="label">Independent of geometry, dependent only on m/z</span>
+      <p>Because the frequency is independent of ion velocity, angle, or entry coordinates, it depends strictly on m/z. The oscillating ions induce an image current on the outer electrodes, which is recorded in the time domain as a transient, pre-amplified, and transformed via Fourier Transform (FT) into an ultra-high-resolution spectrum, 140,000 to 500,000+ FWHM.</p>
+    </div>
+
+    <h3 id="sec3-3">3.3 The C-trap and HCD interface</h3>
+    <p>To prepare ions for Orbitrap injection, they are collected in the <strong>C-trap</strong>, a curved RF-only quadrupole, and cooled via collisions with nitrogen (N&#8322;) bath gas, a process called thermalization.</p>
+
+    <svg viewBox="0 0 680 220" style="width:100%; height:auto; margin:1.4rem 0;" role="img" aria-label="Diagram of the C-trap, a curved RF-only quadrupole filled with nitrogen bath gas, showing ions accumulating and cooling along its curved axis before being ejected orthogonally as a compact packet">
+      <defs>
+        <marker id="ct-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="#993c1d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+      <path d="M60 160 Q 60 60 200 60 Q 340 60 340 130" fill="none" stroke="#0f6e56" stroke-width="10" stroke-linecap="round" opacity="0.25"/>
+      <path d="M60 160 Q 60 60 200 60 Q 340 60 340 130" fill="none" stroke="#0f6e56" stroke-width="1.5" stroke-linecap="round"/>
+      <text x="200" y="40" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="13" font-weight="600" fill="#04342c">C-trap</text>
+      <text x="200" y="200" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#085041">RF-only quadrupole, bent into a "C"</text>
+
+      <circle cx="120" cy="90" r="5" fill="#0f6e56"/>
+      <circle cx="160" cy="65" r="5" fill="#0f6e56"/>
+      <circle cx="220" cy="62" r="5" fill="#0f6e56"/>
+      <circle cx="90" cy="130" r="5" fill="#0f6e56"/>
+      <text x="440" y="90" font-family="-apple-system, sans-serif" font-size="11" fill="#5f5e5a">N&#8322; bath gas cools</text>
+      <text x="440" y="106" font-family="-apple-system, sans-serif" font-size="11" fill="#5f5e5a">and thermalizes ions</text>
+      <text x="440" y="122" font-family="-apple-system, sans-serif" font-size="11" fill="#5f5e5a">along the curved axis</text>
+
+      <line x1="340" y1="130" x2="400" y2="130" stroke="#993c1d" stroke-width="2" marker-end="url(#ct-arrow)"/>
+      <text x="345" y="150" font-family="-apple-system, sans-serif" font-size="11" fill="#712b13">Ejected orthogonally</text>
+      <text x="345" y="164" font-family="-apple-system, sans-serif" font-size="11" fill="#712b13">as a compact packet</text>
+    </svg>
+    <div class="fig-caption">Figure 6. The C-trap accumulates and cools ions before ejecting them as a compact, synchronized packet.</div>
+
+    <p>For MS2 fragmentation, precursor ions are accelerated from the C-trap into the <strong>HCD (Higher-Energy Collisional Dissociation) cell</strong>, which fragments peptides into N-terminal <strong>b-ions</strong> and C-terminal <strong>y-ions</strong>. The fragments are returned to the C-trap, squeezed into a tight packet, and injected orthogonally into the Orbitrap.</p>
+  </section>
+
+  <div class="divider">&sect; &sect; &sect;</div>
+
+  <section id="sec4">
+    <h2><span class="num">4</span>Discovery paradigms &amp; data acquisition strategies</h2>
+
+    <h3 id="sec4-1">4.1 Bottom-up vs. top-down proteomics</h3>
+
+    <table>
+      <tr><th></th><th>Bottom-up (BUP)</th><th>Top-down (TDP)</th></tr>
+      <tr><td>Approach</td><td>Proteins are digested into peptides</td><td>Intact proteins are analyzed directly</td></tr>
+      <tr><td>Strength</td><td>Highly sensitive, robust, handles complex mixtures</td><td>Preserves complete sequence connectivity; maps PTMs exactly</td></tr>
+      <tr><td>Weakness</td><td>Suffers from the connectivity crisis &mdash; cannot link combinatorial PTMs or resolve complex proteoforms</td><td>Limited by the solubility of large proteins, typically &lt;30 kDa; lower overall sensitivity; spectral complexity</td></tr>
+    </table>
+
+    <h3 id="sec4-2">4.2 Data-dependent (DDA) vs. data-independent acquisition (DIA)</h3>
+
+    <dl class="term-list">
+      <dt>DDA</dt>
+      <dd>The instrument performs a survey scan (MS1), selects the "Top N" most abundant precursor peaks, isolates them, and fragments them individually (MS2).</dd>
+    </dl>
+
+    <div class="callout caution">
+      <span class="label">Stochastic sampling problem</span>
+      <p>Because precursors are chosen based on intensity, co-eluting low-abundance peptides are sampled inconsistently across runs, resulting in a high rate of missing values (sparsity) in large cohorts.</p>
+    </div>
+
+    <dl class="term-list">
+      <dt>DIA</dt>
+      <dd>The mass spectrometer cycles through sequential, broad m/z isolation windows, e.g., 25 Th, fragmenting all precursors falling within each window simultaneously.</dd>
+    </dl>
+
+    <div class="callout example">
+      <span class="label">Data completeness</span>
+      <p>This generates a highly multiplexed, continuous digital map of the proteome, dramatically reducing missing values and providing superior quantitative reproducibility, though requiring complex deconvolution.</p>
+    </div>
+  </section>
+
+  <div class="divider">&sect; &sect; &sect;</div>
+
+  <section id="sec5">
+    <h2><span class="num">5</span>Computational proteomics data analysis</h2>
+    <p class="lede">This chapter details the processing workflows that convert raw, physical mass spectrometry signals into structured, biological protein-level abundance matrices, and contrasts them with alternative high-throughput platforms.</p>
+
+    <h3 id="sec5-1">5.1 Comprehensive proteomics software and platforms comparison</h3>
+    <p>Modern proteomics data analysis requires selecting the appropriate upstream computational engine based on the data acquisition strategy (DDA/DIA) and experimental platform. Table 1 compares the major available suites.</p>
+
+    <div class="table-scroll">
+    <table>
+      <tr>
+        <th>Software suite</th>
+        <th>Developer / license</th>
+        <th>Primary acquisition support</th>
+        <th>Core quantitative strategies</th>
+        <th>Key computational advantage</th>
+        <th>Downstream compatibility</th>
+      </tr>
+      <tr>
+        <td><strong>Proteome Discoverer (PD)</strong></td>
+        <td>Thermo Fisher Scientific / Commercial</td>
+        <td>DDA (LFQ, TMT, SILAC), DIA (v3.0+)</td>
+        <td>Peak area/height, CHIMERYS&trade; (AI-driven spectral deconvolution)</td>
+        <td>Vendor-optimized for Orbitrap; user-friendly node-based GUI; robust PTM mapping</td>
+        <td>MSstats (via PDtoMSstatsFormat), Perseus, limma</td>
+      </tr>
+      <tr>
+        <td><strong>MaxQuant</strong></td>
+        <td>Cox Lab / Free (academic)</td>
+        <td>DDA (LFQ, SILAC, TMT), DIA (via MaxDIA)</td>
+        <td>MaxLFQ (delayed normalization &amp; pairwise peptide ratios)</td>
+        <td>High mass accuracy calibration; advanced feature matching ("Match Between Runs")</td>
+        <td>Perseus, MSstats (via MaxQtoMSstatsFormat), prolfqua, DEqMS</td>
+      </tr>
+      <tr>
+        <td><strong>Spectronaut</strong></td>
+        <td>Biognosys / Commercial</td>
+        <td>DIA (library-based &amp; library-free directDIA)</td>
+        <td>Area under curve (AUC) of fragment extraction, Pulsar search engine</td>
+        <td>Gold standard for DIA; advanced machine learning for peak detection &amp; scoring</td>
+        <td>R packages (iq summary wrapper), MSstats, prolfqua</td>
+      </tr>
+      <tr>
+        <td><strong>DIA-NN</strong></td>
+        <td>Demichev &amp; Ralser / Free (academic)</td>
+        <td>DIA, high-throughput, single-cell</td>
+        <td>Deep neural network-driven peak identification</td>
+        <td>Extreme speed; neural network-based interference correction; highly robust for SCP</td>
+        <td>MSstats (via DIANNtoMSstatsFormat), prolfqua, msqrob2</td>
+      </tr>
+      <tr>
+        <td><strong>FragPipe</strong></td>
+        <td>Nesvilab (U. Michigan) / Free</td>
+        <td>DDA, DIA (MSFragger-DIA), open searches</td>
+        <td>IonQuant (ultra-fast label-free quant with MBR), TMT-Integrator</td>
+        <td>Fragment indexing for ultra-fast "open modification" searches (identifies unknown PTMs)</td>
+        <td>MSstats (via output formats), DEqMS, prolfqua</td>
+      </tr>
+      <tr>
+        <td><strong>Skyline</strong></td>
+        <td>MacCoss Lab / Free open-source</td>
+        <td>SRM/MRM, PRM, DDA, DIA</td>
+        <td>Targeted XIC extraction, peak integration, chromatogram visualization</td>
+        <td>Vendor-neutral; unmatched GUI for interactive chromatogram inspection &amp; QC</td>
+        <td>MSstats (via SkylinetoMSstatsFormat), prolfqua, custom R scripts</td>
+      </tr>
+      <tr>
+        <td><strong>OpenMS</strong></td>
+        <td>OpenMS Consortium / Free open-source</td>
+        <td>DDA, DIA (via OpenSWATH)</td>
+        <td>Modular LFQ, SILAC, TMT, OpenSWATH extraction</td>
+        <td>Modular C++ nodes integrated into KNIME pipelines; highly customizable for developers</td>
+        <td>MSstats (via OpenMStoMSstatsFormat), Python scripting (PyOpenMS)</td>
+      </tr>
+    </table>
+    </div>
+    <div class="fig-caption">Table 1. Comparative matrix of upstream computational suites and platforms.</div>
+
+    <h3 id="sec5-2">5.2 Deep-dive: Proteome Discoverer (PD) and its bioinformatics integration</h3>
+    <p><strong>Proteome Discoverer (PD)</strong> is Thermo Fisher Scientific's flagship commercial database search and quantification software suite. It represents a cornerstone in core facilities and clinical research laboratories, particularly those utilizing Orbitrap instruments.</p>
+
+    <dl class="term-list">
+      <dt>Multi-engine consensus processing</dt>
+      <dd>PD utilizes a node-based, customizable workflow builder that allows researchers to link multiple database search engines, such as SEQUEST HT, Mascot, or Byonic, in parallel. This consensus approach improves peptide identification rates by combining the complementary strengths of different search scoring models.</dd>
+
+      <dt>The CHIMERYS&trade; AI engine</dt>
+      <dd>In bottom-up proteomics, multiple co-eluting peptides often enter the mass spectrometer's fragmentation cell together, generating highly complex, chimeric MS2 spectra. Traditional database search engines struggle to identify more than one peptide from such spectra. PD version 3.0+ integrates CHIMERYS, an artificial-intelligence-driven algorithm that deconvolutes chimeric spectra, predicting the fragmentation patterns of multiple co-isolated peptides on the fly and nearly doubling peptide identification rates.</dd>
+    </dl>
+
+    <h4>Downstream statistical modeling compatibility</h4>
+    <p>Because PD reports missing values as explicit nulls (NA), researchers must use correct configurations when importing data into downstream R packages. For example, when importing PD quantitative reports into the <strong>MSstats</strong> package, the <code>dataProcess</code> function must be supplied with <code>censoredInt='NA'</code>:</p>
+
+    <div class="code-block"><span class="cm"># R</span>
+pd.proposed &lt;- dataProcess(quant, 
+                           normalization=<span class="str">'equalizeMedian'</span>, 
+                           summaryMethod=<span class="str">"TMP"</span>, 
+                           cutoffCensored=<span class="str">"minFeature"</span>, 
+                           censoredInt=<span class="str">"NA"</span>, 
+                           MBimpute=<span class="kw">TRUE</span>, 
+                           maxQuantileforCensored=0.999)</div>
+
+    <div class="callout caution">
+      <span class="label">Why this setting matters</span>
+      <p>Failing to set <code>censoredInt="NA"</code> causes the algorithm to treat missing values as completely at random (MCAR) rather than informative dropouts (censored MNAR at the limit of detection), leading to over-estimated low-abundance protein intensities.</p>
+    </div>
+  </section>
+
+  <div class="divider">&sect; &sect; &sect;</div>
+
+  <section id="sec6">
+    <h2><span class="num">6</span>Downstream statistical modeling frameworks</h2>
+    <p class="lede">Once peptide-level intensities are extracted and summarized into protein-level matrices, researchers must apply rigorous downstream statistical modeling to identify differentially abundant proteins. Because mass spectrometry data suffers from heterogeneous variance and intensity-dependent missingness, standard transcriptomic models, like unmodified t-tests, fail.</p>
+
+    <svg viewBox="0 0 680 300" style="width:100%; height:auto; margin:1.4rem 0;" role="img" aria-label="Flowchart showing a peptide abundance matrix branching into two paths: two-step summarization using Tukey's median polish then DEqMS variance moderation, or feature-level modeling using MSqRob2 or MSstats linear mixed-effects models, both converging on differentially abundant proteins">
+      <rect x="220" y="10" width="240" height="44" rx="8" fill="#f1efe8" stroke="#b4b2a9" stroke-width="0.75"/>
+      <text x="340" y="36" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#2c2c2a">Peptide / PSM abundance matrix</text>
+
+      <line x1="300" y1="54" x2="180" y2="90" stroke="#5f5e5a" stroke-width="1.3"/>
+      <line x1="380" y1="54" x2="500" y2="90" stroke="#5f5e5a" stroke-width="1.3"/>
+
+      <rect x="60" y="92" width="240" height="40" rx="8" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.75"/>
+      <text x="180" y="116" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#042c53">Two-step summarization</text>
+
+      <rect x="380" y="92" width="240" height="40" rx="8" fill="#eeedfe" stroke="#534ab7" stroke-width="0.75"/>
+      <text x="500" y="116" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#26215c">Feature-level modeling</text>
+
+      <line x1="180" y1="132" x2="180" y2="150" stroke="#5f5e5a" stroke-width="1.3"/>
+      <line x1="500" y1="132" x2="500" y2="150" stroke="#5f5e5a" stroke-width="1.3"/>
+
+      <rect x="60" y="152" width="240" height="36" rx="8" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.75"/>
+      <text x="180" y="174" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#042c53">Tukey's median polish (TMP)</text>
+
+      <rect x="380" y="152" width="240" height="36" rx="8" fill="#eeedfe" stroke="#534ab7" stroke-width="0.75"/>
+      <text x="500" y="174" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#26215c">MSqRob2 / MSstats</text>
+
+      <line x1="180" y1="188" x2="180" y2="206" stroke="#5f5e5a" stroke-width="1.3"/>
+      <line x1="500" y1="188" x2="500" y2="206" stroke="#5f5e5a" stroke-width="1.3"/>
+
+      <rect x="60" y="208" width="240" height="36" rx="8" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.75"/>
+      <text x="180" y="230" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#042c53">DEqMS variance moderation</text>
+
+      <rect x="380" y="208" width="240" height="36" rx="8" fill="#eeedfe" stroke="#534ab7" stroke-width="0.75"/>
+      <text x="500" y="230" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#26215c">Linear mixed-effects model</text>
+
+      <line x1="180" y1="244" x2="260" y2="266" stroke="#5f5e5a" stroke-width="1.3"/>
+      <line x1="500" y1="244" x2="420" y2="266" stroke="#5f5e5a" stroke-width="1.3"/>
+
+      <rect x="180" y="268" width="320" height="28" rx="8" fill="#f1efe8" stroke="#b4b2a9" stroke-width="0.75"/>
+      <text x="340" y="286" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#2c2c2a">Differentially abundant proteins</text>
+    </svg>
+    <div class="fig-caption">Figure 7. Two complementary downstream statistical paths, both converging on differential abundance calls.</div>
+
+    <h3 id="sec6-1">6.1 MSstats (split-plot linear mixed-effects models)</h3>
+    <p>MSstats treats bottom-up quantitative proteomics data as a split-plot ANOVA design, where biological replicates (subjects) are the whole-plot units and peptide or fragment features are the sub-plot units. It specifies a robust linear mixed-effects model at the feature level directly:</p>
+
+    <div class="eqn-block">
+      <div class="eqn">y<sub>ijkl</sub> = &mu; + Condition<sub>i</sub> + Subject<sub>j(i)</sub> + Run<sub>k(j)</sub> + Feature<sub>l</sub> + (Feature &times; Condition)<sub>il</sub> + &epsilon;<sub>ijkl</sub></div>
+    </div>
+
+    <table>
+      <tr><th>Term</th><th>Meaning</th></tr>
+      <tr><td>y<sub>ijkl</sub></td><td>log&#8322;-transformed normalized intensity of feature l in run k for subject j under condition i</td></tr>
+      <tr><td>Condition<sub>i</sub></td><td>Fixed effect of the biological treatment/condition</td></tr>
+      <tr><td>Subject<sub>j(i)</sub></td><td>Random effect, N(0,&sigma;&sup2;<sub>S</sub>), representing biological variation among subjects</td></tr>
+      <tr><td>Run<sub>k(j)</sub></td><td>Random effect, N(0,&sigma;&sup2;<sub>R</sub>), capturing technical variation from the MS run</td></tr>
+      <tr><td>Feature<sub>l</sub></td><td>Fixed effect of the peptide or fragment feature</td></tr>
+      <tr><td>(Feature &times; Condition)<sub>il</sub></td><td>Accounts for feature-specific condition effects</td></tr>
+      <tr><td>&epsilon;<sub>ijkl</sub></td><td>Residual error, N(0,&sigma;&sup2;<sub>E</sub>)</td></tr>
+    </table>
+
+    <p>By modeling biological subjects and runs as random effects, MSstats correctly estimates the variance components, preventing false positives from technical pseudoreplication.</p>
+
+    <h3 id="sec6-2">6.2 proDA (probabilistic dropout analysis)</h3>
+    <p>The principal complication of label-free proteomics is the massive rate of missing values, often &gt;50%, that are <strong>missing not at random (MNAR)</strong> due to the instrument's limit of detection. Rather than performing ad-hoc imputation, proDA models missingness probabilistically.</p>
+
+    <p>The probability of a missing observation (dropout) for protein p in sample j is modeled using a sample-specific sigmoidal dropout curve:</p>
+
+    <div class="eqn-block">
+      <div class="eqn">&pi;<sub>pj</sub> = P(M<sub>pj</sub> = 1 | y<sub>pj</sub>) = &Phi;<span class="rm">(</span><span class="frac"><span class="num">y<sub>pj</sub> &minus; &mu;<sub>dropout,j</sub></span><span class="den">&sigma;<sub>dropout,j</sub></span></span><span class="rm">)</span></div>
+    </div>
+
+    <table>
+      <tr><th>Term</th><th>Meaning</th></tr>
+      <tr><td>y<sub>pj</sub></td><td>Latent true log&#8322; intensity</td></tr>
+      <tr><td>&Phi;(&middot;)</td><td>Cumulative distribution function of the standard normal distribution</td></tr>
+      <tr><td>&mu;<sub>dropout,j</sub>, &sigma;<sub>dropout,j</sub></td><td>Sigmoidal threshold and steepness parameters</td></tr>
+    </table>
+
+    <div class="callout note">
+      <span class="label">Why a probabilistic approach helps</span>
+      <p>proDA estimates the parameters &beta; of a linear model and the protein variance &sigma;&sup2;<sub>p</sub> using an empirical Bayesian framework. It treats the unobserved values as latent variables and computes their posterior distribution, boosting statistical power for small sample sizes without introducing the bias of deterministic imputation.</p>
+    </div>
+
+    <h3 id="sec6-3">6.3 DEqMS (variance moderation via feature-count regression)</h3>
+    <p>In transcriptomics, packages like <em>limma</em> moderate gene-level variances by shrinking them toward a global prior variance. However, in proteomics, the variance of a protein's abundance estimate is highly dependent on the number of features, peptides or PSMs, denoted N<sub>p</sub>, used to quantify it.</p>
+
+    <p>DEqMS addresses this by modeling the prior variance as a continuous function of the feature count:</p>
+
+    <div class="eqn-block">
+      <div class="eqn">log(s<sup>2</sup><sub>prior,p</sub>) = f(N<sub>p</sub>)</div>
+    </div>
+
+    <p>Where f(&middot;) is a non-parametric smoothing spline. The posterior variance is then calculated as a weighted average of the experimental variance and the feature-count-dependent prior variance:</p>
+
+    <div class="eqn-block">
+      <div class="eqn">s<sup>2</sup><sub>post,p</sub> = <span class="frac"><span class="num">d<sub>p</sub>s<sup>2</sup><sub>p</sub> + d<sub>0</sub>(N<sub>p</sub>)s<sup>2</sup><sub>prior,p</sub>(N<sub>p</sub>)</span><span class="den">d<sub>p</sub> + d<sub>0</sub>(N<sub>p</sub>)</span></span></div>
+    </div>
+
+    <p>Where d<sub>p</sub> is the experimental degrees of freedom and d<sub>0</sub>(N<sub>p</sub>) is the prior degrees of freedom. This allows researchers to include low-abundance proteins identified by single peptides in their statistical testing without inflating the false discovery rate.</p>
+  </section>
+
+  <div class="divider">&sect; &sect; &sect;</div>
+
+  <section id="sec7">
+    <h2><span class="num">7</span>Emerging frontiers: spatial &amp; single-cell proteomics</h2>
+    <h3>7.1 Single-cell proteomics (SCP) and multiplexed assays</h3>
+    <p>To capture cellular heterogeneity, SCP platforms employ ultra-sensitive workflows, analyzing 50 to 500 pg of protein per cell.</p>
+
+    <dl class="term-list">
+      <dt>SCoPE-MS</dt>
+      <dd>Employs isobaric multiplexing tags, such as TMT, where one channel is occupied by a carrier channel, e.g., 200 cells, to provide a signal booster that overcomes the detection threshold of the mass spectrometer, while other channels contain single cells.</dd>
+
+      <dt>nanoSPLITS</dt>
+      <dd>A nanodroplet splitting platform that allows the parallel measurement of transcriptomes and proteomes from the exact same single cells.</dd>
+    </dl>
+  </section>
+
+  <div class="divider">&sect; &sect; &sect;</div>
+
+  <section id="sec8">
+    <h2><span class="num">8</span>High-throughput affinity &amp; enrichment platforms</h2>
+    <p class="lede">While mass spectrometry is unbiased, affinity-based platforms achieve high throughput for targeted clinical studies by utilizing pre-selected molecular binders.</p>
+
+    <div class="platform-grid">
+      <div class="platform-card">
+        <div class="name">SomaScan</div>
+        <div class="desc">Employs slow off-rate modified aptamers (SOMAmers) composed of chemically modified single-stranded DNA. These SOMAmers form stable complexes with specific folded proteins, and relative abundance is determined by quantifying the remaining DNA tags via microarray or NGS. Profiles up to ~11,000 protein targets simultaneously.</div>
+      </div>
+      <div class="platform-card">
+        <div class="name">Olink</div>
+        <div class="desc">Employs the proximity extension assay (PEA). Two antibodies, each conjugated to a unique single-stranded DNA oligonucleotide, bind to different epitopes on the same target protein, bringing the DNA strands into proximity to hybridize, extend, and amplify via qPCR or NGS. Provides extreme specificity, avoiding cross-reactivity issues of traditional multiplex ELISAs.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-note">
+    Compiled from proteomics-comprehensive-report-v8.md &middot; <a class="back-to-top" href="#sec1">&uarr; back to top</a> &middot; <a class="back-to-top" href="/">back to Blog</a>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('#side-toc a'));
+  function onScroll(){
+    var pos = window.scrollY + 120;
+    var current = sections[0];
+    sections.forEach(function(sec){
+      if (sec.offsetTop <= pos) current = sec;
+    });
+    links.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+    });
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+})();
+</script>
+</body>
+</html>

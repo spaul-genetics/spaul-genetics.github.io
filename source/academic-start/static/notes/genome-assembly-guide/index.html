@@ -2,24 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="An interactive guide to sequencing, genome assembly, scaffolding, polishing, quality assessment, and annotation.">
 <title>How a Genome Is Built From Scratch</title>
 <style>
   :root{
     --bg:#0f1720; --panel:#16212c; --panel2:#1c2b38; --accent:#4fd1c5; --accent2:#f6ad55;
     --accent3:#f56565; --text:#e6edf3; --muted:#8fa3b3; --border:#2a3b48;
-    --a:#e8618c; --b:#4fa8e0; --c:#8bd17c;
+    --a:#e8618c; --b:#4fa8e0; --c:#8bd17c; --d:#c792ea;
   }
   *{box-sizing:border-box;}
   body{margin:0;font-family:'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;}
   .app{display:flex;min-height:100vh;}
-  nav{width:260px;flex-shrink:0;background:var(--panel);border-right:1px solid var(--border);padding:20px 0;position:sticky;top:0;height:100vh;overflow-y:auto;}
+  nav{width:270px;flex-shrink:0;background:var(--panel);border-right:1px solid var(--border);padding:20px 0;position:sticky;top:0;height:100vh;overflow-y:auto;}
   nav h1{font-size:15px;padding:0 18px 14px;margin:0;color:var(--accent);border-bottom:1px solid var(--border);}
   nav .navsec{padding:10px 18px 4px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:8px;}
-  nav button.navbtn{display:block;width:100%;text-align:left;background:none;border:none;color:var(--text);padding:8px 18px;cursor:pointer;font-size:13.5px;border-left:3px solid transparent;}
+  nav button.navbtn{display:block;width:100%;text-align:left;background:none;border:none;color:var(--text);padding:7px 18px;cursor:pointer;font-size:13px;border-left:3px solid transparent;}
   nav button.navbtn:hover{background:var(--panel2);}
   nav button.navbtn.active{background:var(--panel2);border-left:3px solid var(--accent);color:var(--accent);font-weight:600;}
-  main{flex:1;padding:36px 48px;max-width:980px;}
+  main{flex:1;padding:36px 48px;max-width:1000px;}
   section{display:none;animation:fade .25s ease;}
   section.active{display:block;}
   @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
@@ -37,10 +36,13 @@
   .callout.key h4{color:var(--accent2);}
   .callout.math{border-color:var(--b);background:#101f2c;}
   .callout.math h4{color:var(--b);}
+  .callout.story{border-color:var(--d);background:#1c1530;}
+  .callout.story h4{color:var(--d);}
   .glossary-term{border-bottom:1px dotted var(--accent);cursor:help;color:var(--accent);}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0;}
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0;}
-  @media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr;}}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0;}
+  @media(max-width:800px){.grid2,.grid3,.grid4{grid-template-columns:1fr;}}
   .card{background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:16px;}
   table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px;}
   th,td{border:1px solid var(--border);padding:9px 12px;text-align:left;vertical-align:top;}
@@ -50,6 +52,7 @@
   .tag.pb{background:var(--a);color:#fff;}
   .tag.ont{background:var(--b);color:#fff;}
   .tag.il{background:var(--c);color:#123;}
+  .tag.new{background:var(--d);color:#fff;}
   .progress{position:sticky;top:0;background:var(--bg);padding:10px 0 16px;z-index:5;}
   .progress-bar{height:6px;background:var(--panel2);border-radius:3px;overflow:hidden;}
   .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s;}
@@ -84,56 +87,14 @@
   .btn-small{background:var(--accent);color:#0f1720;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:600;margin-top:8px;}
   .btn-small:hover{opacity:.85;}
   .kmer-out{margin-top:12px;font-family:monospace;font-size:12.5px;background:#101a22;padding:10px;border-radius:6px;overflow-x:auto;}
-  .stepnum{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:var(--accent);color:#0f1720;border-radius:50%;font-weight:700;font-size:13px;margin-right:8px;}
-  @media(max-width:800px){
-    .app{display:block;}
-    nav{position:relative;width:100%;height:auto;max-height:46vh;border-right:0;border-bottom:1px solid var(--border);}
-    nav h1{padding-right:10rem;}
-    main{max-width:none;padding:24px 16px;}
-    .progress{padding-top:0;}
-    h2{font-size:22px;}
-    table{display:block;overflow-x:auto;}
-    .navrow{gap:12px;}
-    .navrow button{flex:1;padding:10px 8px;}
-  }
-</style>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style id="biography-blog-return-style">
-  .biography-blog-return {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 10000;
-    display: inline-flex;
-    align-items: center;
-    padding: 0.55rem 0.8rem;
-    border: 1px solid #ddd8d0;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    color: #4a3868 !important;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.8rem;
-    font-weight: 650;
-    line-height: 1.2;
-    text-decoration: none !important;
-  }
-  .biography-blog-return:hover {
-    border-color: #8a4baf;
-    color: #6f368f !important;
-  }
-  @media (max-width: 700px) {
-    .biography-blog-return {
-      top: 0.6rem;
-      right: 0.6rem;
-      padding: 0.45rem 0.65rem;
-      font-size: 0.74rem;
-    }
-  }
+  .stepnum{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:var(--accent);color:#0f1720;border-radius:50%;font-weight:700;font-size:13px;margin-right:8px;flex-shrink:0;}
+  .eq{font-family:'Cambria Math','STIX Two Math',serif;font-size:16px;background:#0c151c;padding:12px 18px;border-radius:6px;display:inline-block;margin:8px 0;color:#dbe9f4;}
+  .slider-row{display:flex;align-items:center;gap:12px;margin:10px 0;}
+  .slider-row input[type=range]{flex:1;}
+  .person-icon{display:inline-block;width:14px;height:14px;border-radius:50%;margin:2px;}
 </style>
 </head>
 <body>
-<a class="biography-blog-return" href="/" aria-label="Return to biography and blog">&larr; Biography &amp; Blog</a>
 <div class="app">
   <nav id="navmenu">
     <h1>🧬 Building a Genome From Scratch</h1>
@@ -154,8 +115,16 @@
     <button class="navbtn" data-target="s9">N50 and contiguity</button>
     <button class="navbtn" data-target="s10">BUSCO and completeness</button>
     <button class="navbtn" data-target="s11">QV and correctness (Merqury)</button>
-    <button class="navbtn" data-target="s12">Putting it together: assembly report cards</button>
-    <div class="navsec">5 · After Assembly</div>
+    <button class="navbtn" data-target="s12">Putting it together: report cards</button>
+    <div class="navsec">5 · What IS a Reference? <span class="tag new">NEW</span></div>
+    <button class="navbtn" data-target="s18">Your genome vs. "the" human genome</button>
+    <button class="navbtn" data-target="s19">One genome, or a blend of many people?</button>
+    <button class="navbtn" data-target="s20">How many samples to build a reference?</button>
+    <button class="navbtn" data-target="s21">Which parent's DNA do we map to?</button>
+    <div class="navsec">6 · A New Species, From Zero <span class="tag new">NEW</span></div>
+    <button class="navbtn" data-target="s22">Where do you even start?</button>
+    <button class="navbtn" data-target="s23">Animal vs. bacteria vs. virus</button>
+    <div class="navsec">7 · After Assembly</div>
     <button class="navbtn" data-target="s13">Annotation: finding the genes</button>
     <button class="navbtn" data-target="s14">Cross-species scaffolding & liftover</button>
     <div class="navsec">Wrap-up</div>
@@ -166,43 +135,18 @@
 
   <main>
     <div class="progress">
-      <div class="progress-bar"><div class="progress-fill" id="progFill" style="width:6%"></div></div>
+      <div class="progress-bar"><div class="progress-fill" id="progFill" style="width:5%"></div></div>
     </div>
 
     <!-- S0 -->
     <section id="s0" class="active">
       <h2>🧬 Start Here: Building a Genome From Nothing</h2>
-      <p class="lead">You know graphs, probability, and optimization. It turns out genome assembly <i>is</i> a graph and optimization problem wearing a biology costume. This guide translates the whole modern genome-building pipeline — sequencing → assembly → scaffolding → polishing → quality control → annotation — into language that leans on your existing math instincts rather than assuming biology background.</p>
+      <p class="lead">You know graphs, probability, and optimization. It turns out genome assembly <i>is</i> a graph and optimization problem wearing a biology costume. This guide translates the whole modern genome-building pipeline into language that leans on your existing math instincts rather than assuming biology background — and now also untangles a confusion almost everyone has: <b>the difference between "a genome" and "the reference genome."</b></p>
 
       <div class="callout tip">
         <h4>The one-sentence version</h4>
-        <p>You shred a genome into millions of short, overlapping fragments (because no machine can read one long DNA molecule perfectly end-to-end), then use algorithms to figure out — purely from the <i>overlaps</i> between fragments — what the original, un-shredded sequence must have been. It's a giant, messy version of reassembling a shredded document from overlapping scraps.</p>
+        <p>You shred a genome into millions of short, overlapping fragments, use algorithms to reconstruct the original sequence from the overlaps, quality-check the result three independent ways, and then — separately — decide how that one reconstructed sequence gets used as a shared "ruler" (the reference) against which every future individual of that species gets compared.</p>
       </div>
-
-      <h3>The shredded-document analogy, extended</h3>
-      <p>Keep this picture in your head throughout — we'll come back to it constantly:</p>
-      <div class="svg-box">
-        <svg viewBox="0 0 780 160" width="100%" style="max-width:720px">
-          <text x="20" y="30" fill="#8fa3b3" font-size="12">Original document (the true genome):</text>
-          <rect x="20" y="40" width="500" height="24" fill="#1c2b38" stroke="#4fd1c5"/>
-          <text x="270" y="57" text-anchor="middle" fill="#cfe3ee" font-size="11" font-family="monospace">THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG</text>
-
-          <text x="20" y="95" fill="#8fa3b3" font-size="12">Shredded into overlapping scraps (the "reads"):</text>
-          <rect x="20" y="105" width="110" height="20" fill="#2a2114" stroke="#f6ad55"/><text x="75" y="119" text-anchor="middle" fill="#f6ad55" font-size="9" font-family="monospace">THEQUICKBR</text>
-          <rect x="110" y="130" width="110" height="20" fill="#2a1a1c" stroke="#f56565"/><text x="165" y="144" text-anchor="middle" fill="#f56565" font-size="9" font-family="monospace">CKBROWNFOX</text>
-          <rect x="200" y="105" width="110" height="20" fill="#12262a" stroke="#4fd1c5"/><text x="255" y="119" text-anchor="middle" fill="#4fd1c5" font-size="9" font-family="monospace">NFOXJUMPSO</text>
-          <rect x="290" y="130" width="110" height="20" fill="#101f2c" stroke="#4fa8e0"/><text x="345" y="144" text-anchor="middle" fill="#4fa8e0" font-size="9" font-family="monospace">MPSOVERTHE</text>
-          <rect x="380" y="105" width="140" height="20" fill="#1c2b18" stroke="#8bd17c"/><text x="450" y="119" text-anchor="middle" fill="#8bd17c" font-size="9" font-family="monospace">RTHELAZYDOG</text>
-        </svg>
-        <div class="interactive-hint">You never see the top row. You only get the bottom scraps — and you must reconstruct the top row by finding where the scraps overlap.</div>
-      </div>
-
-      <p>Now imagine three complications that make real genomes much harder than a sentence:</p>
-      <ol>
-        <li><b>The scraps are noisy.</b> Sequencing machines make errors, so some letters in each scrap might be wrong.</li>
-        <li><b>The document has repeated phrases.</b> Real genomes contain long stretches that repeat, sometimes near-identically, in many places (like if "BROWNFOX" appeared 500 times throughout the document). If a scrap only contains a repeated phrase, you cannot tell which of the 500 copies it came from.</li>
-        <li><b>You have two copies.</b> Most animals (including tortoises and humans) are diploid — you inherit one copy of each chromosome from each parent, and the two copies differ slightly. So really you're shredding <i>two</i> similar-but-not-identical documents and their scraps get mixed together.</li>
-      </ol>
 
       <h3>Map of this guide</h3>
       <div class="toc-cards">
@@ -213,8 +157,13 @@
         <div class="toc-card" onclick="showSection('s5')"><div class="num">05</div><h4>Real software</h4><p>hifiasm, Flye, Verkko — what's actually used today, and why.</p></div>
         <div class="toc-card" onclick="showSection('s7')"><div class="num">06</div><h4>Hi-C scaffolding</h4><p>How you go from unordered pieces to full chromosomes.</p></div>
         <div class="toc-card" onclick="showSection('s9')"><div class="num">07</div><h4>Quality metrics</h4><p>N50, BUSCO, QV — three different, complementary questions about quality.</p></div>
-        <div class="toc-card" onclick="showSection('s13')"><div class="num">08</div><h4>Annotation</h4><p>Once you have the sequence, how do you find the genes in it?</p></div>
+        <div class="toc-card" onclick="showSection('s18')"><div class="num">08 ★</div><h4>Your genome vs. "the" genome</h4><p>What a reference genome actually is, and isn't.</p></div>
+        <div class="toc-card" onclick="showSection('s20')"><div class="num">09 ★</div><h4>How many samples?</h4><p>One person? Many? How reference-building sample size actually works.</p></div>
+        <div class="toc-card" onclick="showSection('s21')"><div class="num">10 ★</div><h4>Which parent's copy?</h4><p>Untangling diploidy, mapping, and "one from each parent."</p></div>
+        <div class="toc-card" onclick="showSection('s22')"><div class="num">11 ★</div><h4>Starting a new species</h4><p>A practical checklist for genome project #1 for a species.</p></div>
+        <div class="toc-card" onclick="showSection('s23')"><div class="num">12 ★</div><h4>Animal vs. bacteria vs. virus</h4><p>Why the process differs wildly by organism type.</p></div>
       </div>
+      <p class="footnote">★ = new sections added in this update, addressing reference-genome and new-species questions specifically.</p>
     </section>
 
     <!-- S1 -->
@@ -239,7 +188,7 @@
 
       <div class="callout warn">
         <h4>Enemy 2 — Diploidy (two similar-but-different copies)</h4>
-        <p>At most positions, your maternal and paternal chromosome copies (haplotypes) are identical. But at some positions they differ slightly (heterozygous sites). A naive assembler can get confused and either (a) randomly mix reads from both copies into one artificial "mixed" sequence, or (b) accidentally build two separate, redundant contigs for what's actually one region with two haplotypes, artificially inflating the apparent genome size. Modern <b>haplotype-aware</b> assemblers try to explicitly keep the two copies separate — this is called <b>phasing</b>.</p>
+        <p>At most positions, your maternal and paternal chromosome copies (haplotypes) are identical. But at some positions they differ slightly (heterozygous sites). A naive assembler can get confused and either (a) randomly mix reads from both copies into one artificial "mixed" sequence, or (b) accidentally build two separate, redundant contigs for what's actually one region with two haplotypes, artificially inflating the apparent genome size. Modern <b>haplotype-aware</b> assemblers try to explicitly keep the two copies separate — this is called <b>phasing</b>. (We come back to this in full depth in Section 21.)</p>
       </div>
 
       <div class="callout warn">
@@ -249,7 +198,11 @@
 
       <div class="callout math">
         <h4>A stat framing you'll like: coverage as a sampling problem</h4>
-        <p>If you randomly shred a genome of length <i>G</i> into reads of length <i>L</i>, and you generate enough reads to total <i>N·L</i> letters of sequence, your average <b>coverage</b> (also called depth) is <code>c = N·L / G</code>. Because shredding positions are effectively random, the Lander–Waterman model treats the number of reads covering any given position as approximately Poisson-distributed with mean <i>c</i>. At low coverage, by chance, some regions get zero reads (gaps); pushing coverage higher exponentially shrinks the probability of gaps, which is why assembly projects target 20–30×, and sometimes 60×+, average coverage rather than something close to 1×.</p>
+        <p>If you randomly shred a genome of length <i>G</i> into reads of length <i>L</i>, and you generate enough reads to total <i>N·L</i> letters of sequence, your average <b>coverage</b> (also called depth) is:</p>
+        <div class="eq">c = (N × L) / G</div>
+        <p>Because shredding positions are effectively random, the Lander–Waterman model treats the number of reads covering any given position as approximately Poisson-distributed with mean <i>c</i>. The probability that a specific position gets <b>zero</b> reads (a gap) is:</p>
+        <div class="eq">P(gap at a position) = e<sup>−c</sup></div>
+        <p>At c=5, that's <code>e⁻⁵ ≈ 0.7%</code> chance of a gap at any given base — sounds small, but summed across billions of positions that's millions of gapped bases. At c=30, it drops to <code>e⁻³⁰ ≈ 0.0000000009%</code> — vanishingly small. This is exactly why assembly projects target 20–30×, and sometimes 60×+, average coverage rather than something close to 1×.</p>
       </div>
 
       <div class="navrow"><button onclick="showSection('s0')">← Start</button><button onclick="showSection('s2')">Next: Sequencing technologies →</button></div>
@@ -268,7 +221,9 @@
       </table>
 
       <h3>How PacBio HiFi gets both long AND accurate (the clever bit)</h3>
-      <p>This seems like it should be impossible — longer reads are usually noisier, not less. The trick: PacBio sequences the <i>same physical DNA molecule multiple times in a circle</i> (it's called <b>circular consensus sequencing</b>), then computationally averages those repeated passes together, the same way averaging repeated noisy measurements of the same quantity shrinks your uncertainty. More passes over the same molecule → lower final error rate, similar in spirit to the standard-error-shrinks-with-more-samples intuition from statistics.</p>
+      <p>This seems like it should be impossible — longer reads are usually noisier, not less. The trick: PacBio sequences the <i>same physical DNA molecule multiple times in a circle</i> (it's called <b>circular consensus sequencing</b>), then computationally averages those repeated passes together, the same way averaging repeated noisy measurements of the same quantity shrinks your uncertainty:</p>
+      <div class="eq">SE = σ / √n</div>
+      <p>More passes (<i>n</i>) over the same molecule → lower final error, same logic as your standard-error formula.</p>
 
       <div class="svg-box">
         <svg viewBox="0 0 700 130" width="100%" style="max-width:640px">
@@ -287,11 +242,6 @@
         <div class="card"><h4>Hi-C data</h4><p>Doesn't sequence new DNA per se — instead captures which regions of the genome are physically close together in the 3D-folded nucleus, and is used afterward to order and orient pieces into full chromosomes (Section 7).</p></div>
       </div>
       <p>As of the most recent Earth BioGenome Project assembly guidance, a common modern recipe is roughly <b>20× or more PacBio HiFi coverage per haplotype</b>, sometimes supplemented with ONT ultra-long reads and always paired with Hi-C for chromosome-scale scaffolding.</p>
-
-      <div class="callout tip">
-        <h4>Analogy for the tradeoff</h4>
-        <p>Short accurate reads are like reading a shredded book one word at a time, perfectly — you never misread a word, but words alone can't tell you which of many similar sentences you're in. Long reads are like reading whole paragraphs at once — even with some smudged letters, a full paragraph is almost always unique enough to place correctly in the book.</p>
-      </div>
 
       <div class="navrow"><button onclick="showSection('s1')">← Back</button><button onclick="showSection('s3')">Next: K-mers →</button></div>
     </section>
@@ -319,13 +269,13 @@
       <h3>Why k-mers are so useful (three reasons)</h3>
       <ol>
         <li><b>They turn a sequence-comparison problem into a set/counting problem.</b> Instead of asking "does this long string look like that long string," you can ask "do these two sets of k-mers overlap a lot" — sets and counts are things computers (and statisticians) handle extremely efficiently at massive scale.</li>
-        <li><b>They power de Bruijn graph assembly</b> — an entirely different, elegant graph formulation of the assembly problem (Section 4), that dominated short-read assembly for years.</li>
-        <li><b>They enable reference-free quality checking.</b> A tool called <b>Merqury</b> compares the k-mer content of your finished assembly against the k-mer content of your raw sequencing reads to estimate accuracy — without needing an existing "truth" genome to compare against (Section 11).</li>
+        <li><b>They power de Bruijn graph assembly</b> — an entirely different, elegant graph formulation of the assembly problem (Section 4).</li>
+        <li><b>They enable reference-free quality checking</b> via Merqury (Section 11).</li>
       </ol>
 
       <div class="callout math">
         <h4>The counting intuition behind error-detection</h4>
-        <p>If you sequence a genome at reasonable coverage (say 30×) and count how many times each k-mer appears across all your raw reads, most true, real k-mers from the genome will show up roughly 30 times (matching the coverage). But k-mers that only exist because of a random sequencing error in a single read will typically show up just <b>once</b> — since the same random error essentially never happens twice in exactly the same place. Plotting "k-mer, how many times seen" produces a histogram with a big peak around the coverage depth (real sequence) and a small pile near count = 1 (errors) — a simple, elegant way to statistically separate signal from noise before you even start assembling.</p>
+        <p>If you sequence a genome at coverage <i>c</i> and count how many times each k-mer appears, most true, real k-mers will show up roughly <i>c</i> times. But k-mers that only exist because of a random sequencing error in a single read will typically show up just <b>once</b>. Plotting "k-mer, how many times seen" produces a histogram with a big peak around <i>c</i> (real sequence) and a small pile near count = 1 (errors).</p>
       </div>
 
       <div class="svg-box">
@@ -334,10 +284,8 @@
           <line x1="50" y1="170" x2="50" y2="20" stroke="#8fa3b3"/>
           <text x="350" y="195" text-anchor="middle" fill="#8fa3b3" font-size="11">k-mer occurrence count (how many times seen)</text>
           <text x="20" y="100" text-anchor="middle" fill="#8fa3b3" font-size="11" transform="rotate(-90,20,100)"># distinct k-mers</text>
-          <!-- error peak -->
           <path d="M60,170 Q75,60 90,170" fill="#5c2626" opacity="0.7"/>
           <text x="80" y="185" text-anchor="middle" fill="#f56565" font-size="10">errors (count≈1)</text>
-          <!-- true peak -->
           <path d="M300,170 Q400,25 500,170" fill="#204d34" opacity="0.7"/>
           <text x="400" y="185" text-anchor="middle" fill="#4caf7d" font-size="10">true k-mers (count≈coverage)</text>
         </svg>
@@ -353,7 +301,7 @@
       <p>This is the algorithmic heart of assembly, and it maps directly onto graph theory you already know: nodes, edges, and finding a path through the graph that reconstructs the original sequence.</p>
 
       <h3>Approach A: The Overlap Graph (used for long reads)</h3>
-      <p>Build a graph where <b>each node is an entire read</b>. Draw a directed edge between two reads if their ends overlap by more than some threshold (found via fast approximate string-matching). The genome is then reconstructed by finding a path through this graph that visits enough nodes to explain all the reads — essentially a Hamiltonian-path-like problem (walking through every relevant node), solved approximately in practice via graph simplification heuristics rather than brute force.</p>
+      <p>Build a graph where <b>each node is an entire read</b>. Draw a directed edge between two reads if their ends overlap by more than some threshold. The genome is reconstructed by finding a path through this graph that visits enough nodes to explain all the reads — essentially a Hamiltonian-path-like problem, solved approximately via graph simplification heuristics.</p>
 
       <div class="svg-box">
         <svg viewBox="0 0 700 140" width="100%" style="max-width:640px">
@@ -369,10 +317,8 @@
         </svg>
       </div>
 
-      <p>This works well when reads are long, because long reads produce long, mostly unambiguous overlaps. It becomes computationally painful with millions of short reads, because you'd need to compare every pair of reads for overlaps — that's why overlap graphs are the dominant approach for long-read technologies (PacBio, ONT), not short-read Illumina data.</p>
-
       <h3>Approach B: The De Bruijn Graph (used for short reads)</h3>
-      <p>This is the clever k-mer-based alternative that made short-read genome assembly computationally tractable. Instead of nodes being whole reads, <b>nodes are k-mers</b> (or more precisely, (k−1)-mers), and you draw an edge between two k-mers if they overlap by k−1 letters (i.e., one is the "shifted by one letter" version of the other). Reconstructing the genome becomes a walk through this graph that uses every edge — an Eulerian-path-style problem, which is dramatically cheaper to solve at scale than the Hamiltonian-path-style problem of overlap graphs.</p>
+      <p>Nodes are k-mers, and you draw an edge between two k-mers if they overlap by k−1 letters. Reconstructing the genome becomes an Eulerian-path-style problem, dramatically cheaper to solve at scale than the Hamiltonian-path-style problem of overlap graphs.</p>
 
       <div class="svg-box">
         <svg viewBox="0 0 700 150" width="100%" style="max-width:640px">
@@ -393,12 +339,7 @@
 
       <div class="callout warn">
         <h4>Where de Bruijn graphs struggle</h4>
-        <p>A repeated k-mer creates a node the graph walk passes through <i>multiple times</i>, which is exactly the ambiguity problem from Section 1 — the graph can't tell you which "loop back" is correct without extra information. This is a core reason de Bruijn-graph short-read assemblies are typically far more fragmented than modern long-read assemblies: short k-mers collide into repeats constantly.</p>
-      </div>
-
-      <div class="callout key">
-        <h4>The big picture takeaway</h4>
-        <p>Both approaches are "walk through a cleverly constructed graph to reconstruct a string," differing only in what a node represents. <b>Longer reads fundamentally reduce ambiguity</b> because they're less likely to be entirely swallowed by a repeat — which is the core reason the field has shifted heavily toward long-read technology and overlap-graph-style assemblers for anything beyond quick, low-stakes assemblies.</p>
+        <p>A repeated k-mer creates a node the graph walk passes through <i>multiple times</i> — the ambiguity problem from Section 1. This is why de Bruijn-graph short-read assemblies are typically far more fragmented than modern long-read assemblies.</p>
       </div>
 
       <div class="navrow"><button onclick="showSection('s3')">← Back</button><button onclick="showSection('s5')">Next: Real software →</button></div>
@@ -411,23 +352,15 @@
 
       <table>
         <tr><th>Tool</th><th>Input data</th><th>Approach</th><th>Notes</th></tr>
-        <tr><td><b>hifiasm</b></td><td><span class="tag pb">PacBio HiFi</span> (also now supports ONT)</td><td>Haplotype-aware overlap graph ("phased assembly graph")</td><td>Currently a leading choice for HiFi assembly; explicitly designed to keep the two parental haplotypes separate rather than collapsing them, and a newer mode can produce near-complete, telomere-to-telomere assemblies from ONT reads alone without needing separate ultra-long reads</td></tr>
-        <tr><td><b>Flye</b></td><td><span class="tag ont">ONT</span> or PacBio (including older, noisier "CLR" reads)</td><td>Repeat graph, a de-Bruijn-like structure built directly from long, noisy reads</td><td>Widely benchmarked as a strong, reliable performer specifically for ONT and older noisy long-read data, generally followed by a separate polishing step</td></tr>
-        <tr><td><b>Verkko</b></td><td>PacBio HiFi <i>and</i> ONT ultra-long reads together</td><td>Hybrid graph combining both read types</td><td>Built specifically to resolve extremely difficult repetitive regions (e.g., centromeres) by using ONT's extra length to bridge gaps HiFi alone can't span</td></tr>
-        <tr><td><b>NextDenovo</b></td><td>PacBio CLR or ONT</td><td>Correction-first long-read assembler</td><td>Reported as a strong performer specifically for older, noisier long-read types at lower sequencing depth</td></tr>
+        <tr><td><b>hifiasm</b></td><td><span class="tag pb">PacBio HiFi</span> (also now supports ONT)</td><td>Haplotype-aware overlap graph ("phased assembly graph")</td><td>Currently a leading choice for HiFi assembly; explicitly keeps the two parental haplotypes separate; a newer mode can produce near-complete, telomere-to-telomere assemblies from ONT reads alone</td></tr>
+        <tr><td><b>Flye</b></td><td><span class="tag ont">ONT</span> or PacBio (including older, noisier "CLR" reads)</td><td>Repeat graph, a de-Bruijn-like structure built directly from long, noisy reads</td><td>Widely benchmarked as a strong, reliable performer for ONT and older noisy long-read data</td></tr>
+        <tr><td><b>Verkko</b></td><td>PacBio HiFi <i>and</i> ONT ultra-long reads together</td><td>Hybrid graph combining both read types</td><td>Built specifically to resolve extremely difficult repetitive regions (e.g., centromeres)</td></tr>
+        <tr><td><b>NextDenovo</b></td><td>PacBio CLR or ONT</td><td>Correction-first long-read assembler</td><td>Reported as a strong performer for older, noisier long-read types at lower sequencing depth</td></tr>
       </table>
 
       <div class="callout tip">
         <h4>A useful rule of thumb from current benchmarking studies</h4>
-        <p>If you have PacBio HiFi data, hifiasm is generally the default modern choice. If you only have ONT data, Flye (or newer hifiasm ONT modes) tend to perform best. If you have both HiFi and ultra-long ONT, Verkko is built specifically to combine them for the most complete result. This isn't a permanent ranking — the field moves fast — but it reflects the current consensus in benchmarking literature.</p>
-      </div>
-
-      <h3>Why haplotype-awareness matters (connecting back to Section 1)</h3>
-      <p>Older assemblers often just produced one "consensus" sequence per genomic region, silently blending the two parental haplotypes together — which can create a sequence that doesn't actually match either real chromosome copy at heterozygous positions, and can also cause the assembler to accidentally duplicate regions where it got confused about whether it was looking at one region twice or two similar-but-distinct regions. Modern haplotype-aware assemblers like hifiasm instead try to output <b>two separate, internally consistent haplotype sequences</b>, closer to biological reality — analogous to correctly separating two overlapping but distinct signals rather than averaging them into a blur.</p>
-
-      <div class="callout math">
-        <h4>Computational cost, in plain terms</h4>
-        <p>PacBio HiFi's accuracy comes from computationally averaging multiple passes at the sequencing stage itself (Section 2), which is expensive — figures commonly cited are on the order of 2,000 CPU-hours to generate a single "SMRT cell" worth of HiFi data. ONT skips that per-read averaging cost (reads pass through the sequencer once) but historically paid for it with a higher raw per-letter error rate. This cost/accuracy tradeoff is a big part of why some projects mix technologies rather than picking one.</p>
+        <p>If you have PacBio HiFi data, hifiasm is generally the default modern choice. If you only have ONT data, Flye (or newer hifiasm ONT modes) tend to perform best. If you have both HiFi and ultra-long ONT, Verkko is built specifically to combine them.</p>
       </div>
 
       <div class="navrow"><button onclick="showSection('s4')">← Back</button><button onclick="showSection('s6')">Next: Contigs, scaffolds, chromosomes →</button></div>
@@ -453,9 +386,9 @@
           <rect x="205" y="130" width="90" height="20" fill="#2a2114" stroke="#f6ad55"/>
           <rect x="300" y="130" width="15" height="20" fill="none" stroke="#8fa3b3" stroke-dasharray="2,2"/><text x="307" y="145" text-anchor="middle" fill="#8fa3b3" font-size="9">N</text>
           <rect x="320" y="130" width="220" height="20" fill="#2a2114" stroke="#f6ad55"/>
-          <text x="400" y="170" fill="#8fa3b3" font-size="11">Gaps of unknown sequence (shown as "N" placeholders) connect contigs whose relative order/orientation is inferred from extra evidence</text>
+          <text x="400" y="170" fill="#8fa3b3" font-size="11">Gaps of unknown sequence (shown as "N" placeholders) connect contigs whose relative order/orientation is inferred</text>
 
-          <text x="20" y="215" fill="#8bd17c" font-size="13" font-weight="bold">Level 3 — Chromosome-scale assembly (scaffolds placed onto real chromosomes)</text>
+          <text x="20" y="215" fill="#8bd17c" font-size="13" font-weight="bold">Level 3 — Chromosome-scale assembly</text>
           <rect x="20" y="225" width="680" height="24" fill="#1c2b18" stroke="#8bd17c"/>
           <text x="360" y="241" text-anchor="middle" fill="#c8f7dc" font-size="10">Full chromosome, built from multiple ordered scaffolds, ideally telomere-to-telomere</text>
         </svg>
@@ -463,15 +396,10 @@
 
       <table>
         <tr><th>Level</th><th>What it means</th><th>What's still uncertain</th></tr>
-        <tr><td><b>Contig</b></td><td>An unbroken, gap-free stretch of assembled sequence</td><td>Where it sits relative to other contigs, and which strand/orientation it's read in</td></tr>
-        <tr><td><b>Scaffold</b></td><td>Multiple contigs stitched together in a confident order and orientation, with gap placeholders where sequence is still missing</td><td>Whether it's assigned to the correct chromosome, and whether it spans the whole chromosome</td></tr>
-        <tr><td><b>Chromosome-scale / "T2T" (telomere-to-telomere)</b></td><td>Scaffolds correctly assigned to actual chromosomes, ideally with no gaps at all from one chromosome end to the other</td><td>At this level, remaining uncertainty is mostly about fine-scale base accuracy, not big-picture structure</td></tr>
+        <tr><td><b>Contig</b></td><td>An unbroken, gap-free stretch of assembled sequence</td><td>Where it sits relative to other contigs, and orientation</td></tr>
+        <tr><td><b>Scaffold</b></td><td>Multiple contigs stitched in confident order/orientation, with gap placeholders</td><td>Whether it's on the correct chromosome, whether it spans the whole thing</td></tr>
+        <tr><td><b>Chromosome-scale / "T2T"</b></td><td>Scaffolds correctly assigned to actual chromosomes, ideally gapless end to end</td><td>Fine-scale base accuracy</td></tr>
       </table>
-
-      <div class="callout tip">
-        <h4>Direct callback to your tortoise document</h4>
-        <p>Recall that the tortoise reference genome (CheloAbing_2.0) had its <b>scaffold</b> N50 improved roughly 100-fold using a related species' chromosome-level structure — but its <b>contig</b> N50 stayed modest. Now you can see exactly what that means: the underlying raw assembled sequence chunks (contigs) weren't actually improved at all — only their inferred ordering into larger scaffolds was, by borrowing structural information from the Aldabra tortoise. That's a meaningfully different (and weaker) kind of improvement than actually re-sequencing and re-assembling the raw data with better technology.</p>
-      </div>
 
       <div class="navrow"><button onclick="showSection('s5')">← Back</button><button onclick="showSection('s7')">Next: Hi-C scaffolding →</button></div>
     </section>
@@ -479,37 +407,20 @@
     <!-- S7 -->
     <section id="s7">
       <h2>7 · Hi-C: Using 3D Physics to Order 1D Sequence</h2>
-      <p>This is one of the most conceptually elegant tricks in the whole pipeline, and it's the modern, native way to go from contigs to real chromosome-scale scaffolds — as opposed to the "borrow structure from a related species" shortcut used for the tortoise genome (Section 6).</p>
-
-      <h3>The core idea</h3>
-      <p>Inside a cell's nucleus, a chromosome isn't a straight line — it's folded up in 3D space, somewhat like a tangled ball of string. <b>Hi-C</b> is a lab technique that chemically "freezes" the DNA in its folded 3D state, then cuts and re-glues nearby pieces together, and sequences the resulting glued junctions. The key statistical fact this exploits:</p>
+      <p>Inside a cell's nucleus, a chromosome is folded up in 3D, like a tangled ball of string. <b>Hi-C</b> chemically freezes DNA in its folded state, cuts and re-glues nearby pieces together, and sequences the resulting glued junctions.</p>
 
       <div class="callout math">
         <h4>The statistical principle behind Hi-C</h4>
-        <p>Two DNA locations that are close together <i>along the same chromosome</i> (even if far apart in raw sequence, like near the two different ends) are, on average, also close together in 3D space, and get glued together far more often than two random locations on two different chromosomes. So if you count how frequently every pair of DNA locations gets glued together across millions of cells, that contact-frequency matrix is essentially a giant, noisy distance matrix — and pieces from the same chromosome cluster together strongly, exactly like a Multi-Dimensional Scaling problem your stats background would recognize instantly.</p>
+        <p>Two DNA locations close together <i>along the same chromosome</i> are, on average, also close together in 3D space, and get glued together far more often than two random locations on different chromosomes. Counting how frequently every pair of DNA locations gets glued together produces a giant, noisy distance/contact matrix — pieces from the same chromosome cluster together strongly, exactly like a Multi-Dimensional Scaling problem.</p>
       </div>
 
       <div class="svg-box">
         <svg viewBox="0 0 700 260" width="100%" style="max-width:600px">
-          <!-- heatmap-like grid -->
           <text x="350" y="20" text-anchor="middle" fill="#8fa3b3" font-size="12">Hi-C contact matrix (idealized)</text>
           <g id="heatmapgrid"></g>
-          <text x="350" y="245" text-anchor="middle" fill="#8fa3b3" font-size="11">Bright blocks along the diagonal = scaffolds/contigs that belong together on the same chromosome</text>
+          <text x="350" y="245" text-anchor="middle" fill="#8fa3b3" font-size="11">Bright blocks along the diagonal = contigs that belong together on the same chromosome</text>
         </svg>
-        <div class="interactive-hint">Darker/brighter clusters near the diagonal reveal which contigs are physically near each other — used to order and orient them.</div>
-      </div>
-
-      <h3>How this becomes an assembly step</h3>
-      <ol>
-        <li>Take your existing contigs (from Section 5's assemblers) as the starting pieces.</li>
-        <li>Generate Hi-C contact data from the same organism.</li>
-        <li>Use software (e.g., tools built around the "3D-DNA" or similar Hi-C scaffolding pipelines) to cluster contigs into chromosome-sized groups, then order and orient them within each group to maximize agreement with the observed contact frequencies — essentially solving a combinatorial optimization problem (something like a traveling-salesman-flavored ordering problem) guided by the contact-frequency data.</li>
-        <li>The output is chromosome-scale scaffolds — the "Level 3" outcome from Section 6 — built directly from your own organism's data, rather than borrowed from a relative.</li>
-      </ol>
-
-      <div class="callout warn">
-        <h4>Why this matters for interpreting a reference genome</h4>
-        <p>A genome scaffolded with the organism's <i>own</i> Hi-C data is generally considered stronger evidence of the true chromosome structure than one scaffolded by "synteny" (structural similarity) to a related species' genome — the approach used for CheloAbing_2.0 in your tortoise project. Synteny-based scaffolding assumes large-scale chromosome structure is conserved between the two species, which is often true but can fail at points where genuine evolutionary rearrangements occurred — exactly the kind of assumption worth flagging when reading a genome paper.</p>
+        <div class="interactive-hint">Darker/brighter clusters near the diagonal reveal which contigs are physically near each other.</div>
       </div>
 
       <div class="navrow"><button onclick="showSection('s6')">← Back</button><button onclick="showSection('s8')">Next: Polishing →</button></div>
@@ -518,36 +429,24 @@
     <!-- S8 -->
     <section id="s8">
       <h2>8 · Polishing: Cleaning Up Errors After Assembly</h2>
-      <p>Even after contigs and scaffolds exist, the underlying letter-by-letter sequence usually still contains small errors inherited from noisy reads. <b>Polishing</b> is the correction pass — and it's fundamentally a statistical consensus problem again, just applied one more time at the whole-assembly level.</p>
+      <p>Even after contigs and scaffolds exist, the underlying letter-by-letter sequence usually still contains small errors inherited from noisy reads. <b>Polishing</b> is the correction pass.</p>
 
-      <h3>The basic idea</h3>
-      <p>Take all your original sequencing reads and map them back onto your draft assembly. At each position, you now have many reads all claiming to show you what that position "really" is. If the assembly currently says "A" but the overwhelming majority of high-quality reads mapped there say "G," that's strong evidence the assembly made an error at that spot, and it gets corrected.</p>
-
-      <div class="callout tip">
-        <h4>Two common polishing strategies</h4>
-        <ul style="margin:8px 0;">
-          <li><b>Long-read self-polishing:</b> use the same long reads that built the assembly to double-check and correct it (works well when those reads are already highly accurate, like PacBio HiFi).</li>
-          <li><b>Short-read polishing:</b> map separate, very high-accuracy Illumina short reads onto a long-read assembly specifically to fix small errors — useful when the long-read technology used (e.g., older ONT chemistry) had a higher raw error rate than short reads.</li>
-        </ul>
-      </div>
-
-      <p>Modern benchmarking generally finds that assemblies built directly from PacBio HiFi data need comparatively little additional polishing (since the reads were already highly accurate going in), while ONT-based assemblies benefit more substantially from a dedicated polishing step — directly following from the raw accuracy differences in Section 2.</p>
+      <p>Take all your original sequencing reads and map them back onto your draft assembly. At each position, if the assembly says "A" but the overwhelming majority of high-quality reads mapped there say "G," that's strong evidence of an assembly error, and it gets corrected.</p>
 
       <div class="callout warn">
-        <h4>A subtlety worth knowing: over-polishing can go wrong</h4>
-        <p>Polishing isn't risk-free. If done aggressively or with mismatched/contaminated read data, a "correction" can actually introduce new errors — for example, incorrectly "fixing" a real but rare genetic variant into a more common one because the polishing algorithm effectively voted based on population-level patterns rather than what's actually true for this specific sample. This is one reason polishing results are always checked afterward with the same quality metrics discussed next (Sections 9–11), not just assumed to have helped.</p>
+        <h4>A subtlety: over-polishing can go wrong</h4>
+        <p>A "correction" can introduce new errors — for example, incorrectly "fixing" a real but rare genetic variant into a more common one because the polishing algorithm effectively voted based on population-level patterns. This is why polishing results are always re-checked with the same quality metrics (Sections 9–11).</p>
       </div>
 
-      <div class="navrow"><button onclick="showSection('s7')">← Back</button><button onclick="showSection('s9')">Next: Is it any good? (N50) →</button></div>
+      <div class="navrow"><button onclick="showSection('s7')">← Back</button><button onclick="showSection('s9')">Next: N50 →</button></div>
     </section>
 
     <!-- S9 -->
     <section id="s9">
       <h2>9 · Grading the Assembly, Part 1: N50 and Contiguity</h2>
-      <p>Now for the part that will feel most natural to you: how do you actually score whether a finished assembly is "good"? The field uses (at least) three genuinely different, complementary axes of quality — this section covers the first.</p>
 
       <div class="callout key">
-        <h4>N50, defined precisely (it trips almost everyone up at first)</h4>
+        <h4>N50, defined precisely</h4>
         <p>Sort all your contigs (or scaffolds) from longest to shortest. Walk down that sorted list, adding up lengths as you go, until your running total reaches <b>50% of the total assembly length</b>. The length of the specific contig/scaffold you were adding when you crossed that halfway mark is the N50.</p>
       </div>
 
@@ -560,21 +459,13 @@
       </div>
 
       <div class="callout math">
-        <h4>Why N50 (and not just the average length) is the standard</h4>
-        <p>A simple average contig length is easily distorted: an assembly made of one 900,000-letter contig and a thousand tiny 10-letter leftover scraps has a deceptively "big" average if you're not careful, even though it's mostly junk. N50 instead answers a more useful question: <i>"if I pick a random letter (base pair) anywhere in the genome, how long is the contig it's likely sitting in?"</i> — it's weighted by <i>where the actual sequence lives</i>, not just by how many contigs happen to exist. This makes it far more robust to a pile of tiny fragments than a plain average would be.</p>
-      </div>
-
-      <div class="callout tip">
-        <h4>Related terms you'll see alongside N50</h4>
-        <ul style="margin:8px 0;">
-          <li><b>L50</b>: the <i>number</i> of contigs it took to reach that 50% mark (fewer is better — it means a handful of big pieces cover half the genome, rather than needing hundreds of small ones).</li>
-          <li><b>NG50</b>: same idea as N50, but computed against the <i>known or estimated true genome size</i> rather than the assembly's own total length — useful because it stays comparable even if your assembly is missing large chunks or has extra duplicated sequence.</li>
-        </ul>
+        <h4>Why N50 (and not the average) is the standard</h4>
+        <p>N50 answers: <i>"if I pick a random base pair anywhere in the genome, how long is the contig it's likely sitting in?"</i> — weighted by where sequence actually lives, robust to a pile of tiny fragments in a way a plain average isn't.</p>
       </div>
 
       <div class="callout warn">
-        <h4>The critical limitation of N50 (why it's only one axis)</h4>
-        <p>N50 measures <b>contiguity</b> — how few, how large the pieces are — and says nothing about whether those pieces are <i>correct</i>, or whether the assembly is actually <i>complete</i> (missing whole genes or regions). An assembler that aggressively (and wrongly) merges unrelated sequences together to create artificially long contigs can post an impressively high N50 while actually producing a worse, more error-riddled assembly — a "chimeric" reference that looks great on this one metric and is broken in reality. This is exactly why Sections 10 and 11 exist: you need at least two more independent lenses.</p>
+        <h4>The critical limitation</h4>
+        <p>N50 says nothing about correctness or completeness. An assembler that aggressively (and wrongly) merges unrelated sequences can post a high N50 while producing a broken assembly — see Sections 10–11 for the other two lenses.</p>
       </div>
 
       <div class="navrow"><button onclick="showSection('s8')">← Back</button><button onclick="showSection('s10')">Next: BUSCO →</button></div>
@@ -583,10 +474,9 @@
     <!-- S10 -->
     <section id="s10">
       <h2>10 · Grading the Assembly, Part 2: BUSCO and Completeness</h2>
-      <p>N50 tells you about piece sizes. It tells you nothing about whether the biologically important content is actually <i>there</i>. That's what <b>BUSCO</b> (Benchmarking Universal Single-Copy Orthologs) checks.</p>
+      <p>N50 tells you about piece sizes; it says nothing about whether biologically important content is actually there. <b>BUSCO</b> (Benchmarking Universal Single-Copy Orthologs) checks exactly that.</p>
 
-      <h3>The core idea</h3>
-      <p>Across a huge range of related species (say, all vertebrates, or all insects), evolutionary biologists have identified a curated set of genes that are: (a) present in nearly every species in that group, and (b) normally exist as exactly <b>one copy</b>, not duplicated — these are the "universal single-copy orthologs." BUSCO takes your finished genome assembly and checks, for each of these hundreds of expected genes: is it there, and does it look intact and single-copy?</p>
+      <p>Across a broad group of related species, a curated set of genes exist almost everywhere as exactly one copy each. BUSCO checks, for each expected gene: is it there, and does it look intact and single-copy?</p>
 
       <div class="svg-box">
         <svg viewBox="0 0 700 90" width="100%" style="max-width:640px">
@@ -599,26 +489,15 @@
           <text x="520" y="75" fill="#8fa3b3" font-size="10">Fragmented</text>
           <text x="560" y="75" fill="#8fa3b3" font-size="10">Missing</text>
         </svg>
-        <div class="interactive-hint">A typical BUSCO summary bar: every expected gene is classified into one of four categories.</div>
       </div>
 
       <table>
         <tr><th>BUSCO category</th><th>What it means</th><th>What it might indicate if elevated</th></tr>
-        <tr><td><b>Complete, single-copy</b></td><td>The gene is present, intact, and exists exactly once — the "good" outcome</td><td>—</td></tr>
-        <tr><td><b>Complete, duplicated</b></td><td>The gene appears to be present more than once</td><td>Could reflect real biology (some species genuinely have duplicated genes) — or could indicate the assembler failed to properly merge the two haplotypes from a diploid genome, artificially doubling regions (see Section 1's "Enemy 2")</td></tr>
-        <tr><td><b>Fragmented</b></td><td>Part of the gene is found, but it's split across multiple contigs/scaffolds, or interrupted</td><td>Often reflects assembly gaps, breaks, or lower base-level accuracy (e.g., small insertion/deletion errors chopping up an otherwise real gene)</td></tr>
-        <tr><td><b>Missing</b></td><td>No trace of the expected gene found at all</td><td>Could mean a real biological gene loss (rare) or, far more commonly, that the assembly simply failed to capture that region</td></tr>
+        <tr><td><b>Complete, single-copy</b></td><td>Gene present, intact, exactly once</td><td>—</td></tr>
+        <tr><td><b>Complete, duplicated</b></td><td>Gene appears more than once</td><td>Real biology — or the assembler failed to merge the two haplotypes, duplicating regions</td></tr>
+        <tr><td><b>Fragmented</b></td><td>Split across contigs, or interrupted</td><td>Assembly gaps, breaks, or small indel errors</td></tr>
+        <tr><td><b>Missing</b></td><td>No trace found</td><td>Real gene loss (rare), or assembly failure (common)</td></tr>
       </table>
-
-      <div class="callout tip">
-        <h4>Why BUSCO and N50 can disagree</h4>
-        <p>Research directly comparing these two metrics across hundreds of published genomes found that a high N50 usually comes with a high BUSCO score, but the reverse isn't guaranteed — some assemblies with a comparatively modest N50 can still score very well on BUSCO. This makes intuitive sense: BUSCO only cares whether specific, well-conserved genes are intact somewhere in the assembly, not how large the surrounding contig is. A gene sitting safely inside a modest 200,000-letter contig scores just as "complete" on BUSCO as one sitting in a 50-million-letter contig.</p>
-      </div>
-
-      <div class="callout key">
-        <h4>Direct callback to your tortoise document</h4>
-        <p>Recall CheloAbing_2.0 reported "BUSCO completeness of 96.8%." Now you know exactly what that number is claiming: roughly 96.8% of a standard, curated list of universal vertebrate genes were found intact in that assembly. It's a meaningful, specific completeness claim — but (per this section's caveats) it says nothing on its own about contiguity or fine-scale base accuracy, which is exactly why the tortoise document separately flagged the modest contig N50 and 203 gene models that failed to transfer.</p>
-      </div>
 
       <div class="navrow"><button onclick="showSection('s9')">← Back</button><button onclick="showSection('s11')">Next: QV & Merqury →</button></div>
     </section>
@@ -626,36 +505,27 @@
     <!-- S11 -->
     <section id="s11">
       <h2>11 · Grading the Assembly, Part 3: QV and Base-Level Correctness</h2>
-      <p>N50 asks "how big are the pieces?" BUSCO asks "is the expected content present?" The third question, arguably the most fundamental: <b>for any given letter in the assembly, how likely is it to actually be correct?</b> That's what <b>QV (Quality Value)</b> measures, most commonly via a tool called <b>Merqury</b>.</p>
-
-      <h3>QV is just Phred-scaled error probability (you already know this idea)</h3>
-      <p>If you've ever seen sequencing quality scores or worked with any Phred-scaled probability, this will feel instantly familiar:</p>
+      <p>The third question: <b>for any given letter in the assembly, how likely is it to actually be correct?</b> That's <b>QV (Quality Value)</b>, most commonly via <b>Merqury</b>.</p>
 
       <div class="callout math">
         <h4>The formula</h4>
-        <p><code>QV = −10 · log10(P)</code>, where <i>P</i> is the estimated probability that any given base (letter) in the assembly is wrong.</p>
-        <p style="margin-top:10px;">So: <b>QV 20</b> means roughly a 1-in-100 chance of error per letter. <b>QV 30</b> means roughly 1-in-1,000. <b>QV 40</b> means roughly 1-in-10,000 — and each +10 in QV corresponds to a 10× reduction in error probability, exactly like decibels or any other log-scale you're used to.</p>
+        <div class="eq">QV = −10 × log<sub>10</sub>(P)</div>
+        <p>where <i>P</i> is the estimated probability that any given base is wrong. <b>QV 20</b> ≈ 1-in-100 error. <b>QV 30</b> ≈ 1-in-1,000. <b>QV 40</b> ≈ 1-in-10,000 — each +10 in QV is a 10× reduction in error probability, exactly like decibels.</p>
       </div>
 
-      <h3>How Merqury estimates this without a "truth" genome</h3>
-      <p>This is the elegant, reference-free trick, and it directly reuses the k-mer machinery from Section 3: build the set of all k-mers found in your raw, unassembled sequencing reads (treated as ground truth, since you have tons of independent reads confirming real genomic k-mers), then check your finished assembly for k-mers that <i>don't</i> appear in that trusted read-derived set. A k-mer that exists in your assembly but essentially never showed up in the raw reads is strong evidence of an assembly error at that spot — conceptually the same logic as the k-mer error-spectrum idea from Section 3, just applied to the finished assembly instead of the raw reads.</p>
+      <p>Merqury reuses the k-mer machinery from Section 3: build the set of k-mers from raw, unassembled reads (trusted, since many independent reads confirm real k-mers), then flag k-mers in the finished assembly that never showed up there — evidence of an assembly error.</p>
 
       <table>
         <tr><th>Rough QV level</th><th>Error rate</th><th>Practical meaning</th></tr>
-        <tr><td>QV 20</td><td>~1%</td><td>Noticeably error-prone; not generally acceptable for a modern high-quality reference</td></tr>
+        <tr><td>QV 20</td><td>~1%</td><td>Not acceptable for a modern high-quality reference</td></tr>
         <tr><td>QV 30</td><td>~0.1%</td><td>A common older "good enough" threshold</td></tr>
-        <tr><td>QV 40+</td><td>~0.01% or better</td><td>Current Earth BioGenome Project-style standards for a high-quality reference genome target this range or better</td></tr>
-        <tr><td>QV 60+</td><td>~0.0001%</td><td>Near-perfect; achievable in the best modern telomere-to-telomere assemblies</td></tr>
+        <tr><td>QV 40+</td><td>~0.01% or better</td><td>Current Earth BioGenome Project-style standard</td></tr>
+        <tr><td>QV 60+</td><td>~0.0001%</td><td>Near-perfect; best modern T2T assemblies</td></tr>
       </table>
 
       <div class="callout warn">
-        <h4>The trap: high N50 + low QV = a dangerous-looking assembly</h4>
-        <p>Current guidance is explicit about a specific failure pattern worth remembering: if N50 looks great but QV is low, it can mean the assembler aggressively merged sequences that don't actually belong together, artificially inflating contiguity while quietly breaking correctness — a "chimeric" assembly that looks impressive on a length-only metric but would mislead any downstream analysis (imagine trying to find a gene, and it's spliced together with unrelated sequence from somewhere else in the genome, because the assembler wrongly fused two things during Section 4's graph-walking step).</p>
-      </div>
-
-      <div class="callout tip">
-        <h4>The three-metric mental model, all at once</h4>
-        <p><b>N50 = contiguity</b> (how few, how large the pieces). <b>BUSCO = gene-space completeness</b> (is the expected content there). <b>QV = base-level correctness</b> (is each individual letter probably right). A trustworthy modern assembly needs to score well on all three — reporting only one, especially just N50, is considered insufficient by current standards, which is exactly why serious genome papers report all three side by side.</p>
+        <h4>The trap: high N50 + low QV</h4>
+        <p>It can mean the assembler aggressively merged sequences that don't belong together — high contiguity, quietly broken correctness.</p>
       </div>
 
       <div class="navrow"><button onclick="showSection('s10')">← Back</button><button onclick="showSection('s12')">Next: Report cards →</button></div>
@@ -664,23 +534,319 @@
     <!-- S12 -->
     <section id="s12">
       <h2>12 · Putting It Together: Reading an Assembly's "Report Card"</h2>
-      <p>Here's a worked, realistic example of how these three metrics interact — and how to reason about tradeoffs like a reviewer would.</p>
 
       <table>
         <tr><th>Scenario</th><th>Contig N50</th><th>BUSCO complete</th><th>QV</th><th>Likely interpretation</th></tr>
-        <tr><td>A</td><td>Very high (50+ Mb)</td><td>High (98%)</td><td>High (Q45+)</td><td>Excellent, modern telomere-to-telomere-class assembly — trustworthy across nearly all downstream uses</td></tr>
-        <tr><td>B</td><td>Very high</td><td>High</td><td><b>Low (Q20)</b></td><td>⚠ Suspicious — possible over-aggressive merging; check for chimeric contigs before trusting gene structures</td></tr>
-        <tr><td>C</td><td>Moderate (a few Mb)</td><td>High (96%+)</td><td>High</td><td>Solid, usable assembly — genes are intact and individually correct, just not fully joined into whole chromosomes yet (this closely matches how CheloAbing_2.0 was described in your tortoise document)</td></tr>
-        <tr><td>D</td><td>High</td><td><b>Low (70%)</b></td><td>High</td><td>⚠ Missing real biological content despite good contiguity and correctness elsewhere — possibly incomplete sequencing coverage of some genome regions</td></tr>
-        <tr><td>E</td><td>Low (fragmented, Kb-scale)</td><td>Moderate</td><td>Moderate</td><td>An earlier-generation, short-read-only style assembly — usable for some purposes, but well below current standards for a reference genome</td></tr>
+        <tr><td>A</td><td>Very high (50+ Mb)</td><td>High (98%)</td><td>High (Q45+)</td><td>Excellent, modern T2T-class assembly</td></tr>
+        <tr><td>B</td><td>Very high</td><td>High</td><td><b>Low (Q20)</b></td><td>⚠ Suspicious — possible over-aggressive merging</td></tr>
+        <tr><td>C</td><td>Moderate (a few Mb)</td><td>High (96%+)</td><td>High</td><td>Solid, usable assembly — matches CheloAbing_2.0's profile</td></tr>
+        <tr><td>D</td><td>High</td><td><b>Low (70%)</b></td><td>High</td><td>⚠ Missing real biological content despite good contiguity elsewhere</td></tr>
+        <tr><td>E</td><td>Low (Kb-scale)</td><td>Moderate</td><td>Moderate</td><td>Earlier-generation, short-read-only style assembly</td></tr>
       </table>
 
-      <div class="callout key">
-        <h4>Why this matters directly for your tortoise project</h4>
-        <p>Now you can re-read the phrase "CheloAbing_2.0... scaffold N50 improved from ~1.28 Mb to 148.19 Mb... contig N50 remains ~119 kb... BUSCO completeness 96.8%" and understand precisely what's being claimed and what isn't: the scaffold-level ordering is now excellent (helped enormously by borrowed structural information — Section 7's synteny caveat), the underlying raw assembled chunks (contigs) are still fairly modest by modern standards, and the gene content itself is largely present and intact (high BUSCO). No QV was mentioned in that document for this genome — which is itself worth noticing, since Section 11 makes clear that's an important, independent piece of information a rigorous reader would want to see before fully trusting base-level accuracy.</p>
+      <div class="navrow"><button onclick="showSection('s11')">← Back</button><button onclick="showSection('s18')">Next: Your genome vs. THE genome →</button></div>
+    </section>
+
+    <!-- ============ NEW SECTION 18 ============ -->
+    <section id="s18">
+      <h2>18 · Your Genome vs. "The" Human Genome</h2>
+      <p class="lead">This is the confusion you flagged, and it's a genuinely subtle point — even many biology students get it fuzzy. Let's be precise.</p>
+
+      <div class="grid2">
+        <div class="card">
+          <h4>🧬 Your genome</h4>
+          <p>The actual, specific sequence of DNA inside <i>your</i> cells. Unique to you (except identical twins). About 3.1 billion letters, in two copies of each chromosome (one from each parent — more in Section 21).</p>
+        </div>
+        <div class="card">
+          <h4>📖 "The" human reference genome</h4>
+          <p>A single, shared, standardized sequence that the scientific community agreed to use as a common coordinate system / "ruler" — so that everyone doing human genetics can describe positions and differences using the same addresses. It is <b>not</b> any specific living person's actual genome, and it is <b>not</b> an "average" human either.</p>
+        </div>
       </div>
 
-      <div class="navrow"><button onclick="showSection('s11')">← Back</button><button onclick="showSection('s13')">Next: Annotation →</button></div>
+      <h3>The map analogy</h3>
+      <p>Think of the reference genome like a well-known city map (say, of a major world city). Nobody claims the map is a perfect literal photograph of the city at this exact moment — buildings get renovated, streets get renamed, and each resident's actual house looks slightly different up close. But the map is enormously useful because it gives everyone a shared coordinate system: "meet me at the corner of 5th and Main" only works because we all agree on what "5th and Main" refers to.</p>
+
+      <div class="svg-box">
+        <svg viewBox="0 0 760 200" width="100%" style="max-width:700px">
+          <rect x="20" y="30" width="720" height="50" rx="6" fill="#101f2c" stroke="#4fa8e0"/>
+          <text x="380" y="50" text-anchor="middle" fill="#4fa8e0" font-size="12" font-weight="bold">Reference genome (GRCh38) — shared coordinate system</text>
+          <text x="380" y="68" text-anchor="middle" fill="#cfe3ee" font-size="10">chr1:100 | chr1:101 | chr1:102 | ... | chr1:1,000,000 | ...</text>
+
+          <text x="20" y="115" fill="#8fa3b3" font-size="11">Your genome, described relative to that map:</text>
+          <rect x="20" y="125" width="720" height="30" rx="4" fill="#1c2b18" stroke="#8bd17c"/>
+          <text x="380" y="144" text-anchor="middle" fill="#c8f7dc" font-size="10" font-family="monospace">"matches reference except: chr1:105 has a G instead of A, chr1:2,004,551 has an extra T..."</text>
+
+          <text x="380" y="180" text-anchor="middle" fill="#8fa3b3" font-size="11">Sequencing you doesn't rebuild your genome from scratch — it finds where you differ from this shared map</text>
+        </svg>
+      </div>
+
+      <div class="callout key">
+        <h4>The key insight</h4>
+        <p>When your doctor or a research lab "sequences your genome," in almost all modern practice they are not building your personal genome completely from scratch the way Section 1–8 describe. Instead they generate your reads, then <b>align (map)</b> them against the existing reference genome, and report the list of differences (variants) — because describing "here's everywhere you differ from the shared map" is vastly cheaper and more useful than re-deriving the entire 3-billion-letter sequence independently every single time.</p>
+      </div>
+
+      <div class="callout tip">
+        <h4>So when is a genome actually assembled "from scratch" (de novo)?</h4>
+        <p>De novo assembly (everything in Sections 1–12) is done: (1) once, historically, to build the reference in the first place; (2) periodically, to build an improved/updated reference; (3) for specific research or clinical purposes where reference bias is a concern (e.g., cancer genomes, or a structural rearrangement the reference can't represent); and (4) always, for any species that doesn't have a reference yet (Section 22).</p>
+      </div>
+
+      <div class="navrow"><button onclick="showSection('s12')">← Back</button><button onclick="showSection('s19')">Next: One genome or a blend? →</button></div>
+    </section>
+
+    <!-- ============ NEW SECTION 19 ============ -->
+    <section id="s19">
+      <h2>19 · Wait — Is the Reference One Person, or a Blend of Many?</h2>
+      <p>Here's a genuinely surprising, under-told part of the story, and it directly matters for how you should interpret the word "reference."</p>
+
+      <div class="callout story">
+        <h4>The real history of the human reference genome (GRCh38 and its predecessors)</h4>
+        <p>The Human Genome Project recruited volunteer donors in the late 1990s, and — contrary to what many donors were told at the time — the resulting reference is <b>not</b> an even blend of many people. Due to how the lab processing worked (based on cloned DNA fragment libraries), the final assembled reference genome (versions still used today, like GRCh38) is a <b>mosaic</b>: different physical stretches of the reference sequence come from different donors, stitched together — and the stitching is wildly uneven. One single anonymous male donor, referred to by the code name <b>RP11</b>, contributes roughly <b>70% of the entire current human reference genome</b> by sequence length. The rest comes from a patchwork of other donors' clone libraries.</p>
+      </div>
+
+      <div class="svg-box">
+        <svg viewBox="0 0 760 130" width="100%" style="max-width:700px">
+          <text x="20" y="20" fill="#8fa3b3" font-size="11">Composition of the classic human reference genome (GRCh38), by sequence contributed:</text>
+          <rect x="20" y="35" width="524" height="40" fill="#4fa8e0"/>
+          <text x="282" y="59" text-anchor="middle" fill="#08222e" font-size="12" font-weight="bold">RP11 (one anonymous male donor) — ~70%</text>
+          <rect x="544" y="35" width="196" height="40" fill="#f6ad55"/>
+          <text x="642" y="59" text-anchor="middle" fill="#2a1e08" font-size="11">~10 other donor libraries — ~30%</text>
+          <text x="380" y="105" text-anchor="middle" fill="#8fa3b3" font-size="11">A "mosaic haploid representation," not a consensus average and not any one real, complete person</text>
+        </svg>
+      </div>
+
+      <div class="callout warn">
+        <h4>Why this matters, beyond trivia</h4>
+        <ul style="margin:8px 0;">
+          <li><b>It's not a "typical" or "average" human</b> in any statistical sense — it's an accident of laboratory logistics, dominated by one person's DNA.</li>
+          <li><b>It has known gaps and errors</b> inherited from how cloned fragments were stitched together, some only fully resolved decades later.</li>
+          <li><b>It creates "reference bias"</b>: because the reference over-represents one ancestry background, people whose DNA differs more from RP11's ancestry can, in some analyses, show up with systematically more "differences" from the reference — not because their DNA is unusual, but because the ruler itself isn't neutral.</li>
+          <li>There's an important, ongoing ethical story here too: donors were told the DNA would be pooled anonymously and no one person would dominate — that assurance didn't hold, and RP11 himself was reportedly never told his DNA became the backbone of the world's most-used genetic reference.</li>
+        </ul>
+      </div>
+
+      <h3>What replaced/supplemented this approach</h3>
+      <table>
+        <tr><th>Resource</th><th>What it is</th><th>Why it exists</th></tr>
+        <tr><td><b>GRCh38</b> (and patches, "hg38")</td><td>The classic mosaic reference described above, still widely used and continually patched for corrections</td><td>Historical continuity — enormous amounts of existing research, tools, and clinical pipelines are built around it</td></tr>
+        <tr><td><b>T2T-CHM13</b></td><td>A single, essentially complete, gapless (telomere-to-telomere) genome, but built from one very unusual cell line (a "complete hydatidiform mole," which — due to a quirk of its biological origin — is effectively <b>haploid</b>, containing only one set of chromosomes instead of two, making it much easier to assemble without the diploid tangle from Section 1)</td><td>To finally close the gaps and fix the structural errors that had persisted in the mosaic reference for two decades</td></tr>
+        <tr><td><b>Human Pangenome Reference</b></td><td>Not one sequence at all, but a collection of <b>47 diploid genome assemblies from 47 genetically diverse individuals</b> (94 total haplotype sequences), combined into a single graph-like structure that represents many people's variation simultaneously</td><td>To move past the idea of "one ruler for everyone" and instead represent real human genetic diversity directly, reducing reference bias</td></tr>
+      </table>
+
+      <div class="callout tip">
+        <h4>The pangenome, in one picture</h4>
+        <p>Instead of a single line (one sequence), imagine a graph where the "backbone" represents shared sequence common to virtually everyone, and where it branches into alternate parallel paths at positions/regions where real human populations differ substantially — each path representing a real, observed version from actual sampled individuals rather than one dominant donor's version being treated as the default "normal."</p>
+      </div>
+
+      <div class="svg-box">
+        <svg viewBox="0 0 700 140" width="100%" style="max-width:640px">
+          <line x1="20" y1="70" x2="220" y2="70" stroke="#4fd1c5" stroke-width="4"/>
+          <path d="M220,70 Q280,30 340,70" stroke="#f6ad55" stroke-width="3" fill="none"/>
+          <path d="M220,70 Q280,110 340,70" stroke="#e8618c" stroke-width="3" fill="none"/>
+          <line x1="340" y1="70" x2="680" y2="70" stroke="#4fd1c5" stroke-width="4"/>
+          <text x="120" y="95" text-anchor="middle" fill="#4fd1c5" font-size="10">shared backbone</text>
+          <text x="280" y="20" text-anchor="middle" fill="#f6ad55" font-size="10">variant path A</text>
+          <text x="280" y="128" text-anchor="middle" fill="#e8618c" font-size="10">variant path B</text>
+          <text x="520" y="95" text-anchor="middle" fill="#4fd1c5" font-size="10">shared backbone resumes</text>
+        </svg>
+      </div>
+
+      <div class="navrow"><button onclick="showSection('s18')">← Back</button><button onclick="showSection('s20')">Next: How many samples? →</button></div>
+    </section>
+
+    <!-- ============ NEW SECTION 20 ============ -->
+    <section id="s20">
+      <h2>20 · How Many Samples Does It Take to Build a Reference?</h2>
+      <p>The honest answer: <b>it depends entirely on what kind of reference you're trying to build</b> — and the number has changed dramatically as the field's ambitions have grown. Here's the full spectrum.</p>
+
+      <div class="grid2">
+        <div class="card">
+          <h4>Minimum to build <i>any</i> reference: 1</h4>
+          <p>Technically, you can build a usable, publishable reference genome from a single individual's DNA — this is exactly what most first-ever reference genomes for a new species look like (Section 22), and it's also effectively what the original human reference mosaic amounted to in practice, dominated by one donor.</p>
+        </div>
+        <div class="card">
+          <h4>For a single, complete, gapless reference: 1 (but a special one)</h4>
+          <p>T2T-CHM13 is built from just one cell line — chosen specifically because its unusual haploid biology sidesteps the diploid-assembly tangle from Section 1, making a fully gapless assembly achievable from a single sample.</p>
+        </div>
+        <div class="card">
+          <h4>For a diversity-representing pangenome: dozens+</h4>
+          <p>The current Human Pangenome Reference draft used <b>47 individuals</b> (94 haplotypes), deliberately chosen to be genetically/ancestrally diverse — enough to capture common structural variation across human populations, though not remotely enough to capture every rare variant that exists globally.</p>
+        </div>
+        <div class="card">
+          <h4>For population-level variant catalogs: thousands</h4>
+          <p>Separate from building the reference sequence itself, projects that catalog how common each genetic variant is across humanity (used for things like disease-risk statistics) sequence thousands to hundreds of thousands of people — a fundamentally different, additional layer of data built <i>on top of</i> a reference, not a replacement for one.</p>
+        </div>
+      </div>
+
+      <div class="callout math">
+        <h4>Why more samples matters: a coverage-of-diversity argument, not a coverage-of-bases argument</h4>
+        <p>Note this is a completely different "coverage" concept from Section 1's sequencing coverage. There, more reads reduced the chance of missing a base by chance (<code>P = e⁻ᶜ</code>). Here, more <i>individuals</i> reduces the chance that some real, meaningful variant in the population goes completely unobserved. If a genetic variant exists at frequency <i>f</i> in a population, the probability that none of your <i>n</i> sampled individuals happen to carry it is approximately:</p>
+        <div class="eq">P(variant missed) ≈ (1 − f)<sup>2n</sup></div>
+        <p>(the exponent is 2n because each diploid individual carries two chromosome copies). For a reasonably common variant (f = 5%) and n = 47 individuals (94 haplotypes), <code>P(missed) ≈ 0.95⁹⁴ ≈ 0.8%</code> — you'd almost certainly catch it. But for a rare variant (f = 0.1%), <code>P(missed) ≈ 0.999⁹⁴ ≈ 91%</code> — you'd very likely miss it entirely. This is exactly why a 47-person pangenome is a huge, meaningful step up in representing diversity compared to one donor, while still being nowhere near enough to catalog rare variation — that's what the much larger, thousands-to-hundreds-of-thousands-person variant-catalog projects are separately for.</p>
+      </div>
+
+      <h3>Try it: how sample size affects "will I catch this variant?"</h3>
+      <div class="interactive-widget">
+        <label style="font-size:13px;color:var(--muted);">Variant frequency in the population (f):</label>
+        <div class="slider-row">
+          <input type="range" min="0.1" max="20" value="5" step="0.1" id="fSlider">
+          <span id="fVal" style="min-width:50px;">5.0%</span>
+        </div>
+        <label style="font-size:13px;color:var(--muted);">Number of individuals sampled (n):</label>
+        <div class="slider-row">
+          <input type="range" min="1" max="200" value="47" id="nSlider">
+          <span id="nVal" style="min-width:50px;">47</span>
+        </div>
+        <div class="kmer-out" id="sampleOut">Adjust the sliders to see the probability of missing this variant entirely.</div>
+      </div>
+
+      <div class="callout key">
+        <h4>Direct answer to your question</h4>
+        <p>So: "how many samples to build a reference" doesn't have one number — <b>one</b> sample gives you a usable, working reference (and is exactly the realistic starting point for a new species, Section 22); <b>dozens</b> gives you a reference that reasonably represents common diversity within a species; <b>thousands+</b> is a different, additional kind of resource (a variant catalog) layered on top, aimed at rare variation. Nearly every reference genome that has ever existed for any species — including essentially every non-human species reference — is built from just one, or a small handful, of individuals.</p>
+      </div>
+
+      <div class="navrow"><button onclick="showSection('s19')">← Back</button><button onclick="showSection('s21')">Next: Which parent's copy? →</button></div>
+    </section>
+
+    <!-- ============ NEW SECTION 21 ============ -->
+    <section id="s21">
+      <h2>21 · "One From Each Parent" — Which One Actually Gets Mapped?</h2>
+      <p>This is a wonderfully specific question and it deserves a careful, step-by-step answer, because the honest answer is <b>"it depends which kind of analysis you're doing,"</b> and conflating the options is a common source of confusion even among people well into a bioinformatics career.</p>
+
+      <h3>Step 1: What "one copy from each parent" actually means physically</h3>
+      <p>You have 23 pairs of chromosomes. For each pair, one physical chromosome copy came from your mother's egg cell, and the other came from your father's sperm cell. At any given gene/position, you might have inherited the identical DNA letter from both parents (<b>homozygous</b>) or two different letters (<b>heterozygous</b>). Across your whole genome, the overwhelming majority of positions are homozygous or nearly so (all humans are >99.9% identical to each other) — it's the small minority of heterozygous positions that make you genetically distinguishable from your parents and siblings.</p>
+
+      <div class="svg-box">
+        <svg viewBox="0 0 700 150" width="100%" style="max-width:640px">
+          <text x="20" y="20" fill="#4fa8e0" font-size="11">Maternal copy of a chromosome:</text>
+          <rect x="20" y="28" width="640" height="22" fill="#101f2c" stroke="#4fa8e0"/>
+          <rect x="300" y="28" width="10" height="22" fill="#e8618c"/>
+          <text x="20" y="70" fill="#f6ad55" font-size="11">Paternal copy of the same chromosome:</text>
+          <rect x="20" y="78" width="640" height="22" fill="#2a2114" stroke="#f6ad55"/>
+          <rect x="300" y="78" width="10" height="22" fill="#8bd17c"/>
+          <text x="305" y="120" text-anchor="middle" fill="#8fa3b3" font-size="10">↑ a heterozygous position: mother contributed one letter, father a different one</text>
+          <text x="350" y="140" text-anchor="middle" fill="#8fa3b3" font-size="10">Everywhere else on this chromosome, the two copies are identical or nearly so</text>
+        </svg>
+      </div>
+
+      <h3>Step 2: What happens when your DNA gets sequenced (the standard, most common case)</h3>
+      <p>Standard sequencing (whether short-read Illumina or long-read) extracts DNA from your cells, which contains <b>both</b> chromosome copies mixed together in the same tube — the machine has no built-in way of knowing which physical read came from your mother's copy versus your father's copy. Both get sequenced and both get mapped, together, onto the reference genome (which itself, recall from Section 19, is just <b>one arbitrary single sequence</b>, not "the maternal" or "the paternal" version of anything).</p>
+
+      <div class="callout key">
+        <h4>So, directly answering your question: which one do we map?</h4>
+        <p>In routine sequencing, <b>both</b> get mapped — reads from your maternal copy and reads from your paternal copy both get aligned to the same single reference sequence, and they simply pile up together at every position. At a homozygous position, all the reads (from both copies) agree, and you see one clear consensus letter. At a heterozygous position, the reads at that spot will show roughly 50% one letter and 50% the other — and that specific pattern (a clean, roughly 50/50 split at one position, with normal agreement everywhere else) is precisely the statistical signal used to detect that you're heterozygous there, and to call it as a variant.</p>
+      </div>
+
+      <div class="svg-box">
+        <svg viewBox="0 0 700 180" width="100%" style="max-width:640px">
+          <text x="350" y="20" text-anchor="middle" fill="#8fa3b3" font-size="12">Reads piled up ("pileup") at a heterozygous position after mapping to the reference</text>
+          <line x1="50" y1="150" x2="650" y2="150" stroke="#8fa3b3"/>
+          <text x="350" y="168" text-anchor="middle" fill="#8fa3b3" font-size="10">Reference position (single column shown)</text>
+          <!-- reads -->
+          <rect x="300" y="40" width="100" height="10" fill="#4fa8e0" opacity="0.8"/>
+          <rect x="300" y="55" width="100" height="10" fill="#4fa8e0" opacity="0.8"/>
+          <rect x="300" y="70" width="100" height="10" fill="#4fa8e0" opacity="0.8"/>
+          <rect x="300" y="85" width="100" height="10" fill="#e8618c" opacity="0.8"/>
+          <rect x="300" y="100" width="100" height="10" fill="#e8618c" opacity="0.8"/>
+          <rect x="300" y="115" width="100" height="10" fill="#e8618c" opacity="0.8"/>
+          <text x="200" y="60" fill="#4fa8e0" font-size="10">reads carrying "A" (say, maternal)</text>
+          <text x="200" y="105" fill="#e8618c" font-size="10">reads carrying "G" (say, paternal)</text>
+          <text x="500" y="80" fill="#f0f4f7" font-size="11">≈50/50 split →</text>
+          <text x="500" y="95" fill="#f0f4f7" font-size="11">called as heterozygous</text>
+        </svg>
+        <div class="interactive-hint">Both parental copies get mapped to the same reference position; the 50/50 read split at a position is the signal of heterozygosity.</div>
+      </div>
+
+      <h3>Step 3: But sometimes you DO want to know which copy is which — that's "phasing"</h3>
+      <p>Knowing <i>that</i> you're heterozygous at two different positions doesn't automatically tell you whether both "unusual" letters came from the same parent (sitting together on one physical chromosome) or from different parents (one on each copy) — and for some purposes (certain disease genetics, or reconstructing full haplotypes) that distinction matters a lot. Recovering it is called <b>phasing</b>, and there are a few ways to do it:</p>
+
+      <div class="grid3">
+        <div class="card"><h4>Trio-based phasing</h4><p>Sequence both parents too. If a child's heterozygous position matches something one parent is homozygous for, you can directly infer which parent contributed which letter.</p></div>
+        <div class="card"><h4>Long-read phasing</h4><p>If a single long read is long enough to span two or more heterozygous positions at once, it directly proves those specific letters travel together on the same physical chromosome copy — no parental samples needed.</p></div>
+        <div class="card"><h4>Population-based statistical phasing</h4><p>Using patterns of which variants tend to travel together across large reference panels of many other people's already-phased genomes, to statistically infer the most likely phasing for a new individual.</p></div>
+      </div>
+
+      <div class="callout tip">
+        <h4>Connecting back to Section 1's "haplotype-aware" assemblers</h4>
+        <p>This is exactly why Section 1 and Section 5 made a big deal of "haplotype-aware" assembly (like hifiasm's phased output): when you're building a brand-new reference genome from scratch (rather than mapping to an existing one), you have the opportunity to keep the maternal and paternal copies fully separate from the very beginning, producing two clean haplotype sequences instead of one blended consensus — which is a strictly richer, more informative result when it's achievable.</p>
+      </div>
+
+      <div class="callout warn">
+        <h4>So what does "the reference genome" actually represent, in this light?</h4>
+        <p>Now the full picture snaps together: the classic reference (GRCh38) is just <b>one haploid, mosaic sequence</b> — not "the maternal genome" or "the paternal genome" of anyone, and not even one consistent person's real single copy throughout. It's a single arbitrary coordinate backbone. When you map your own sequencing reads to it, you're not asking "does this match my mom's copy or dad's copy" — you're asking "does this match the reference's one arbitrary sequence, or not," at every position, for reads coming from <i>both</i> of your own copies simultaneously.</p>
+      </div>
+
+      <div class="navrow"><button onclick="showSection('s20')">← Back</button><button onclick="showSection('s22')">Next: Starting a new species →</button></div>
+    </section>
+
+    <!-- ============ NEW SECTION 22 ============ -->
+    <section id="s22">
+      <h2>22 · You Want to Build a Reference Genome for a New Species. Where Do You Start?</h2>
+      <p>Let's make this fully concrete and practical — a real checklist, in the order decisions actually get made.</p>
+
+      <div class="callout tip">
+        <p><span class="stepnum">1</span><b>Decide what "the species" even means for your purposes, and pick one individual (usually).</b> Since Section 20 established that one sample is a perfectly normal, standard starting point, your first real decision is just: which individual? Common considerations: avoid an obviously sick or unusual individual, consider sex (some projects specifically want a female to avoid the added complexity of divergent sex chromosomes, or specifically want a male to capture a species' Y or W chromosome), and — importantly — try to get a wild-type or representative individual rather than a captive one with unusual/admixed ancestry if that's a concern (this was flagged for the tortoise cell line in your earlier document).</p>
+      </div>
+      <div class="callout tip">
+        <p><span class="stepnum">2</span><b>Get high-quality, high-molecular-weight DNA.</b> This is a real, practical bottleneck: long-read sequencing (Section 2) needs long, intact DNA molecules going in — if your extraction method shears the DNA into short fragments before it even reaches the sequencer, you've thrown away the main advantage of modern long-read technology before you started. Fresh or properly flash-frozen tissue is far better than degraded or long-preserved samples.</p>
+      </div>
+      <div class="callout tip">
+        <p><span class="stepnum">3</span><b>Estimate the genome size first</b> (often with a quick, cheap short-read k-mer analysis, using the k-mer-spectrum idea from Section 3 — the total area under that "true k-mer" peak, divided by the coverage, estimates genome size) so you know how much long-read sequencing you'll actually need to hit your target coverage (Section 1's coverage formula).</p>
+      </div>
+      <div class="callout tip">
+        <p><span class="stepnum">4</span><b>Sequence with PacBio HiFi and/or ONT</b> at your target coverage, and ideally also generate Hi-C data from the same individual (Section 7) for proper chromosome-scale scaffolding — this is much stronger than borrowing a relative's structure (Section 14's synteny caveat).</p>
+      </div>
+      <div class="callout tip">
+        <p><span class="stepnum">5</span><b>Assemble</b> using a modern assembler matched to your data type (Section 5), then <b>scaffold</b> with Hi-C (Section 7), then <b>polish</b> (Section 8).</p>
+      </div>
+      <div class="callout tip">
+        <p><span class="stepnum">6</span><b>Quality-check</b> along all three axes — N50, BUSCO, QV (Sections 9–12) — using a BUSCO gene set from the closest available well-studied lineage (e.g., "vertebrata" or "sauropsida" for a reptile) since a species-specific curated gene set essentially never exists yet for a brand-new species.</p>
+      </div>
+      <div class="callout tip">
+        <p><span class="stepnum">7</span><b>Annotate</b> (Section 13) — this is often the hardest step for a genuinely new species, since there's no existing RNA/gene evidence for that species yet; typically this means generating fresh RNA-seq data from real tissue of the organism specifically to help find genes, supplemented by comparing against related, better-studied species.</p>
+      </div>
+      <div class="callout tip">
+        <p><span class="stepnum">8</span><b>Publish and deposit</b> the assembly (with full metadata on sequencing tech, coverage, assembler, and QC metrics) in a public genome database, so it becomes available as the working reference for that species going forward — exactly the role GRCh38 plays for humans, now filled for this new species by whatever you just built.</p>
+      </div>
+
+      <div class="callout key">
+        <h4>The honest, important caveat</h4>
+        <p>A "reference genome" for a new species, built this way, is really a <b>first draft</b> — one individual's genome, pressed into service as everyone's shared coordinate system, exactly analogous to how RP11 became the backbone of the human reference almost by accident (Section 19). It will very likely get revised, improved, or eventually supplemented by a pangenome as more individuals of that species get sequenced and the community's needs grow — this is a normal, expected life cycle for a reference genome, not a sign the first one was done wrong.</p>
+      </div>
+
+      <div class="navrow"><button onclick="showSection('s21')">← Back</button><button onclick="showSection('s23')">Next: Animal vs. bacteria vs. virus →</button></div>
+    </section>
+
+    <!-- ============ NEW SECTION 23 ============ -->
+    <section id="s23">
+      <h2>23 · Does the Process Differ for Animals, Bacteria, and Viruses?</h2>
+      <p>Substantially, yes — mostly driven by three factors that cascade through everything else: <b>genome size</b>, <b>ploidy</b> (how many chromosome copies), and <b>genome structure/complexity</b>.</p>
+
+      <table>
+        <tr><th></th><th>🦖 Animals (eukaryotes)</th><th>🦠 Bacteria (prokaryotes)</th><th>🧬 Viruses</th></tr>
+        <tr><td><b>Typical genome size</b></td><td>Hundreds of millions to tens of billions of base pairs</td><td>A few hundred thousand to ~10 million base pairs</td><td>A few thousand to ~200,000 base pairs (some giant viruses larger)</td></tr>
+        <tr><td><b>Ploidy</b></td><td>Usually diploid (2 copies) — the Section 21 tangle applies</td><td>Usually haploid (1 copy) — no maternal/paternal blending problem at all</td><td>Haploid, and often extremely simple — sometimes just a single molecule</td></tr>
+        <tr><td><b>Structure</b></td><td>Multiple linear chromosomes, lots of repetitive DNA, genes often interrupted by non-coding "introns"</td><td>Usually one circular chromosome, sometimes small extra circular pieces (plasmids), genes densely packed with little non-coding sequence</td><td>Extremely compact and efficient — sometimes overlapping genes reading the same stretch of sequence in different frames (recall the single-polyprotein structure from your earlier ZIKV/LGTV guide)</td></tr>
+        <tr><td><b>Typical sequencing effort</b></td><td>Full long-read + Hi-C pipeline (all of Sections 1–12), often a large, multi-month project</td><td>Often a single PacBio HiFi or ONT run can assemble a complete, gapless circular genome in one contig — repeats are less extreme, so it's dramatically easier</td><td>Often sequenced directly, sometimes even without an assembly step at all if the genome is small and reads are long enough to cover it end-to-end in one piece</td></tr>
+        <tr><td><b>Reference concept</b></td><td>One reference per species (Sections 18–20); increasingly moving toward pangenomes for well-studied species</td><td>Often many reference genomes per species, since different strains can differ substantially (important for pathogens) — sometimes framed as a bacterial "pangenome" for genuinely different reasons than the human one (core genes present in all strains vs. accessory genes only in some)</td><td>A reference is usually just "the sequenced genome of a specific, well-characterized strain/isolate" (this is exactly what "the LGTV TP21 strain genome" or "the ZIKV strain genome" meant in your earlier tortoise document) — strain identity matters enormously since viruses evolve fast</td></tr>
+      </table>
+
+      <h3>Why bacteria are often "easier"</h3>
+      <p>Two of Section 1's three enemies are largely absent or muted: bacteria are haploid (no diploid-blending problem), and their genomes, while dense with genes, generally have far fewer long, complex repeats than animal genomes — so a single circular contig, gapless and complete, is a routine, almost mundane outcome from a single good long-read sequencing run, not a multi-year flagship project like a new animal reference often is.</p>
+
+      <h3>Why viral "assembly" can look completely different</h3>
+      <p>For a virus a few thousand to a hundred-thousand letters long, a single modern long read can sometimes span the <i>entire genome in one piece</i> — at that point, "assembly" in the graph-theoretic sense from Section 4 may barely be needed at all; it can become more of a consensus-and-error-correction problem across many reads that each already cover the whole thing, rather than a stitching-together problem. This is part of why viral genome sequencing (relevant to your earlier ZIKV/LGTV project) is comparatively fast and routine compared to a new animal genome project.</p>
+
+      <div class="callout warn">
+        <h4>Where it gets more complex again: viral populations and quasispecies</h4>
+        <p>Because viruses replicate fast and error-prone, a single infected sample doesn't actually contain one uniform viral genome — it contains a genetically diverse swarm of closely related variants (sometimes called a "quasispecies"). So while assembling <i>a</i> representative consensus viral genome is easy, characterizing the <i>full diversity</i> of viral variants present in one sample is its own specialized, much harder sub-problem — conceptually a bit like the pangenome-diversity problem from Section 19–20, but playing out within a single infected host rather than across a species.</p>
+      </div>
+
+      <div class="callout key">
+        <h4>One unifying takeaway</h4>
+        <p>Every organism type ultimately runs through the same conceptual pipeline from this guide — sequence, assemble, scaffold if needed, polish, QC, annotate — but the <i>difficulty dial</i> for each step is set almost entirely by genome size, ploidy, and repeat content. Animals sit at the hard end of that dial; bacteria are moderate; small viruses sit at the easy end, sometimes skipping steps (like scaffolding) entirely because there's nothing left to scaffold.</p>
+      </div>
+
+      <div class="navrow"><button onclick="showSection('s22')">← Back</button><button onclick="showSection('s13')">Next: Annotation →</button></div>
     </section>
 
     <!-- S13 -->
@@ -692,34 +858,33 @@
       <div class="grid2">
         <div class="card">
           <h4>Evidence-based (RNA-seq-guided)</h4>
-          <p>Sequence actual RNA molecules being made by real cells of the organism, then align those RNA sequences back onto the genome. Wherever RNA reliably aligns is very strong, direct evidence that a gene is being actively transcribed right there — this is essentially empirical, observational evidence.</p>
+          <p>Sequence actual RNA molecules being made by real cells of the organism, then align those RNA sequences back onto the genome. Wherever RNA reliably aligns is strong, direct evidence a gene is being actively transcribed right there.</p>
         </div>
         <div class="card">
           <h4>Prediction-based (ab initio / homology)</h4>
-          <p>Use statistical models trained on known gene structures (things like typical start/stop signals, splice site patterns) to predict likely genes directly from the raw sequence, and/or compare against genes already known in related species to infer likely equivalents (orthologs). This can find genes even where no RNA evidence was collected, but is inherently more uncertain — a probabilistic guess rather than a direct observation.</p>
+          <p>Use statistical models trained on known gene structures to predict likely genes directly from raw sequence, and/or compare against genes already known in related species. More uncertain — a probabilistic guess rather than a direct observation.</p>
         </div>
       </div>
-      <p>Modern annotation pipelines typically combine both: RNA evidence where available, filled in and refined with prediction-based methods elsewhere, and cross-checked against related species.</p>
 
       <div class="callout warn">
         <h4>Why annotation quality lags genome quality in non-model organisms</h4>
-        <p>This directly explains a caveat from your tortoise document: annotation is generally harder and less reliable than the underlying sequence assembly, especially for a species (like the Galápagos tortoise) that isn't a heavily studied "model organism" with decades of accumulated RNA and gene-structure evidence like human or mouse. Two specific failure modes matter a lot here:</p>
+        <p>Annotation is generally harder and less reliable than the underlying sequence assembly, especially for a species that isn't a heavily studied "model organism." Two specific failure modes matter:</p>
         <ul style="margin:8px 0;">
-          <li><b>Gene family collapse:</b> when genes exist in multiple similar copies (paralogs) — common in immune-related genes — automated pipelines and simplistic "map to the closest human gene" strategies can blur distinct copies together, erasing exactly the kind of lineage-specific differences that might be scientifically interesting.</li>
-          <li><b>Liftover errors:</b> when gene annotations are "transferred" from one genome assembly version, or from a related species' genome, onto a newer assembly (rather than independently re-predicted from scratch), any errors in the original annotation — or genuine differences between the species/versions — get silently carried along. This is exactly the situation flagged for CheloAbing_2.0, where genes were annotated partly via liftover from the older assembly, and 203 gene models reportedly failed to transfer at all.</li>
+          <li><b>Gene family collapse:</b> genes existing in multiple similar copies (paralogs) can get blurred together by automated pipelines.</li>
+          <li><b>Liftover errors:</b> transferring annotations from an older assembly or related species carries along any of their errors.</li>
         </ul>
       </div>
 
-      <div class="navrow"><button onclick="showSection('s12')">← Back</button><button onclick="showSection('s14')">Next: Cross-species scaffolding →</button></div>
+      <div class="navrow"><button onclick="showSection('s23')">← Back</button><button onclick="showSection('s14')">Next: Cross-species scaffolding →</button></div>
     </section>
 
     <!-- S14 -->
     <section id="s14">
       <h2>14 · Cross-Species Scaffolding & Liftover, Explained Properly</h2>
-      <p>This section directly unpacks the specific technique used to build CheloAbing_2.0, since it's different from — and weaker evidence than — the native Hi-C approach from Section 7, and it's worth understanding the distinction clearly.</p>
+      <p>This directly unpacks the technique used to build CheloAbing_2.0 from your original tortoise document — different from, and weaker evidence than, the native Hi-C approach from Section 7.</p>
 
       <h3>The core assumption: synteny</h3>
-      <p><b>Synteny</b> is the observation that large blocks of gene order are often conserved across related species, even after millions of years of evolutionary divergence — genes that sit near each other on a chromosome in one species often still sit near each other, in the same relative order, in a related species, even if the exact DNA sequence between them has changed substantially.</p>
+      <p><b>Synteny</b> is the observation that large blocks of gene order are often conserved across related species — genes near each other on a chromosome in one species often still sit near each other, in the same relative order, in a related species.</p>
 
       <div class="svg-box">
         <svg viewBox="0 0 700 160" width="100%" style="max-width:640px">
@@ -727,29 +892,20 @@
           <rect x="20" y="35" width="80" height="20" fill="#101f2c" stroke="#4fa8e0"/><text x="60" y="49" text-anchor="middle" fill="#cfe3ee" font-size="9">Gene 1</text>
           <rect x="105" y="35" width="80" height="20" fill="#101f2c" stroke="#4fa8e0"/><text x="145" y="49" text-anchor="middle" fill="#cfe3ee" font-size="9">Gene 2</text>
           <rect x="190" y="35" width="80" height="20" fill="#101f2c" stroke="#4fa8e0"/><text x="230" y="49" text-anchor="middle" fill="#cfe3ee" font-size="9">Gene 3</text>
-
           <text x="20" y="100" fill="#f6ad55" font-size="12">Species B (your fragmented species) — unordered contigs</text>
           <rect x="20" y="110" width="80" height="20" fill="#2a2114" stroke="#f6ad55"/><text x="60" y="124" text-anchor="middle" fill="#cfe3ee" font-size="9">Gene 2</text>
           <rect x="150" y="110" width="80" height="20" fill="#2a2114" stroke="#f6ad55"/><text x="190" y="124" text-anchor="middle" fill="#cfe3ee" font-size="9">Gene 1</text>
           <rect x="280" y="110" width="80" height="20" fill="#2a2114" stroke="#f6ad55"/><text x="320" y="124" text-anchor="middle" fill="#cfe3ee" font-size="9">Gene 3</text>
-
           <line x1="60" y1="55" x2="190" y2="110" stroke="#8fa3b3" stroke-dasharray="3,3"/>
           <line x1="145" y1="55" x2="60" y2="110" stroke="#8fa3b3" stroke-dasharray="3,3"/>
           <line x1="230" y1="55" x2="320" y2="110" stroke="#8fa3b3" stroke-dasharray="3,3"/>
-          <text x="350" y="150" fill="#8fa3b3" font-size="11">Using Species A's known gene order as a template to infer the likely order/orientation of Species B's fragmented contigs</text>
+          <text x="350" y="150" fill="#8fa3b3" font-size="11">Using Species A's known gene order to infer the likely order of Species B's fragmented contigs</text>
         </svg>
       </div>
 
-      <p>The rescaffolding process, essentially: find genes/sequence blocks shared between the well-assembled relative and your fragmented species, then use the relative's known chromosome-level order as a scaffold template to infer how your species' own contigs should probably be ordered and oriented.</p>
-
-      <div class="callout tip">
-        <h4>Why this is a legitimate, useful technique...</h4>
-        <p>It's dramatically cheaper than generating new Hi-C data, and large-scale synteny really is often well conserved, especially between closely related species (like two giant tortoise lineages) — so it can meaningfully improve a fragmented genome's usability without new wet-lab data.</p>
-      </div>
-
       <div class="callout warn">
-        <h4>...but here's exactly where it can mislead you</h4>
-        <p>Synteny is a statistical tendency, not a guarantee. Real evolutionary events — chromosome fusions, splits, large inversions, translocations — do happen, and exactly at those locations, the "borrow the relative's order" assumption breaks down. A rescaffolded genome can look confidently chromosome-scale while actually containing subtle structural errors precisely where the two species' real chromosome structures diverge. This is why your tortoise document specifically recommends checking any particularly interesting finding (an unusual duplicated gene, a candidate ancient viral insertion) against the original, non-rescaffolded contigs — to make sure it isn't an artifact introduced by the cross-species assumption.</p>
+        <h4>Where it can mislead you</h4>
+        <p>Real evolutionary events — chromosome fusions, splits, large inversions — do happen, and exactly at those locations, the "borrow the relative's order" assumption breaks down. A rescaffolded genome can look confidently chromosome-scale while containing subtle structural errors precisely where the two species' real structures diverge.</p>
       </div>
 
       <div class="navrow"><button onclick="showSection('s13')">← Back</button><button onclick="showSection('s15')">Next: Full pipeline →</button></div>
@@ -758,36 +914,30 @@
     <!-- S15 -->
     <section id="s15">
       <h2>15 · The Full Pipeline, Start to Finish</h2>
-      <p>Here's everything from this guide assembled (pun intended) into one linear workflow, as it would actually run on a modern genome project.</p>
 
       <div class="callout tip">
-        <p><span class="stepnum">1</span><b>Collect a high-molecular-weight DNA sample</b> from the organism — long, intact DNA is essential, since fragmented starting material defeats the purpose of long-read sequencing.</p>
+        <p><span class="stepnum">1</span><b>Collect a high-molecular-weight DNA sample</b> from the organism, from one representative individual (Section 22).</p>
       </div>
       <div class="callout tip">
-        <p><span class="stepnum">2</span><b>Sequence</b> using PacBio HiFi and/or ONT for long reads (Section 2), typically targeting 20×+ coverage per haplotype, plus generate Hi-C data from the same organism (Section 7).</p>
+        <p><span class="stepnum">2</span><b>Sequence</b> using PacBio HiFi and/or ONT for long reads (Section 2), plus Hi-C data (Section 7).</p>
       </div>
       <div class="callout tip">
-        <p><span class="stepnum">3</span><b>Assemble contigs</b> from the long reads using a modern, ideally haplotype-aware assembler like hifiasm, Flye, or Verkko (Sections 4–5), producing a graph-based reconstruction resolved into contig sequences.</p>
+        <p><span class="stepnum">3</span><b>Assemble contigs</b> using a modern, ideally haplotype-aware assembler (Sections 4–5).</p>
       </div>
       <div class="callout tip">
-        <p><span class="stepnum">4</span><b>Scaffold</b> the contigs into chromosome-scale sequences using the Hi-C contact data (Section 7) — or, if Hi-C isn't available, using synteny-based rescaffolding against a related species' genome (Section 14), understanding that this is a weaker substitute.</p>
+        <p><span class="stepnum">4</span><b>Scaffold</b> into chromosome-scale sequences using Hi-C (Section 7), or synteny to a relative if Hi-C isn't available (Section 14).</p>
       </div>
       <div class="callout tip">
-        <p><span class="stepnum">5</span><b>Polish</b> the assembly to correct remaining base-level errors, using the same or complementary sequencing data (Section 8).</p>
+        <p><span class="stepnum">5</span><b>Polish</b> to correct remaining base-level errors (Section 8).</p>
       </div>
       <div class="callout tip">
-        <p><span class="stepnum">6</span><b>Quality-check</b> along all three independent axes: contiguity (N50/L50), completeness (BUSCO), and correctness (QV via Merqury) (Sections 9–12) — and iterate/re-polish if something looks off.</p>
+        <p><span class="stepnum">6</span><b>Quality-check</b> along N50, BUSCO, and QV (Sections 9–12).</p>
       </div>
       <div class="callout tip">
-        <p><span class="stepnum">7</span><b>Annotate</b> the finished, quality-checked sequence to identify genes, using RNA evidence where available and prediction/homology methods to fill gaps (Section 13) — being especially careful with duplicated gene families and any liftover from other assemblies.</p>
+        <p><span class="stepnum">7</span><b>Annotate</b> the sequence to identify genes (Section 13).</p>
       </div>
       <div class="callout tip">
-        <p><span class="stepnum">8</span><b>Release</b> the genome with its full metadata (sequencing technology, coverage, assembler + version, all three QC metrics) so downstream users can correctly judge what they're trusting the reference for.</p>
-      </div>
-
-      <div class="callout key">
-        <h4>Full-circle connection to your original tortoise project</h4>
-        <p>Every one of these eight steps maps directly onto something flagged in your original literature review: which sequencing technology and coverage were used for the tortoise's cell line's own genomic reads (steps 1–2, tied to donor identity concerns); whether CheloAbing_2.0's chromosome-scale structure came from real Hi-C or borrowed synteny (steps 3–4); how thoroughly it was polished and QC'd, including the notably absent QV figure (steps 5–6); and the specific annotation liftover concerns around immune gene paralogs (step 7). You now have the background to ask sharper, more specific questions about exactly which of these steps were done well, and which are the weakest links, before trusting downstream RNA-seq/proteomics mapping results.</p>
+        <p><span class="stepnum">8</span><b>Release</b> the genome as the working reference (Section 18) — understanding it's a first draft representing one individual (Sections 19–20), that future sequencing of other individuals will map against it rather than re-assemble from scratch, and that it may eventually be joined by a pangenome as more samples accumulate.</p>
       </div>
 
       <div class="navrow"><button onclick="showSection('s14')">← Back</button><button onclick="showSection('s16')">Next: Glossary →</button></div>
@@ -797,22 +947,30 @@
     <section id="s16">
       <h2>16 · Glossary</h2>
       <div class="grid2">
-        <div class="card"><h4>Read</h4><p>A single sequenced fragment of DNA — the raw, basic unit of sequencing output.</p></div>
-        <div class="card"><h4>Coverage / depth</h4><p>The average number of reads overlapping any given position in the genome — more coverage means fewer gaps and more confident consensus.</p></div>
-        <div class="card"><h4>K-mer</h4><p>Every substring of length k extracted from a sequence via a sliding window — the atomic unit behind de Bruijn graphs and k-mer-based QC.</p></div>
+        <div class="card"><h4>Read</h4><p>A single sequenced fragment of DNA.</p></div>
+        <div class="card"><h4>Coverage / depth</h4><p>Average number of reads overlapping a given position.</p></div>
+        <div class="card"><h4>K-mer</h4><p>Every substring of length k from a sequence, via sliding window.</p></div>
         <div class="card"><h4>Contig</h4><p>A continuous, gap-free stretch of assembled sequence.</p></div>
-        <div class="card"><h4>Scaffold</h4><p>Multiple contigs joined in inferred order/orientation, with gaps where sequence is still unknown.</p></div>
-        <div class="card"><h4>Haplotype / phasing</h4><p>One of the two (in a diploid organism) parental copies of a chromosome; phasing is correctly keeping those two copies separate rather than blending them.</p></div>
-        <div class="card"><h4>N50 / L50 / NG50</h4><p>Contiguity metrics based on sorting contig/scaffold lengths — N50 is a length, L50 is a count, NG50 normalizes against the true/estimated genome size.</p></div>
-        <div class="card"><h4>BUSCO</h4><p>A completeness check that looks for a curated set of genes expected to be present, intact, and single-copy across a broad taxonomic group.</p></div>
-        <div class="card"><h4>QV (Quality Value)</h4><p>A Phred-scaled estimate of base-level correctness — higher QV means lower probability of error per letter.</p></div>
-        <div class="card"><h4>Merqury</h4><p>A reference-free tool that estimates QV and completeness by comparing an assembly's k-mers against k-mers found in raw sequencing reads.</p></div>
-        <div class="card"><h4>Hi-C</h4><p>A lab technique that captures which genomic regions are physically close together in 3D, used to order and orient contigs into chromosome-scale scaffolds.</p></div>
-        <div class="card"><h4>Synteny</h4><p>Conservation of gene order across related species — the assumption underlying cross-species rescaffolding.</p></div>
-        <div class="card"><h4>Polishing</h4><p>Post-assembly error correction using read data mapped back onto the draft assembly.</p></div>
-        <div class="card"><h4>Annotation</h4><p>Identifying the location and likely function of genes within a finished genome sequence.</p></div>
-        <div class="card"><h4>Liftover</h4><p>Transferring gene annotations from one genome assembly/version (or a related species) onto another, rather than independently re-predicting them from scratch.</p></div>
-        <div class="card"><h4>Telomere-to-telomere (T2T)</h4><p>An assembly that spans a full chromosome from one end to the other with no gaps — the current gold-standard endpoint.</p></div>
+        <div class="card"><h4>Scaffold</h4><p>Contigs joined in inferred order/orientation, with gaps.</p></div>
+        <div class="card"><h4>Haplotype / phasing</h4><p>One of the two parental chromosome copies; phasing keeps them separate rather than blended.</p></div>
+        <div class="card"><h4>N50 / L50 / NG50</h4><p>Contiguity metrics from sorted contig/scaffold lengths.</p></div>
+        <div class="card"><h4>BUSCO</h4><p>Completeness check against a curated set of universal single-copy genes.</p></div>
+        <div class="card"><h4>QV (Quality Value)</h4><p>Phred-scaled estimate of base-level correctness.</p></div>
+        <div class="card"><h4>Merqury</h4><p>Reference-free tool estimating QV via k-mer comparison to raw reads.</p></div>
+        <div class="card"><h4>Hi-C</h4><p>Technique capturing 3D physical proximity of DNA, used for chromosome-scale scaffolding.</p></div>
+        <div class="card"><h4>Synteny</h4><p>Conservation of gene order across related species.</p></div>
+        <div class="card"><h4>Polishing</h4><p>Post-assembly error correction using mapped reads.</p></div>
+        <div class="card"><h4>Annotation</h4><p>Identifying gene locations/functions in a finished genome.</p></div>
+        <div class="card"><h4>Liftover</h4><p>Transferring annotations from one assembly/species to another.</p></div>
+        <div class="card"><h4>Telomere-to-telomere (T2T)</h4><p>A gapless assembly spanning a full chromosome end to end.</p></div>
+        <div class="card"><h4>Reference genome</h4><p>A single, standardized, shared sequence used as a common coordinate system for a species — not necessarily any one real individual's complete genome (Section 18).</p></div>
+        <div class="card"><h4>Mosaic reference</h4><p>A reference built by stitching together sequence from multiple different donors, as GRCh38 was (Section 19).</p></div>
+        <div class="card"><h4>Pangenome</h4><p>A reference structure built from many individuals' genomes, representing population diversity rather than one linear sequence (Section 19).</p></div>
+        <div class="card"><h4>Variant / heterozygous site</h4><p>A position where an individual's two chromosome copies differ, or where an individual differs from the reference (Section 21).</p></div>
+        <div class="card"><h4>Alignment / mapping</h4><p>Finding where a sequencing read best matches within a reference genome, rather than assembling from scratch.</p></div>
+        <div class="card"><h4>Ploidy</h4><p>The number of complete chromosome sets an organism carries — most animals are diploid (2), most bacteria/viruses are haploid (1).</p></div>
+        <div class="card"><h4>Plasmid</h4><p>A small, usually circular piece of DNA in bacteria, separate from the main chromosome.</p></div>
+        <div class="card"><h4>Quasispecies</h4><p>The genetically diverse swarm of closely related viral variants present within a single infected host.</p></div>
       </div>
       <div class="navrow"><button onclick="showSection('s15')">← Back</button><button onclick="showSection('s17')">Next: Self-test →</button></div>
     </section>
@@ -820,51 +978,59 @@
     <!-- S17 Quiz -->
     <section id="s17">
       <h2>17 · Quick Self-Test</h2>
-      <p>Five questions to check what stuck.</p>
+      <p>Questions covering both the original assembly mechanics and the new reference-genome concepts.</p>
 
       <div class="quiz" id="q1">
         <h4>1. Why do longer sequencing reads generally produce better (less fragmented) assemblies?</h4>
         <button onclick="answerQ(this,false,'q1')">Because longer reads are always more accurate.</button>
-        <button onclick="answerQ(this,true,'q1')">Because a read longer than a repeated region can "see past it" and anchor its true location, resolving ambiguity that shorter reads can't.</button>
+        <button onclick="answerQ(this,true,'q1')">Because a read longer than a repeated region can "see past it," resolving ambiguity shorter reads can't.</button>
         <button onclick="answerQ(this,false,'q1')">Because longer reads require less sequencing coverage.</button>
-        <div class="explain" id="q1-explain">Correct: length specifically helps resolve repeats — the core reason long-read technology transformed assembly quality.</div>
+        <div class="explain" id="q1-explain">Correct: length specifically helps resolve repeats.</div>
       </div>
 
       <div class="quiz" id="q2">
         <h4>2. What does N50 primarily measure?</h4>
-        <button onclick="answerQ(this,false,'q2')">Whether all the expected genes are present.</button>
-        <button onclick="answerQ(this,false,'q2')">The probability that any given letter in the assembly is correct.</button>
-        <button onclick="answerQ(this,true,'q2')">Contiguity — how large the assembled pieces are, weighted by how much of the genome they cover.</button>
-        <div class="explain" id="q2-explain">Correct: N50 is purely about contiguity. Completeness is BUSCO's job; correctness is QV's job.</div>
+        <button onclick="answerQ(this,false,'q2')">Whether all expected genes are present.</button>
+        <button onclick="answerQ(this,false,'q2')">The probability that any given letter is correct.</button>
+        <button onclick="answerQ(this,true,'q2')">Contiguity — how large the assembled pieces are, weighted by genome coverage.</button>
+        <div class="explain" id="q2-explain">Correct: N50 is purely about contiguity. BUSCO = completeness, QV = correctness.</div>
       </div>
 
       <div class="quiz" id="q3">
-        <h4>3. An assembly has a very high N50 but a surprisingly low QV. What should you suspect?</h4>
-        <button onclick="answerQ(this,true,'q3')">The assembler may have aggressively/incorrectly merged unrelated sequences to inflate contig length — a "chimeric" assembly.</button>
-        <button onclick="answerQ(this,false,'q3')">Nothing is wrong — high N50 always implies high quality overall.</button>
-        <button onclick="answerQ(this,false,'q3')">The genome must be unusually small.</button>
-        <div class="explain" id="q3-explain">Correct: this is a documented red-flag pattern — high contiguity with low correctness suggests over-aggressive, likely erroneous merging.</div>
+        <h4>3. Is the human reference genome (GRCh38) an average or "typical" human genome?</h4>
+        <button onclick="answerQ(this,false,'q3')">Yes — it's a statistical blend of thousands of people.</button>
+        <button onclick="answerQ(this,true,'q3')">No — it's a mosaic dominated (~70%) by a single anonymous donor, stitched with other donors' sequence, and not a real complete individual either.</button>
+        <button onclick="answerQ(this,false,'q3')">Yes — it's one single, real, complete person's genome sequenced end to end.</button>
+        <div class="explain" id="q3-explain">Correct: it's a mosaic, dominated by the RP11 donor, and neither an average nor one clean individual.</div>
       </div>
 
       <div class="quiz" id="q4">
-        <h4>4. What's the key difference between Hi-C scaffolding and synteny-based (cross-species) rescaffolding?</h4>
-        <button onclick="answerQ(this,true,'q4')">Hi-C uses the organism's own physical 3D DNA contact data; synteny borrows structural order from a related species' genome and assumes it's conserved.</button>
-        <button onclick="answerQ(this,false,'q4')">They are two names for the exact same technique.</button>
-        <button onclick="answerQ(this,false,'q4')">Synteny-based scaffolding always produces a higher-quality result than Hi-C.</button>
-        <div class="explain" id="q4-explain">Correct: Hi-C is native, direct physical evidence; synteny is an inference borrowed from a relative, weaker where real structural differences exist.</div>
+        <h4>4. When your own DNA is sequenced and mapped to the reference, whose chromosome copy (maternal/paternal) gets mapped?</h4>
+        <button onclick="answerQ(this,true,'q4')">Both — reads from both your maternal and paternal copies get mapped together to the same single reference sequence.</button>
+        <button onclick="answerQ(this,false,'q4')">Only your maternal copy, by convention.</button>
+        <button onclick="answerQ(this,false,'q4')">Whichever copy is more similar to the reference.</button>
+        <div class="explain" id="q4-explain">Correct: both copies get sequenced and mapped together; a ~50/50 split of reads at a position reveals heterozygosity. Telling which copy is which requires a separate step called phasing.</div>
       </div>
 
       <div class="quiz" id="q5">
-        <h4>5. Why can BUSCO's "complete, duplicated" category be a warning sign rather than good news?</h4>
-        <button onclick="answerQ(this,true,'q5')">It can indicate the assembler failed to merge the two haplotypes of a diploid genome properly, artificially duplicating regions.</button>
-        <button onclick="answerQ(this,false,'q5')">It always means the species has more genes than expected, which is always a positive finding.</button>
-        <button onclick="answerQ(this,false,'q5')">Duplicated BUSCO genes are simply ignored and never matter.</button>
-        <div class="explain" id="q5-explain">Correct: while some real biological duplication exists, elevated duplication in BUSCO is a classic signature of unresolved haplotypes being counted as separate regions.</div>
+        <h4>5. How many individual samples are needed to build a usable reference genome for a brand-new species?</h4>
+        <button onclick="answerQ(this,true,'q5')">As few as one — this is the normal, standard starting point for nearly every species' first reference genome.</button>
+        <button onclick="answerQ(this,false,'q5')">At least several thousand, or the reference isn't considered valid.</button>
+        <button onclick="answerQ(this,false,'q5')">Exactly 47, matching the human pangenome.</button>
+        <div class="explain" id="q5-explain">Correct: one individual is the standard starting point. Diversity-representing pangenomes (dozens of individuals) and population variant catalogs (thousands+) are separate, later additions.</div>
+      </div>
+
+      <div class="quiz" id="q6">
+        <h4>6. Why are bacterial genomes generally much easier to assemble into a single, complete, gapless contig than animal genomes?</h4>
+        <button onclick="answerQ(this,true,'q6')">They're haploid (no diploid-blending problem) and have far fewer long, complex repeats.</button>
+        <button onclick="answerQ(this,false,'q6')">Bacteria don't have DNA, so there's nothing complex to assemble.</button>
+        <button onclick="answerQ(this,false,'q6')">Bacterial genomes are always sequenced with less accurate technology, which makes assembly artificially easier.</button>
+        <div class="explain" id="q6-explain">Correct: haploidy removes Enemy 2 from Section 1, and lower repeat content reduces Enemy 1 — the two main sources of assembly difficulty.</div>
       </div>
 
       <div class="callout tip" style="margin-top:24px;">
         <h4>You've completed the guide 🎉</h4>
-        <p>You now have a working mental model of the entire genome-building pipeline — sequencing tradeoffs, the graph-theoretic core of assembly algorithms, the specific software in current use, chromosome-scale scaffolding, and all three independent axes of assembly quality. That's enough grounding to critically read any genome paper's methods section, including the tortoise project's CheloAbing_2.0 reference.</p>
+        <p>You now have a working mental model of the entire genome-building pipeline, plus a clear, precise understanding of what a reference genome actually is (and isn't), how sample size decisions work at different scales, exactly which parental chromosome copy gets mapped during sequencing, and how the whole process scales differently across animals, bacteria, and viruses.</p>
       </div>
 
       <div class="navrow"><button onclick="showSection('s0')">← Back to Start</button><button onclick="showSection('s1')">Restart from Section 1 →</button></div>
@@ -874,7 +1040,7 @@
 </div>
 
 <script>
-const sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16','s17'];
+const sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s18','s19','s20','s21','s22','s23','s13','s14','s15','s16','s17'];
 function showSection(id){
   sections.forEach(s=>{
     document.getElementById(s).classList.toggle('active', s===id);
@@ -883,7 +1049,7 @@ function showSection(id){
     b.classList.toggle('active', b.dataset.target===id);
   });
   const idx = sections.indexOf(id);
-  document.getElementById('progFill').style.width = Math.max(6,((idx+1)/sections.length*100)) + '%';
+  document.getElementById('progFill').style.width = Math.max(4,((idx+1)/sections.length*100)) + '%';
   document.querySelector('main').scrollTo(0,0);
   window.scrollTo(0,0);
   if(id==='s7'){ setTimeout(drawHeatmap, 50); }
@@ -900,7 +1066,6 @@ function answerQ(btn, isCorrect, qid){
   explain.style.display='block';
 }
 
-// K-mer widget
 document.getElementById('kSlider').addEventListener('input', function(){
   document.getElementById('kval').textContent = this.value;
 });
@@ -928,7 +1093,6 @@ function computeKmers(){
   out.innerHTML = html;
 }
 
-// N50 widget
 function computeN50(){
   const raw = document.getElementById('n50Input').value;
   const lens = raw.split(',').map(s=>parseInt(s.trim())).filter(n=>!isNaN(n) && n>0);
@@ -952,18 +1116,15 @@ function computeN50(){
   out.innerHTML = html;
 }
 
-// Hi-C heatmap
 function drawHeatmap(){
   const svg = document.getElementById('heatmapgrid');
   if(!svg || svg.childElementCount>0) return;
-  const n=12, cell=25, startX=200-(n*cell)/2+250-125, startY=40;
-  // simple block-diagonal pattern
+  const n=12, cell=25, startY=40;
   const blocks = [[0,4],[4,4],[8,4]];
-  const colors = ['#4fd1c5','#f6ad55','#e8618c'];
   for(let i=0;i<n;i++){
     for(let j=0;j<n;j++){
       let intensity = 0.05;
-      blocks.forEach((b,bi)=>{
+      blocks.forEach((b)=>{
         if(i>=b[0]&&i<b[0]+b[1]&&j>=b[0]&&j<b[0]+b[1]){
           const d = Math.abs(i-j);
           intensity = Math.max(intensity, 0.9 - d*0.15);
@@ -979,6 +1140,23 @@ function drawHeatmap(){
     }
   }
 }
+
+// Sample-size probability widget
+function updateSampleWidget(){
+  const f = parseFloat(document.getElementById('fSlider').value)/100;
+  const n = parseInt(document.getElementById('nSlider').value);
+  document.getElementById('fVal').textContent = (f*100).toFixed(1)+'%';
+  document.getElementById('nVal').textContent = n;
+  const pMissed = Math.pow(1-f, 2*n)*100;
+  const pCaught = 100-pMissed;
+  let html = `With a variant present in <b>${(f*100).toFixed(1)}%</b> of the population, sampling <b>${n}</b> individuals (${2*n} chromosome copies):<br><br>`;
+  html += `P(this variant is completely missed) = (1 − ${f.toFixed(4)})<sup>${2*n}</sup> ≈ <b style="color:${pMissed>30?'#f56565':'#4caf7d'}">${pMissed.toFixed(2)}%</b><br>`;
+  html += `P(at least one sampled individual carries it) ≈ <b style="color:${pCaught>70?'#4caf7d':'#f6ad55'}">${pCaught.toFixed(2)}%</b>`;
+  document.getElementById('sampleOut').innerHTML = html;
+}
+document.getElementById('fSlider').addEventListener('input', updateSampleWidget);
+document.getElementById('nSlider').addEventListener('input', updateSampleWidget);
+updateSampleWidget();
 </script>
 </body>
 </html>
